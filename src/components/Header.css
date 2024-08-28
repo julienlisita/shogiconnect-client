@@ -1,0 +1,35 @@
+.header
+{
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+}
+
+.header-nav1
+{
+    margin-left:20px;
+}
+
+.header-nav2
+{
+    margin-right:20px;
+}
+.header-nav1 ul, .header-nav2 ul
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.header-nav1 li, .header-nav2 li
+{
+  margin: 15px;
+  font-size: 20px;
+  font-family: sans-serif;
+  font-weight: bold;
+  color:white;
+}
+
