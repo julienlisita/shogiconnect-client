@@ -1,0 +1,114 @@
+h1
+{
+    font-size: 40px;
+    margin: 100px 150px;
+}
+h2
+{
+    text-align: center;
+    margin: 90px 0px;
+    font-size: 24px;
+    color: #36444A;
+}
+
+p
+{
+    font-size: 20px;
+    text-align: justify;
+}
+
+.banner
+{
+    height: 30vw;
+    background-image: url("../assets/images/banner1.jpg");
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.logo-container
+{
+    position:absolute;
+    width:30%;
+    margin-right:15px;
+}
+
+.illustration
+{
+    width: 450px;
+    border-radius:5px;
+}
+
+.introShogi-content , .introGame-content, .introCommunity-content
+{
+    display: flex;
+    justify-content: space-between;
+    margin:0px 150px;
+}
+
+.introShogi-content-description, .introGame-content-description, .introCommunity-content-description
+{
+    width:450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:30px;
+}
+
+.button
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    background-color: #A0785A;
+    border-radius: 50px;
+}
+
+.button p
+{
+    padding:20px;
+    color:white;
+}
+
+.introCommunity-table
+{
+    width:81%;
+}
+
+.introGame-table
+{
+    width:50%;
+    margin-bottom: 120px;
+}
+
+table
+{
+    margin:auto;
+    font-size: 20px;
+    border-collapse: collapse;
+}
+thead
+{
+    background-color: #C9C9C9;
+    color: #36444A;
+    text-align: left;
+    height: 50px;
+}
+th, td
+{
+    padding-left:20px;
+    padding-right: 20px;
+}
+td
+{
+    height: 100px;
+    border-bottom: 1px solid black;
+}
+
+
