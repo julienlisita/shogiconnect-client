@@ -1,6 +1,6 @@
 .header
 {
-  height: 70px;
+  height: 100px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -10,12 +10,12 @@
 
 .header-nav1
 {
-    margin-left:20px;
+    margin-left:50px;
 }
 
 .header-nav2
 {
-    margin-right:20px;
+    margin-right:50px;
 }
 .header-nav1 ul, .header-nav2 ul
 {
