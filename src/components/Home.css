@@ -1,13 +1,13 @@
 h1
 {
     font-size: 40px;
-    margin: 100px 150px;
+    margin: 8vw 1vh;
 }
 h2
 {
     text-align: center;
-    margin: 90px 0px;
-    font-size: 24px;
+    margin: 7vw 0px;
+    font-size: 28px;
     color: #36444A;
 }
 
@@ -20,44 +20,14 @@ p
 .banner
 {
     height: 30vw;
-    background-image: url("../assets/images/banner1.jpg");
     background-size: 100%;
+    background-image: url("../assets/images/banner1.jpg");
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
     display: flex;
     justify-content: end;
     align-items: center;
-}
-
-.logo-container
-{
-    position:absolute;
-    width:30%;
-    margin-right:15px;
-}
-
-.illustration
-{
-    width: 450px;
-    border-radius:5px;
-}
-
-.introShogi-content , .introGame-content, .introCommunity-content
-{
-    display: flex;
-    justify-content: space-between;
-    margin:0px 150px;
-}
-
-.introShogi-content-description, .introGame-content-description, .introCommunity-content-description
-{
-    width:450px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap:30px;
 }
 
 .button
@@ -75,16 +45,54 @@ p
     padding:20px;
     color:white;
 }
+.logo-container
+{
+    position:absolute;
+    width:30vw;
+    height:30vw;
+    margin-right:15px;
+}
+
+.logo-img
+{
+    width:100%;
+    position: relative;
+}
+
+.introShogi-content, .introGame-content, .introCommunity-content
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: start;
+    flex-wrap: wrap;
+}
+
+.introShogi-content-description, .introGame-content-description, .introCommunity-content-description
+{
+    width:450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:4vw;
+}
+
+.illustration
+{
+    width: 450px;
+    border-radius:5px;
+}
 
 .introCommunity-table
 {
-    width:81%;
+    width:81vw;
 }
 
 .introGame-table
 {
-    width:50%;
-    margin-bottom: 120px;
+    width:600px;
+    margin-bottom: 9vh;
 }
 
 table
@@ -109,6 +117,102 @@ td
 {
     height: 100px;
     border-bottom: 1px solid black;
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+    h1 {
+        font-size: 32px;
+    }
+    h2 {
+        font-size: 24px;
+    }
+    p{
+        font-size: 18px;
+    }
+    .illustration
+    {
+        width: 400px;
+        border-radius: 3px;
+    }
+    table
+    {
+        font-size: 18px;
+    };
+    th, td
+    {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .introCommunity-table
+    {
+        width: 90vw;
+    }
+    .introGame-table
+    {
+        width: 600px;
+    }
+    .introShogi-content-description, .introGame-content-description, .introCommunity-content-description
+    {
+        width: 400px;
+        gap: 4vw;
+    }
+}
+
+@media  (max-width: 800px) {
+
+    .introShogi-content , .introGame-content, .introCommunity-content
+    {
+        gap:6vw;
+    }
+}
+
+@media  (max-width: 600px) {
+    h1 {
+        font-size: 24px;
+    }
+    h2 {
+        font-size: 22px;
+    }
+    p{
+        font-size: 16px;
+    }
+    .illustration
+    {
+        width: 400px;
+        border-radius: 1px;
+    }
+    table
+    {
+        font-size: 16px;
+    }
+    th, td
+    {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+
+    .introGame-table, .introCommunity-table
+    {
+        width: 100vw;
+        margin-bottom: 5vh;
+    }
+}
+
+@media  (max-width: 500px) {
+    .introShogi-content-description , .introGame-content-description, .introCommunity-content-description
+    {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+@media  (max-width: 400px) {
+    .illustration
+    {
+        width: 100vw;
+        border-radius: 0px;
+    }
 }
 
 
