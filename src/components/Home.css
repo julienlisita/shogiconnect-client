@@ -1,50 +1,8 @@
-h1
+.bannerHome 
 {
-    font-size: 40px;
-    margin: 8vw 1vh;
-}
-h2
-{
-    text-align: center;
-    margin: 7vw 0px;
-    font-size: 28px;
-    color: #36444A;
-}
-
-p
-{
-    font-size: 20px;
-    text-align: justify;
-}
-
-.banner
-{
-    height: 30vw;
-    background-size: 100%;
     background-image: url("../assets/images/banner1.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    display: flex;
-    justify-content: end;
-    align-items: center;
 }
 
-.button
-{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
-    background-color: #A0785A;
-    border-radius: 50px;
-}
-
-.button p
-{
-    padding:20px;
-    color:white;
-}
 .logo-container
 {
     position:absolute;
@@ -120,15 +78,7 @@ td
 }
 
 @media (min-width: 600px) and (max-width: 1024px) {
-    h1 {
-        font-size: 32px;
-    }
-    h2 {
-        font-size: 24px;
-    }
-    p{
-        font-size: 18px;
-    }
+
     .illustration
     {
         width: 400px;
@@ -167,15 +117,7 @@ td
 }
 
 @media  (max-width: 600px) {
-    h1 {
-        font-size: 24px;
-    }
-    h2 {
-        font-size: 22px;
-    }
-    p{
-        font-size: 16px;
-    }
+
     .illustration
     {
         width: 400px;

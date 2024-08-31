@@ -55,7 +55,7 @@ const Home = () => {
 
     return (
         <div>
-            <section className="banner">
+            <section className="bannerHome banner">
                 <div className="logo-container">
                     <img className="logo-img" src={logo} alt="logo de ShogiConnect"/>
                 </div>
