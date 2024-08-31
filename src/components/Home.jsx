@@ -49,7 +49,7 @@ const Home = () => {
     const membersSortedByScore = members.sort((a,b) => b.score - a.score);
     const tenGreatestMembers = membersSortedByScore.filter((member,index) => index < 10);
 
-    const commentsSortedByDate = comments.sort((a,b) => {b.date - a.date});
+    const commentsSortedByDate = comments.sort((a,b) => b.date - a.date);
 
     
 
@@ -78,7 +78,7 @@ const Home = () => {
                 </div>
             </section>           
             <section className="introCommunity">
-                <h2>Partagez votre passion avec la communnauté</h2>
+                <h2>Partagez votre passion avec la communauté</h2>
                 <div className="introCommunity-content">
                     <div className="introShogi-content-description">
                         <div className="introCommunity-content-text">
@@ -103,11 +103,11 @@ const Home = () => {
                     </thead> 
                     <tbody>  
                         {!commentsSortedByDate ? <p>En cours de chargement</p> :
-                            commentsSortedByDate.map((comment) => {
-                            return <tr> 
+                            commentsSortedByDate.map((comment,index) => {
+                            return <tr key = {index}> 
                             <td>{comment.topic}</td>
                             <td>{comment.message}</td>
-                            <td>{`le ${comment.date.toDateString()} à ${comment.date.toLocaleTimeString()} \npar ${comment.author}`}</td>
+                            <td>{`le ${comment.date.toLocaleDateString('fr-FR')} à ${comment.date.toLocaleTimeString()} \npar ${comment.author}`}</td>
                         </tr>
                             })}
                         
@@ -141,7 +141,7 @@ const Home = () => {
                     <tbody>
                         {!tenGreatestMembers ? <p>En cours de chargement</p> :
                         tenGreatestMembers.map((member,index) => {
-                        return <tr>
+                        return <tr key = {index}> 
                                 <td>{index+1}</td>
                                 <td>{member.pseudo}</td>
                                 <td>{member.score}</td>
