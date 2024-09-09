@@ -5,17 +5,31 @@
   list-style-type: none;
   box-sizing: border-box;
   text-decoration: none;
+ }
+
+ .main-content
+{
+    width:85%;
+    max-width: 1200px;
+    margin: auto;
+    margin-bottom: 5.56vw;
+}
+
+.main-content-title
+{
+    width:100%;
 }
 
 h1
 {
     font-size: 40px;
-    margin: 8vw 1vh;
+    margin-top:5.56vw;
 }
+
 h2
 {
     text-align: center;
-    margin: 7vw 0px;
+    margin-top: 2.78vw;
     font-size: 28px;
     color: #36444A;
 }
@@ -43,39 +57,114 @@ p
     display:flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
     background-color: #A0785A;
     border-radius: 50px;
+    padding:10px 20px;
 }
 
 .button p
 {
-    padding:20px;
     color:white;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-@media (min-width: 600px) and (max-width: 1024px) {
-  h1 {
-    font-size: 32px;
-  }
-  h2 {
-      font-size: 24px;
-  }
-  p{
-      font-size: 18px;
-  }
+.button:hover
+{
+    background-color: #c98f62;
+}
+
+button
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #A0785A;
+    border:none;
+    border-radius: 50px;
+    padding:10px 20px;
+    color:white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+button:hover
+{
+    background-color: #c98f62;
+}
+
+
+@media (min-width: 600px) and (max-width: 1100px) {
+    .main-content 
+    {
+      width: 90%;
+    }
+
+    h1 
+    {
+        font-size: 32px;
+    }
+    h2 
+    {
+        font-size: 24px;
+    }
+    p
+    {
+        font-size: 18px;
+    }
+
+    .button
+    {
+        padding:5px 10px;
+    }
+    .button p
+    {
+        font-size: 16px;
+    }
+    button
+    {
+        padding:5px 10px;
+        font-size: 16px;
+    }
 }
 
 @media  (max-width: 600px) {
-  h1 {
-      font-size: 24px;
-  }
-  h2 {
-      font-size: 22px;
-  }
-  p{
-      font-size: 16px;
-  }
+    .main-content 
+    {
+        width: 100%; 
+    }
+
+    h1 
+    {
+        font-size: 24px;
+    }
+    h2 
+    {
+        font-size: 22px;
+    }
+    p
+    {
+        font-size: 16px;
+    }
+
+    .button
+    {
+        padding:5px 10px;
+    }
+    .button p
+    {
+        font-size: 14px;
+    }
+    button
+    {
+        padding:5px 10px;
+        font-size: 14px;
+    }
+    p
+    {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
 
 

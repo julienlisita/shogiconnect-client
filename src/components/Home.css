@@ -21,37 +21,77 @@
 {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: start;
-    flex-wrap: wrap;
+    margin-top: 2.78vw;
 }
 
 .introShogi-content-description, .introGame-content-description, .introCommunity-content-description
 {
-    width:450px;
+    width: 450px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap:4vw;
+    gap: 2.08vw;
+}
+
+.introShogi-content-imageContainer, .introGame-content-imageContainer, .introCommunity-content-imageContainer
+{
+    width: 450px;
 }
 
 .illustration
 {
-    width: 450px;
-    border-radius:5px;
+    width: 100%;
+    border-radius: 5px;
 }
 
-.introCommunity-table
+.introCommunity-messages
 {
-    width:81vw;
+    height: 400px;
+    overflow-y: auto;
+    margin:auto;
+    margin-top: 2.78vw;
 }
 
-.introGame-table
+.introCommunity-messages-table
 {
-    width:600px;
-    margin-bottom: 9vh;
+    width:100%;
 }
+
+.introCommunity-messages-table thead
+{
+    position: sticky;
+    top:0px;
+}
+
+.introGame-gamers
+{
+    height: 500px;
+    width:450px;
+    margin:auto;
+    overflow-y: auto;
+    margin-top: 2.78vw;
+}
+
+.introGame-gamers-table
+{
+    width: 100%;
+}
+
+.introGame-gamers-table thead
+{
+    position: sticky;
+    top: 0px;
+}
+
+.button-link
+{
+    color: white;
+}
+
+
 
 table
 {
@@ -61,28 +101,35 @@ table
 }
 thead
 {
-    background-color: #C9C9C9;
+    background-color: #D9D9D9;
     color: #36444A;
     text-align: left;
-    height: 50px;
 }
 th, td
 {
     padding-left:20px;
     padding-right: 20px;
+    padding-top: 0.69vw;
+    padding-bottom: 0.69vw;
 }
 td
 {
-    height: 100px;
     border-bottom: 1px solid black;
 }
 
 @media (min-width: 600px) and (max-width: 1024px) {
 
-    .illustration
+    .introShogi-content-imageContainer, .introGame-content-imageContainer, .introCommunity-content-imageContainer
     {
         width: 400px;
+    }
+    .illustration
+    {
         border-radius: 3px;
+    }
+    .introShogi-content-description, .introGame-content-description, .introCommunity-content-description
+    {
+        width: 400px;
     }
     table
     {
@@ -93,34 +140,40 @@ td
         padding-left: 10px;
         padding-right: 10px;
     }
-    .introCommunity-table
+    .introCommunity-messages
     {
-        width: 90vw;
+        width: 100%;
     }
-    .introGame-table
+
+    .introGame-gamers
     {
-        width: 600px;
-    }
-    .introShogi-content-description, .introGame-content-description, .introCommunity-content-description
-    {
-        width: 400px;
-        gap: 4vw;
+        width:400px;
     }
 }
 
-@media  (max-width: 800px) {
+@media  (max-width: 900px) {
 
     .introShogi-content , .introGame-content, .introCommunity-content
     {
-        gap:6vw;
+        gap:2.08vw;
+        flex-direction: column;
+        align-items: center;
+    }
+    .introShogi-content-description, .introGame-content-description, .introCommunity-content-description
+    {
+        width: 100%;
     }
 }
 
 @media  (max-width: 600px) {
 
+    .introShogi-content-imageContainer, .introGame-content-imageContainer, .introCommunity-content-imageContainer
+    {
+        width: 350px;
+    }
+
     .illustration
     {
-        width: 400px;
         border-radius: 1px;
     }
     table
@@ -132,29 +185,29 @@ td
         padding-left: 5px;
         padding-right: 5px;
     }
-
-
-    .introGame-table, .introCommunity-table
+    .introGame-gamers, .introCommunity-messages
     {
-        width: 100vw;
-        margin-bottom: 5vh;
-    }
-}
-
-@media  (max-width: 500px) {
-    .introShogi-content-description , .introGame-content-description, .introCommunity-content-description
-    {
-        padding-left: 5px;
-        padding-right: 5px;
+        width: 350px;
     }
 }
 
 @media  (max-width: 400px) {
+
+    .introShogi-content-imageContainer, .introGame-content-imageContainer, .introCommunity-content-imageContainer
+    {
+        width: 100%;
+    }
+
     .illustration
     {
-        width: 100vw;
         border-radius: 0px;
     }
+
+    .introGame-gamers, .introCommunity-messages
+    {
+        width: 100%;
+    }
+
 }
 
 

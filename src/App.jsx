@@ -12,12 +12,14 @@ import ForumTopicsPage from './pages/ForumTopicsPage';
 import ForumCommentsPage from './pages/ForumCommentsPage';
 import GameListPage from './pages/GameListPage';
 import OnlineGamePage from './pages/OnlineGamePage';
+import ScrollToTop from './components/ScrollToTop';
 
 const App = () => {
 
   return (
     <>
       <BrowserRouter>
+      <ScrollToTop />
         <Routes>
           {/* Page d'accueil */}
           <Route path="/" element={<HomePage/>} />   
@@ -41,22 +43,22 @@ const App = () => {
           <Route path="/members" element={<MemberListPage/>} />  
 
           {/* Profil d'un membre */}    
-          <Route path="/members/:id" element={<MemberProfilePage/>} />        
+          <Route path="/members/:user_id" element={<MemberProfilePage/>} />        
 
           {/* Catégories du forum */}     
           <Route path="/forum" element={<ForumCategoriesPage/>} />    
 
            {/* Topics d'une catégorie */}          
-          <Route path="/forum/:category" element={<ForumTopicsPage/>} />    
+          <Route path="/forum/:category_id" element={<ForumTopicsPage/>} />    
 
           {/* Commentaires d'un topic */}         
-          <Route path="/forum/:category/:topic" element={<ForumCommentsPage/>} />    
+          <Route path="/forum/:category_id/:topic_id" element={<ForumCommentsPage/>} />    
 
           {/* Liste des parties */}          
           <Route path="/games" element={<GameListPage/>} />     
           
           {/* Jeu en ligne */}         
-          <Route path="/game/:gameId" element={<OnlineGamePage/>} />              
+          <Route path="/game/:game_id" element={<OnlineGamePage/>} />              
         </Routes>
       </BrowserRouter> 
     </>
