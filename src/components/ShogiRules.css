@@ -1,0 +1,210 @@
+.bannerRules
+{
+    background-image: url("../assets/images/banner2.jpg");
+}
+
+.rulesIntro-content, .gameplay-content, .promotion-content, .drop-content
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+    margin-top: 2.78vw;
+}
+
+.rulesIntro-content-imageContainer, .gameplay-content-imageContainer, .promotion-content-imageContainer, .drop-content-imageContainer
+{
+    width: 450px;
+}
+
+.illustration
+{
+    width:100%;
+    border-radius:5px;
+}
+
+.rulesIntro-content-description, .gameplay-content-description, .promotion-content-description, .drop-content-description
+{
+    width: 450px;
+}
+
+.gameplay-content2
+{
+    margin-top: 2.78vw;
+}
+
+.endGame-text
+{
+    margin-top: 2.78vw;
+}
+
+
+.cardsWithoutpromotion
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.cardsWithPromotion
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+}
+
+.cardWithoutPromotion
+{
+    width: 400px;
+    height: 600px;
+    border-top:1px black solid;
+    border-bottom:1px black solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 2.78vw;
+}
+
+.cardWithPromotion
+{
+    width: 400px;
+    height: 1000px;
+    border-top:1px black solid;
+    border-bottom:1px black solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 2.78vw;
+}
+
+.cardWithoutPromotion-description, .cardWithPromotion-description
+{
+    width:80%;
+}
+.cardWithoutPromotion-imgContainer img, .cardWithPromotion-imgContainer img
+{
+    width:200px;
+}
+
+@media (min-width: 600px) and (max-width: 1024px) 
+{
+
+    .rulesIntro-content-imageContainer, .gameplay-content-imageContainer, .promotion-content-imageContainer, .drop-content-imageContainer
+    {
+        width: 400px;
+    }
+    .illustration
+    {
+        border-radius: 3px;
+    }
+
+    .rulesIntro-content-description, .gameplay-content-description, .promotion-content-description, .drop-content-description
+    {
+        width: 400px;
+    }
+    .cardWithPromotion, .cardWithoutPromotion
+    {
+        width: 350px;
+    }
+    .cardWithoutPromotion-imgContainer img, .cardWithPromotion-imgContainer img
+    {
+         width:150px;
+    }
+    .cardWithPromotion
+    {
+        height: 800px;
+    }
+    .cardWithoutPromotion
+    {
+        height:500px;
+    }
+}
+  
+@media  (max-width: 900px) {
+
+    .rulesIntro-content , .gameplay-content, .promotion-content, .drop-content
+    {
+        gap:2.08vw;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cardsWithoutpromotion
+    {
+        flex-direction: column;
+        align-items: column;
+
+    }
+
+    .cardsWithPromotion
+    {
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .rulesIntro-content-description, .gameplay-content-description, .promotion-content-description, .drop-content-description
+    {
+        width: 100%;
+    }
+}
+
+@media  (max-width: 600px) 
+{
+
+    .rulesIntro-content-imageContainer, .gameplay-content-imageContainer, .promotion-content-imageContainer, .drop-content-imageContainer
+    {
+        width: 350px;
+    }
+
+    .illustration
+    {
+        border-radius: 1px;
+    }
+    .cardWithPromotion, .cardWithoutPromotion
+    {
+        width: 300px;
+    }
+    .cardWithoutPromotion-imgContainer img, .cardWithPromotion-imgContainer img
+    {
+         width:100px;
+    }
+    .cardWithPromotion
+    {
+        height: 600px;
+    }
+    .cardWithoutPromotion
+    {
+        height:400px;
+    }
+}
+
+@media  (max-width: 400px) {
+
+    .rulesIntro-content-imageContainer, .gameplay-content-imageContainer, .promotion-content-imageContainer, .drop-content-imageContainer
+    {
+        width: 100%;
+    }
+
+    .illustration
+    {
+        border-radius: 0px;
+    }
+}
+
+
+@media  (max-width: 300px) 
+{
+    .cardWithPromotion, .cardWithoutPromotion
+    {
+        width: 100%;
+    }
+}

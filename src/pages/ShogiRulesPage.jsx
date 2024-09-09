@@ -1,8 +1,13 @@
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import ShogiRules from "../components/ShogiRules";
+
 const ShogiRulesPage = () => {
     return (
       <div>
-        <h1>Règles du Shogi</h1>
-        {/* Contenu sur les règles du Shogi */}
+        <Header/>
+        <ShogiRules/>
+        <Footer/>
       </div>
     );
   };
