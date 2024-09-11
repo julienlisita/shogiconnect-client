@@ -1,8 +1,13 @@
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import ShogiHistory from "../components/ShogiHistory";
+
 const ShogiHistoryPage = () => {
     return (
       <div>
-        <h1>Histoire du Shogi</h1>
-        {/* Contenu sur l'histoire du Shogi */}
+        <Header/>
+        <ShogiHistory/>
+        <Footer/>
       </div>
     );
   };
