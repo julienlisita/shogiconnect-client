@@ -8,7 +8,8 @@
     position:absolute;
     width:30vw;
     height:30vw;
-    margin-right:15px;
+    margin-right:1.04vw;
+    margin-top:3.3vw;
 }
 
 .logo-img
@@ -33,7 +34,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2.08vw;
+    gap: 2.08vw;;
 }
 
 .introShogi-content-imageContainer, .introGame-content-imageContainer, .introCommunity-content-imageContainer
@@ -49,7 +50,7 @@
 
 .introCommunity-messages
 {
-    height: 400px;
+    max-height: 660px;
     overflow-y: auto;
     margin:auto;
     margin-top: 2.78vw;
@@ -68,7 +69,7 @@
 
 .introGame-gamers
 {
-    height: 500px;
+    max-height: 660px;
     width:450px;
     margin:auto;
     overflow-y: auto;
@@ -92,31 +93,6 @@
 }
 
 
-
-table
-{
-    margin:auto;
-    font-size: 20px;
-    border-collapse: collapse;
-}
-thead
-{
-    background-color: #D9D9D9;
-    color: #36444A;
-    text-align: left;
-}
-th, td
-{
-    padding-left:20px;
-    padding-right: 20px;
-    padding-top: 0.69vw;
-    padding-bottom: 0.69vw;
-}
-td
-{
-    border-bottom: 1px solid black;
-}
-
 @media (min-width: 600px) and (max-width: 1024px) {
 
     .introShogi-content-imageContainer, .introGame-content-imageContainer, .introCommunity-content-imageContainer
@@ -131,15 +107,7 @@ td
     {
         width: 400px;
     }
-    table
-    {
-        font-size: 18px;
-    };
-    th, td
-    {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
+
     .introCommunity-messages
     {
         width: 100%;
@@ -155,13 +123,26 @@ td
 
     .introShogi-content , .introGame-content, .introCommunity-content
     {
-        gap:2.08vw;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
+        gap:20px;
+        margin-top: 23px;
     }
     .introShogi-content-description, .introGame-content-description, .introCommunity-content-description
     {
         width: 100%;
+        gap: 15px;
+    }
+
+    .introCommunity-messages
+    {
+        margin-top: 23px;
+    }
+
+    .introGame-gamers
+    {
+        margin-top: 23px;
     }
 }
 
@@ -176,15 +157,7 @@ td
     {
         border-radius: 1px;
     }
-    table
-    {
-        font-size: 16px;
-    }
-    th, td
-    {
-        padding-left: 5px;
-        padding-right: 5px;
-    }
+
     .introGame-gamers, .introCommunity-messages
     {
         width: 350px;

@@ -77,7 +77,7 @@ const Home = () => {
                                 {!commentsSortedByDate ? <p>En cours de chargement</p> :
                                     commentsSortedByDate.map((comment,index) => {
                                     return <tr key = {index}> 
-                                    <td>{getTopicById(comment.topic_id).title}</td>
+                                    <td><strong>{getTopicById(comment.topic_id).title}</strong></td>
                                     <td>{comment.content}</td>
                                     <td>{`le ${new Date(comment.created_at).toLocaleDateString('fr-FR')} à ${new Date(comment.created_at).toLocaleTimeString()} \npar ${getUserById(comment.user_id).username}`}</td>
                                 </tr>
