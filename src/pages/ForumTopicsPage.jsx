@@ -1,14 +1,15 @@
-import { useParams } from 'react-router-dom';
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import ForumTopics from "../components/ForumTopics";
 
 const ForumTopicsPage = () => {
-  const { category } = useParams();
-
-  return (
-    <div>
-      <h1>Topics de la catégorie {category}</h1>
-      {/* Contenu des topics de la catégorie */}
-    </div>
-  );
-};
-
-export default ForumTopicsPage;
+    return (
+      <div>
+        <Header/>
+           <ForumTopics/>
+        <Footer/>
+      </div>
+    );
+  };
+  
+  export default ForumTopicsPage;
