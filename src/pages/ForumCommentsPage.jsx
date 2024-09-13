@@ -1,14 +1,15 @@
-import { useParams } from 'react-router-dom';
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import ForumComments from "../components/ForumComments";
 
 const ForumCommentsPage = () => {
-  const { category, topic } = useParams();
-
-  return (
-    <div>
-      <h1>Commentaires du topic {topic} dans la catégorie {category}</h1>
-      {/* Contenu des commentaires du topic */}
-    </div>
-  );
-};
-
-export default ForumCommentsPage;
+    return (
+      <div>
+        <Header/>
+           <ForumComments/>
+        <Footer/>
+      </div>
+    );
+  };
+  
+  export default ForumCommentsPage;

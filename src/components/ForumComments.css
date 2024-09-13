@@ -1,0 +1,77 @@
+.bannerComments
+{
+    background-image: url("../assets/images/banner6.jpg");
+}
+
+.comments-list
+{
+    max-height: 600px;
+    overflow-y: auto;
+    width:100%;
+    margin-top: 2.78vw;
+}
+
+.comments-list-table
+{
+    width:100%;
+}
+
+.comments-list-table thead
+{
+    position:sticky;
+    top: 0;
+}
+
+.comments-list-table-username
+{
+    font-weight: bold;
+}
+
+.comments-form
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.08vw;
+    margin-top: 2.78vw;
+}
+
+.comments-form textarea
+{
+    font-size: 20px;
+    width:100%;
+}
+
+@media  (max-width: 900px) {
+
+    .comments-list
+    {
+        margin-top: 23px;
+    }
+
+    .comments-form
+    {
+        margin-top: 23px;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .comments-table{
+    width:100vw;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .comments
+    {
+        width:100vw;
+    }
+    .comments-form 
+    {
+        width:100%;
+    }
+}
