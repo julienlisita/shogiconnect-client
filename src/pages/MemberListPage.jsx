@@ -1,8 +1,13 @@
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import MemberList from "../components/MemberList";
+
 const MemberListPage = () => {
     return (
       <div>
-        <h1>Liste des membres</h1>
-        {/* Contenu de la liste des membres */}
+        <Header/>
+           <MemberList/>
+        <Footer/>
       </div>
     );
   };

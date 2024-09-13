@@ -1,0 +1,104 @@
+.bannerMemberList
+{
+    background-image: url("../assets/images/banner8.jpg");
+}
+
+.members-displaySelection
+{
+  display: flex;
+  justify-content: center;
+  margin-top: 2.78vw;
+}
+
+.members-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap:0.5vw;
+    flex-wrap:wrap;    
+    margin-top: 2.78vw;
+  }
+
+  .memberCard {
+    width:180px;
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2.08vw;
+    padding-bottom: 2.08vw;
+    gap:1.04vw;
+    color: black;
+    background-color: #D9D9D9;
+  }
+  
+  .memberCard-avatar img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color:  white;
+    opacity: 0.6;
+  }
+  
+  .memberCard-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .memberCard-info-username {
+
+    font-weight: bold;
+  }
+  
+  .memberCard-info-country {
+    color: black;
+  }
+
+  .memberCard-info-status-online {
+
+    color: green;
+  }
+  .memberCard-info-status-offline {
+
+    color: red;
+  }
+
+  @media (min-width: 600px) and (max-width: 1024px) {
+
+    .memberCard {
+      width:170px;
+    }
+
+    .memberCard-avatar img{
+      width: 80px;
+      height: 80px;
+    }
+  }
+  @media (max-width: 900px) 
+  {
+    .members-displaySelection
+    {
+      margin-top: 23px;
+    }
+    .members-list {
+      margin-top: 23px;
+    }
+  }
+
+  @media (max-width: 600px) 
+  {    
+
+    .memberCard {
+      width:130px;
+    }
+
+    .memberCard-avatar img{
+      width: 50px;
+      height: 50px;
+    }
+  
+  }
+
