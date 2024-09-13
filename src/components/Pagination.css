@@ -1,0 +1,36 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    list-style: none;
+    margin-top: 2.78vw;
+    margin-bottom: 2.78vw;
+  }
+  
+  .page-item {
+    margin: 0 5px;
+  }
+  
+  .page-link {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    border-radius: 0px;
+    color: black;
+  }
+  
+  .page-item.active .page-link {
+    background-color: #A0785A;
+    color: white;
+    border: 1px solid #A0785A;
+    border-radius: 0px;
+  }
+
+  @media (max-width: 900px) 
+  {
+    .pagination {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
