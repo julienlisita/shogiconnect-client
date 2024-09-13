@@ -1,8 +1,13 @@
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import ClubList from "../components/ClubList";
+
 const ClubListPage = () => {
     return (
       <div>
-        <h1>Liste des clubs</h1>
-        {/* Contenu de la liste des clubs */}
+        <Header/>
+        <ClubList/>
+        <Footer/>
       </div>
     );
   };
