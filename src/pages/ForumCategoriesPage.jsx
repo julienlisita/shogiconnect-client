@@ -1,8 +1,13 @@
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import ForumCategories from "../components/ForumCategories";
+
 const ForumCategoriesPage = () => {
     return (
       <div>
-        <h1>Catégories du forum</h1>
-        {/* Contenu des catégories du forum */}
+        <Header/>
+           <ForumCategories/>
+        <Footer/>
       </div>
     );
   };
