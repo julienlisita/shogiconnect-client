@@ -1,7 +1,6 @@
 import './App.css'
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 import HomePage from './pages/HomePage';
-import EditProfilePage from './pages/EditProfilePage';
 import ShogiRulesPage from './pages/ShogiRulesPage';
 import ShogiHistoryPage from './pages/ShogiHistoryPage';
 import ClubListPage from './pages/ClubListPage';
@@ -10,9 +9,19 @@ import MemberProfilePage from './pages/MemberProfilePage';
 import ForumCategoriesPage from './pages/ForumCategoriesPage';
 import ForumTopicsPage from './pages/ForumTopicsPage';
 import ForumCommentsPage from './pages/ForumCommentsPage';
-import OnlineGamePage from './pages/OnlineGamePage';
 import ScrollToTop from './components/ScrollToTop';
 import AvailableGameListPage from './pages/AvailableGameListPage';
+import OnlineGamePage from './pages/OnlineGamePage';
+
+import AccountHomePage from './pages/AccountHomePage';
+import EditProfilePage from './pages/EditProfilePage';
+import ScheduledGameListPage from './pages/ScheduledGameListPage';
+import GameHistoryPage from './pages/GameHistoryPage';
+
+import DashboardPage from './pages/DashboardPage';
+import ManageUsersPage from './pages/ManageUsersPage';
+import ManageForumPage from './pages/ManageForumPage';
+import ManageGamesPage from './pages/ManageGamesPage';
 
 const App = () => {
 
@@ -29,9 +38,6 @@ const App = () => {
 
           {/* Formulaire d'inscription */}
           <Route path="/register" element={<></>}/>  
-
-          {/* Modifier le profil de l'utilisateur connecté */}
-          <Route path="/edit-profile" element={<EditProfilePage/>} />
 
           {/* Règles du Shogi */}           
           <Route path="/rules" element={<ShogiRulesPage/>} /> 
@@ -57,11 +63,41 @@ const App = () => {
           {/* Commentaires d'un topic */}         
           <Route path="/forum/:category_id/:topic_id" element={<ForumCommentsPage/>} />
 
-          {/* Liste des parties */}          
+
+          {/* Routes spécifiques aux membres connectés */}
+
+          {/* Liste des parties disponibles*/}          
           <Route path="/available-games" element={<AvailableGameListPage/>} />
           
           {/* Jeu en ligne */}         
-          <Route path="/game/:game_id" element={<OnlineGamePage/>} />
+          <Route path="/games/:game_id" element={<OnlineGamePage/>} />
+
+           {/* Page d'accueil du compte utilisateurs */}
+           <Route path="user/home" element={<AccountHomePage/>} />
+
+          {/* Modifier le profil de l'utilisateur connecté */}
+          <Route path="user/edit-profile" element={<EditProfilePage/>} />
+
+          {/* Page de gestion des parties programmées */}
+          <Route path="user/scheduled-games" element={<ScheduledGameListPage/>} />
+
+          {/* Page de l'historique des parties */}
+          <Route path="user/game-history" element={<GameHistoryPage/>} />
+
+
+          {/* Routes spécifiques aux administrateurs */}
+
+          {/* Page de gestion des utilisateurs (admin) */}
+          <Route path="/admin/dashboard" element={<DashboardPage />} />
+
+          {/* Page de gestion des utilisateurs (admin) */}
+          <Route path="/admin/manage-users" element={<ManageUsersPage />} />
+
+          {/* Page de gestion du forum (admin) */}
+          <Route path="/admin/manage-forum" element={<ManageForumPage />} />
+
+          {/* Page de gestion des parties (admin) */}
+          <Route path="/admin/manage-games" element={<ManageGamesPage />} />
         </Routes>
       </BrowserRouter> 
     </>
