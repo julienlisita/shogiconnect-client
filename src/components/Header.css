@@ -35,6 +35,12 @@
   display: flex;
   flex-direction: row;
 }
+
+.header-nav1-menu-link:hover, .header-nav2-login-link:hover
+{
+  color:#c98f62;
+}
+
 .header-nav2
 {
   display: flex;
@@ -71,6 +77,52 @@
 
 .burger-icon span:nth-child(3) {
   top: 20px;
+}
+
+.burger-icon span:nth-child(1) {
+  top: 0;
+}
+
+.burger-icon span:nth-child(2) {
+  top: 10px;
+}
+
+.burger-icon span:nth-child(3) {
+  top: 20px;
+}
+
+.burger-icon.open span:nth-child(1) {
+  top: 10px;
+  transform: rotate(45deg);
+  transition: top 0.4s ease, transform 0.4s ease 0.4s, opacity 0.4s ease; 
+}
+
+.burger-icon.open span:nth-child(2) {
+  opacity: 0;
+  transition: top 0.4s ease, transform 0.4s ease 0.4s, opacity 0.4s ease; 
+}
+
+.burger-icon.open span:nth-child(3) {
+  top: 10px;
+  transform: rotate(-45deg) ;
+  transition: top 0.4s ease, transform 0.4s ease 0.4s, opacity 0.4s ease;
+}
+
+.burger-icon:not(.open) span:nth-child(1) {
+  transform: rotate(0); 
+  top: 0;
+  transition: transform 0.4s ease, top 0.4s ease 0.4s; 
+}
+
+.burger-icon:not(.open) span:nth-child(2) {
+  opacity: 1; 
+  transition: opacity 0.5s ease; 
+}
+
+.burger-icon:not(.open) span:nth-child(3) {
+  transform: rotate(0);
+  top: 20px; 
+  transition: transform 0.4s ease, top 0.4s ease 0.4s;
 }
 
 @media (min-width: 800px) and (max-width: 1024px) {
@@ -140,5 +192,12 @@
     margin-left: 20px;
     font-size: 24px;
   }
-
+  .header-nav2-icons .icon:hover
+  {
+    color:#c98f62;
+  }
+  .burger-icon:hover span
+  {
+    background-color:#c98f62;
+  }
 }
