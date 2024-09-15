@@ -10,9 +10,9 @@ import MemberProfilePage from './pages/MemberProfilePage';
 import ForumCategoriesPage from './pages/ForumCategoriesPage';
 import ForumTopicsPage from './pages/ForumTopicsPage';
 import ForumCommentsPage from './pages/ForumCommentsPage';
-import GameListPage from './pages/GameListPage';
 import OnlineGamePage from './pages/OnlineGamePage';
 import ScrollToTop from './components/ScrollToTop';
+import AvailableGameListPage from './pages/AvailableGameListPage';
 
 const App = () => {
 

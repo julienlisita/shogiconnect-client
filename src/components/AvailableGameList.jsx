@@ -110,4 +110,4 @@ const AvailableGameList = () => {
     );
 };
 
-export default GameList;
+export default AvailableGameList;
