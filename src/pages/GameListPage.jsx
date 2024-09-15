@@ -1,10 +1,15 @@
-const GameListPage = () => {
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import AvailableGameList from "../components/AvailableGameList";
+
+const AvailableGameListPage = () => {
     return (
       <div>
-        <h1>Liste des parties</h1>
-        {/* Contenu de la liste des parties */}
+        <Header/>
+           <AvailableGameList/>
+        <Footer/>
       </div>
     );
   };
   
-  export default GameListPage;
+  export default AvailableGameListPage;

@@ -58,7 +58,7 @@ const App = () => {
           <Route path="/forum/:category_id/:topic_id" element={<ForumCommentsPage/>} />
 
           {/* Liste des parties */}          
-          <Route path="/games" element={<GameListPage/>} />
+          <Route path="/available-games" element={<AvailableGameListPage/>} />
           
           {/* Jeu en ligne */}         
           <Route path="/game/:game_id" element={<OnlineGamePage/>} />
