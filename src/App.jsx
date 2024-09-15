@@ -24,11 +24,14 @@ const App = () => {
           {/* Page d'accueil */}
           <Route path="/" element={<HomePage/>} />   
 
+          {/* Page de connexion au compte utilisateur ou administrateur */}
+          <Route path="/login" element={<></>} />
+
           {/* Formulaire d'inscription */}
-          <Route path="/home/register" element={<></>}/>  
+          <Route path="/register" element={<></>}/>  
 
           {/* Modifier le profil de l'utilisateur connecté */}
-          <Route path="/profile/edit" element={<EditProfilePage/>} />
+          <Route path="/edit-profile" element={<EditProfilePage/>} />
 
           {/* Règles du Shogi */}           
           <Route path="/rules" element={<ShogiRulesPage/>} /> 
@@ -52,13 +55,13 @@ const App = () => {
           <Route path="/forum/:category_id" element={<ForumTopicsPage/>} />    
 
           {/* Commentaires d'un topic */}         
-          <Route path="/forum/:category_id/:topic_id" element={<ForumCommentsPage/>} />    
+          <Route path="/forum/:category_id/:topic_id" element={<ForumCommentsPage/>} />
 
           {/* Liste des parties */}          
-          <Route path="/games" element={<GameListPage/>} />     
+          <Route path="/games" element={<GameListPage/>} />
           
           {/* Jeu en ligne */}         
-          <Route path="/game/:game_id" element={<OnlineGamePage/>} />              
+          <Route path="/game/:game_id" element={<OnlineGamePage/>} />
         </Routes>
       </BrowserRouter> 
     </>
