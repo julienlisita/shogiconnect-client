@@ -30,7 +30,7 @@ const Header = () => {
                     <li><Link className="header-nav1-menu-link" to="/history">Histoire</Link></li>
                     <li><Link className="header-nav1-menu-link" to="/clubs">Clubs</Link></li>
                     <li><Link className="header-nav1-menu-link" to="/forum">Forum</Link></li>
-                    <li><Link className="header-nav1-menu-link" to="/members">Membres</Link></li>
+                    <li><Link className="header-nav1-menu-link" to="/users">Membres</Link></li>
                     <li><Link className="header-nav1-menu-link" to="/available-games">Jouer</Link></li>
                 </ul>
             </nav>

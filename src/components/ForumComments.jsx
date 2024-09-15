@@ -47,7 +47,7 @@ const ForumComments = () => {
                         <tbody>
                             {sortCommentsByTopic(topic_id).map((comment) => (
                             <tr key={comment.id}>
-                                <td><Link className="comments-list-table-username" to={`/members/${comment.user_id}`}>{getUserById(comment.user_id).username}</Link></td>
+                                <td><Link className="comments-list-table-username" to={`/users/${comment.user_id}`}>{getUserById(comment.user_id).username}</Link></td>
                                 <td>{comment.content}</td>
                                 <td>{`le ${new Date(comment.created_at).toLocaleDateString('fr-FR')} à ${new Date(comment.created_at).toLocaleTimeString()}`} </td>
                             </tr>

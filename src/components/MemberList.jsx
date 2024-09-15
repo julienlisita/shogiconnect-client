@@ -65,7 +65,7 @@ const MemberList = () => {
                 <div className="members-list">
                     {!currentMembers ? <p>En cours de chargement</p> :
                     currentMembers.map(member => (
-                      <Link key = {member.id} to={`/members/${member.id}`}>
+                      <Link key = {member.id} to={`/users/${member.id}`}>
                         <div className="memberCard">
                           <div className="memberCard-avatar">
                               <img src={image} alt="" />

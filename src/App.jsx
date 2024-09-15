@@ -5,7 +5,7 @@ import ShogiRulesPage from './pages/ShogiRulesPage';
 import ShogiHistoryPage from './pages/ShogiHistoryPage';
 import ClubListPage from './pages/ClubListPage';
 import MemberListPage from './pages/MemberListPage';
-import MemberProfilePage from './pages/MemberProfilePage';
+import UserProfilePage from './pages/UserProfilePage';
 import ForumCategoriesPage from './pages/ForumCategoriesPage';
 import ForumTopicsPage from './pages/ForumTopicsPage';
 import ForumCommentsPage from './pages/ForumCommentsPage';
@@ -52,7 +52,7 @@ const App = () => {
           <Route path="/members" element={<MemberListPage/>} />  
 
           {/* Profil d'un membre */}    
-          <Route path="/members/:user_id" element={<MemberProfilePage/>} />        
+          <Route path="/users/:user_id" element={<UserProfilePage/>} />        
 
           {/* Catégories du forum */}     
           <Route path="/forum" element={<ForumCategoriesPage/>} />    
