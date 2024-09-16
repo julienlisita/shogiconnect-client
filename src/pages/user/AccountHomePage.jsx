@@ -1,7 +1,13 @@
+import AccountHome from "../../components/user/AccountHome";
+import Sidebar from "../../components/user/Sidebar";
+import "./AccountHomePage.css"
+
 const AccountHomePage = () => {
 
     return (
-      <div>
+      <div className="homePage">
+        <Sidebar/>
+        <AccountHome/>
       </div>
     );
   };
