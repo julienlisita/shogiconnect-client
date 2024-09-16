@@ -1,0 +1,153 @@
+.bannerProfile 
+{
+    background-image: url("../../assets/images/banner9.png");
+}
+
+.profile
+{    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: top;
+    flex-wrap: wrap;
+    width:100%;
+}
+
+.profile-rightBlock, .profile-leftBlock
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.profile-leftBlock
+{
+    width: 250px;
+}
+
+.profile-rightBlock
+{
+    width: 600px;
+}
+
+.profile-rightBlock-biography
+{
+    margin-top: 2.78vw;
+}
+
+.profile-rightBlock-activity
+{
+    display:flex;
+    flex-direction: column;
+    align-items: start;
+    width:100%;
+    margin-top: 2.78vw;
+}
+
+.profile-rightBlock-activity-list
+{
+
+    max-height:600px;
+    overflow-y:auto;
+    width: 100%;
+}
+
+.profile-rightBlock-activity-list-table
+{
+    width:100%;
+}
+
+.profile-leftBlock-infos
+{
+    width:220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:2.08vw;
+    margin-top: 2.78vw;
+}
+.profile-leftBlock-infos-avatar img
+{
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    background-color:  white;
+    opacity: 0.6;
+}
+
+.profile-leftBlock-infos-username
+{
+    font-weight:bold;
+    font-size: 20px;
+}
+
+.profile-leftBlock-stats
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:2.08vw;
+    align-items: center;
+    margin-top: 2.78vw;
+}
+
+@media  (max-width: 944px)
+{
+
+    .profile-leftBlock
+    {
+        width: 250px;
+    }
+
+    .profile-rightBlock
+    {
+        width: 500px;
+    }
+    .profile-rightBlock-biography
+    {
+        margin-top: 23px;
+    }
+    .profile-rightBlock-activity
+    {
+        margin-top: 23px;
+    }
+    .profile-leftBlock-stats
+    {
+        margin-top: 23px;
+    }
+    .profile-leftBlock-infos
+    {
+
+        gap:2.08vw;
+        margin-top: 23px;
+    }
+    .profile
+    {    
+        flex-direction: column;
+        align-items: center;
+        width:100%;
+    }
+} 
+
+@media  (max-width: 600px) 
+{
+    .profile-rightBlock
+    {
+        width: 100%;
+    }
+
+    .profile-rightBlock-biography
+    {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .profile-leftBlock-infos-avatar img
+    {
+        width: 100px;
+        height: 100px;
+    }
+}

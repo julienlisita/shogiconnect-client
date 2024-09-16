@@ -1,5 +1,6 @@
 import './App.css'
 import {BrowserRouter,Routes,Route} from "react-router-dom";
+
 import HomePage from './pages/HomePage';
 import ShogiRulesPage from './pages/ShogiRulesPage';
 import ShogiHistoryPage from './pages/ShogiHistoryPage';
@@ -9,19 +10,19 @@ import UserProfilePage from './pages/UserProfilePage';
 import ForumCategoriesPage from './pages/ForumCategoriesPage';
 import ForumTopicsPage from './pages/ForumTopicsPage';
 import ForumCommentsPage from './pages/ForumCommentsPage';
-import ScrollToTop from './components/ScrollToTop';
+import ScrollToTop from './components/utils/ScrollToTop';
+
 import AvailableGameListPage from './pages/AvailableGameListPage';
-import OnlineGamePage from './pages/OnlineGamePage';
+import OnlineGamePage from './pages/user/OnlineGamePage';
+import AccountHomePage from './pages/user/AccountHomePage';
+import EditProfilePage from './pages/user/EditProfilePage';
+import ScheduledGameListPage from './pages/user/ScheduledGameListPage';
+import GameHistoryPage from './pages/user/GameHistoryPage';
 
-import AccountHomePage from './pages/AccountHomePage';
-import EditProfilePage from './pages/EditProfilePage';
-import ScheduledGameListPage from './pages/ScheduledGameListPage';
-import GameHistoryPage from './pages/GameHistoryPage';
-
-import DashboardPage from './pages/DashboardPage';
-import ManageUsersPage from './pages/ManageUsersPage';
-import ManageForumPage from './pages/ManageForumPage';
-import ManageGamesPage from './pages/ManageGamesPage';
+import DashboardPage from './pages/admin/DashboardPage';
+import ManageUsersPage from './pages/admin/ManageUsersPage';
+import ManageForumPage from './pages/admin/ManageForumPage';
+import ManageGamesPage from './pages/admin/ManageGamesPage';
 
 const App = () => {
 

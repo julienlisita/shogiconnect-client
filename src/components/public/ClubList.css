@@ -1,0 +1,140 @@
+.bannerClubsList
+{
+    background-image: url("../../assets/images/banner7.jpg");
+}
+.clubsList
+{
+    display: flex;
+    justify-content: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap:2.78vw;
+    margin-top: 2.78vw;
+}
+
+.clubCard
+{
+    width: 350px;
+    height: 600px;
+    border-top:1px black solid;
+    border-bottom:1px black solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-top: 2.08vw;
+    padding-bottom: 2.08vw;
+}
+
+.clubCard-title
+{
+    font-size: 20px;
+}
+  
+.clubCard-description
+{
+    width:280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    gap:1vw;
+}
+
+.clubCard-description p
+{
+    font-size: 18px;
+}
+
+.clubCard-title
+{
+    font-size:20px;
+    font-weight: bold;
+}
+
+.clubCardSubtitle
+{
+    font-weight: bold;
+}
+
+@media  (max-width: 700px) {
+
+    .clubsList
+    {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1024px) 
+{
+    .clubCard
+    {
+        width: 300px;
+        height: 550px;
+    }
+    .clubCard-title
+    {
+        font-size:18px;
+    }
+    .clubCard-description
+    {
+        width:250px;
+    }
+    .clubCard-description p
+    {
+        font-size: 16px;
+    }
+}
+
+
+@media  (max-width: 900px) 
+{
+    .clubsList
+    {
+        gap:20px;
+        margin-top: 23px;
+    }
+    .clubCard
+    {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+}
+
+
+@media  (max-width: 600px) 
+{
+    .clubCard
+    {
+        width: 280px;
+        height: 450px;
+    }
+    .clubCard-title
+    {
+        font-size:16px;
+    }
+    .clubCard-description
+    {
+        width:250px;
+    }
+    .clubCard-description p
+    {
+        font-size: 14px;
+    }
+}
+
+@media  (max-width: 350px) 
+{
+    .clubCard
+    {
+        width: 100%;
+
+    }
+    .clubCard-description
+    {
+        width:100%;
+    }
+}
