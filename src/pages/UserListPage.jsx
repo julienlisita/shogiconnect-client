@@ -1,15 +1,15 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import MemberList from "../components/MemberList";
+import UserList from "../components/UserList";
 
-const MemberListPage = () => {
+const UserListPage = () => {
     return (
       <div>
         <Header/>
-           <MemberList/>
+           <UserList/>
         <Footer/>
       </div>
     );
   };
   
-  export default MemberListPage;
+  export default UserListPage;

@@ -1,4 +1,4 @@
-import "./MemberList.css"
+import "./UserList.css"
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -9,14 +9,14 @@ import users from './users.json';
 import stats from './stats.json';
   
 
-const MemberList = () => {
+const UserList = () => {
 
 
     const [sortOption, setSortOption] = useState('username');
 
     const getStatByUserId = (user_id) => stats.find(stat => stat.user_id == user_id);
 
-    const sortedMembers = users.sort((a, b) => {
+    const sortedUsers = users.sort((a, b) => {
         if (sortOption === 'score') {
             return getStatByUserId(b.id).score - getStatByUserId(a.id).score; // Tri par score décroissant
         } else if (sortOption === 'username') {
@@ -30,15 +30,15 @@ const MemberList = () => {
     });
 
     const [currentPage, setCurrentPage] = useState(1);
-    const membersPerPage = 21; 
+    const usersPerPage = 21; 
   
-    const indexOfLastMember = currentPage * membersPerPage;
-    const indexOfFirstMember = indexOfLastMember - membersPerPage;
-    const currentMembers = sortedMembers.slice(indexOfFirstMember, indexOfLastMember);
+    const indexOfLastUser = currentPage * usersPerPage;
+    const indexOfFirstUser = indexOfLastUser - usersPerPage;
+    const currentUsers = sortedUsers.slice(indexOfFirstUser, indexOfLastUser);
 
 
-    const statusClass = (member) => {
-        return member.isOnline ? "memberCard-info-status-online" : "memberCard-info-status-offline";
+    const statusClass = (users) => {
+        return users.isOnline ? "userCard-info-status-online" : "userCard-info-status-offline";
     }
 
     const handleSortChange = (e) => {
@@ -48,12 +48,12 @@ const MemberList = () => {
 
     return (
         <div>
-            <section className="bannerMemberList banner">
+            <section className="bannerUserList banner">
             </section>
-            <section className="members main-content">
+            <section className="users main-content">
                 <h1 className="main-content-title">Membres de ShogiConnect</h1>
                 <h2>Liste des membres</h2>
-                <form className="members-displaySelection">
+                <form className="users-displaySelection">
                     <label htmlFor="sortBy"></label>
                     <select className = "orderSelect" id="sortBy" value={sortOption} name="sortBy" onChange={handleSortChange}>
                         <option value="username">Par pseudo</option>
@@ -62,29 +62,29 @@ const MemberList = () => {
                         <option value="onlineStatus">Par statut</option>
                     </select>
                 </form>
-                <div className="members-list">
-                    {!currentMembers ? <p>En cours de chargement</p> :
-                    currentMembers.map(member => (
-                      <Link key = {member.id} to={`/users/${member.id}`}>
-                        <div className="memberCard">
-                          <div className="memberCard-avatar">
+                <div className="users-list">
+                    {!currentUsers ? <p>En cours de chargement</p> :
+                    currentUsers.map(user => (
+                      <Link key = {user.id} to={`/users/${user.id}`}>
+                        <div className="userCard">
+                          <div className="userCard-avatar">
                               <img src={image} alt="" />
                           </div>
-                          <div className="memberCard-info">
-                              <p className="memberCard-info-username">{member.username}</p>
-                              <p className="memberCard-info-country">{member.country}</p>
-                              <p className={statusClass(member)}>
-                              {member.isOnline ? "Online" : "Offline"}
+                          <div className="userCard-info">
+                              <p className="userCard-info-username">{user.username}</p>
+                              <p className="userCard-info-country">{user.country}</p>
+                              <p className={statusClass(user)}>
+                              {user.isOnline ? "Online" : "Offline"}
                               </p>
-                              <p>Score: {getStatByUserId(member.id).score}</p>
+                              <p>Score: {getStatByUserId(user.id).score}</p>
                           </div>
                         </div>
                       </Link>))}
                 </div>
-                <Pagination membersPerPage={membersPerPage} totalMembers={users.length} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+                <Pagination userPerPage={usersPerPage} totalUsers={users.length} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
             </section>
         </div>
     );
 };
 
-export default MemberList;
+export default UserList;
