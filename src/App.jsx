@@ -56,13 +56,13 @@ const App = () => {
           <Route path="/users/:user_id" element={<UserProfilePage/>} />        
 
           {/* Catégories du forum */}     
-          <Route path="/forum" element={<ForumCategoriesPage/>} />    
+          <Route path="/forum/categories" element={<ForumCategoriesPage/>} />    
 
            {/* Topics d'une catégorie */}          
-          <Route path="/forum/:category_id" element={<ForumTopicsPage/>} />    
+          <Route path="/forum/category/:category_id" element={<ForumTopicsPage/>} />    
 
           {/* Commentaires d'un topic */}         
-          <Route path="/forum/:category_id/:topic_id" element={<ForumCommentsPage/>} />
+          <Route path="/forum/category/:category_id/topic/:topic_id" element={<ForumCommentsPage/>} />
 
 
           {/* Routes spécifiques aux membres connectés */}

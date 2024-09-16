@@ -29,9 +29,9 @@ const Header = () => {
                     <li><Link className="header-nav1-menu-link" to="/Rules">Règles</Link></li>
                     <li><Link className="header-nav1-menu-link" to="/history">Histoire</Link></li>
                     <li><Link className="header-nav1-menu-link" to="/clubs">Clubs</Link></li>
-                    <li><Link className="header-nav1-menu-link" to="/forum">Forum</Link></li>
+                    <li><Link className="header-nav1-menu-link" to="/forum/categories">Forum</Link></li>
                     <li><Link className="header-nav1-menu-link" to="/users">Membres</Link></li>
-                    <li><Link className="header-nav1-menu-link" to="/available-games">Jouer</Link></li>
+                    <li><Link className="header-nav1-menu-link" to="/available-games">Parties</Link></li>
                 </ul>
             </nav>
 

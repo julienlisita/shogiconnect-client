@@ -43,7 +43,7 @@ const ForumCategories = () => {
                         <tbody>
                             {categories.map((category) => (
                             <tr key={category.id}>
-                                <td> <Link className = "categories-table-title" to={`/forum/${category.id}`}>{category.title}</Link><br/>{category.description}</td>
+                                <td> <Link className = "categories-table-title" to={`/forum/category/${category.id}`}>{category.title}</Link><br/>{category.description}</td>
                                 <td>{nbrTopicsByCategory(category.id)}</td>
                                 <td>
                                     {!lastCommentByCategory(category.id) ? `-` : `le ${ new Date(lastCommentByCategory(category.id).created_at).toLocaleDateString('fr-FR')} à 

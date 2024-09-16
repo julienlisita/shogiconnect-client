@@ -52,7 +52,7 @@ const ForumTopics = () => {
                         <tbody>
                             {sortedTopicsByCategory(category_id).map((topic) => (
                             <tr key={topic.id}>
-                                <td><Link className="topics-list-table-title" to={`/forum/${category_id}/${topic.id}`}>{topic.title}</Link>
+                                <td><Link className="topics-list-table-title" to={`/forum/category/${category_id}/topic/${topic.id}`}>{topic.title}</Link>
                                 <br />
                                 {topic.content}
                                 </td>
