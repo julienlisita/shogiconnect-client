@@ -6,12 +6,8 @@
   box-sizing: border-box;
   text-decoration: none;
  }
- body
- {
-    padding-top: 100px;
- }
 
- .main-content
+.main-content
 {
     width:85%;
     max-width: 1200px;
@@ -93,6 +89,7 @@ td
     display: flex;
     justify-content: end;
     align-items: center;
+    margin-top: 100px;
 }
 
 .button
