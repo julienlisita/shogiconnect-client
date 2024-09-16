@@ -1,6 +1,6 @@
-import Header from "../components/public/Header";
-import Footer from "../components/public/Footer";
-import ForumCategories from "../components/public/ForumCategories";
+import Header from "../../components/public/Header";
+import Footer from "../../components/public/Footer";
+import ForumCategories from "../../components/public/ForumCategories";
 
 const ForumCategoriesPage = () => {
     return (

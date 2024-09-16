@@ -1,6 +1,6 @@
-import Header from "../components/public/Header";
-import Footer from "../components/public/Footer";
-import ForumComments from "../components/public/ForumComments";
+import Header from "../../components/public/Header";
+import Footer from "../../components/public/Footer";
+import ForumComments from "../../components/public/ForumComments";
 
 const ForumCommentsPage = () => {
     return (

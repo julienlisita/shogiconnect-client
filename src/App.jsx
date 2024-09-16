@@ -1,18 +1,18 @@
 import './App.css'
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 
-import HomePage from './pages/HomePage';
-import ShogiRulesPage from './pages/ShogiRulesPage';
-import ShogiHistoryPage from './pages/ShogiHistoryPage';
-import ClubListPage from './pages/ClubListPage';
-import UserListPage from './pages/UserListPage';
-import UserProfilePage from './pages/UserProfilePage';
-import ForumCategoriesPage from './pages/ForumCategoriesPage';
-import ForumTopicsPage from './pages/ForumTopicsPage';
-import ForumCommentsPage from './pages/ForumCommentsPage';
+import HomePage from './pages/public/HomePage';
+import ShogiRulesPage from './pages/public/ShogiRulesPage';
+import ShogiHistoryPage from './pages/public/ShogiHistoryPage';
+import ClubListPage from './pages/public/ClubListPage';
+import UserListPage from './pages/public/UserListPage';
+import UserProfilePage from './pages/public/UserProfilePage';
+import ForumCategoriesPage from './pages/public/ForumCategoriesPage';
+import ForumTopicsPage from './pages/public/ForumTopicsPage';
+import ForumCommentsPage from './pages/public/ForumCommentsPage';
 import ScrollToTop from './components/utils/ScrollToTop';
 
-import AvailableGameListPage from './pages/AvailableGameListPage';
+import AvailableGameListPage from './pages/user/AvailableGameListPage';
 import OnlineGamePage from './pages/user/OnlineGamePage';
 import AccountHomePage from './pages/user/AccountHomePage';
 import EditProfilePage from './pages/user/EditProfilePage';
