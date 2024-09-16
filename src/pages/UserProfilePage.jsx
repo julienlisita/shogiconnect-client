@@ -1,14 +1,16 @@
-import { useParams } from 'react-router-dom';
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import UserProfile from "../components/UserProfile";
 
-const MemberProfilePage = () => {
-  const { id } = useParams();
+const UserProfilePage = () => {
 
   return (
     <div>
-      <h1>Profil du membre {id}</h1>
-      {/* Contenu du profil du membre */}
+      <Header/>
+      <UserProfile/>
+      <Footer/>
     </div>
   );
 };
 
-export default MemberProfilePage;
+export default UserProfilePage;
