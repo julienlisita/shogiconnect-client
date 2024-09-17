@@ -1,8 +1,12 @@
+import EditProfile from "../../components/user/EditProfile";
+import Sidebar from "../../components/user/Sidebar"
+import "./AccountHomePage.css"
+
 const EditProfilePage = () => {
     return (
-      <div>
-        <h1>Modifier le profil</h1>
-        {/* Contenu pour modifier le profil */}
+      <div className="homePage">
+        <Sidebar/>
+        <EditProfile/>
       </div>
     );
   };
