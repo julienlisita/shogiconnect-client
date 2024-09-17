@@ -1,0 +1,83 @@
+.manageUsers-container
+{
+    flex:1;
+}
+
+.manageUsers
+{
+    width:95%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.manageUsers-content
+{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    margin-top: 40px;
+}
+
+.manageUsers-displaySelection
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 2.78vw;
+}
+
+.manageUsers-list 
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    flex-wrap:wrap;
+    width: 100%;
+    height: 600px;
+    overflow-y: auto;
+    margin-top: 2.78vw;
+}
+.manageUsers-list-table
+{
+    width:100%;
+}
+
+.manageUsers-list-table thead
+{
+    position:sticky;
+    top: 0;
+}
+
+.manageUsers-list-table-username
+{
+    color:black;
+    font-weight: bold;
+}
+
+.manageUsers-list-table-buttonContainer
+{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+
+.manageUsers-CreateButton
+{
+    margin-top: 2.78vw;
+}
+
+@media  (max-width: 900px) 
+{
+    .manageUsers-displaySelection
+    {
+        margin-top: 23px;
+    }
+    .manageUsers-list 
+    {
+        margin-top: 23px;
+    }
+    .manageUsers-CreateButton
+    {
+        margin-top: 23px;
+    }
+}
