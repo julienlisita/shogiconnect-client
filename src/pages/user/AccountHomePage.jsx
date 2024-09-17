@@ -1,12 +1,12 @@
 import AccountHome from "../../components/user/AccountHome";
-import Sidebar from "../../components/user/Sidebar";
+import UserSidebar from "../../components/user/UserSidebar";
 import "./AccountHomePage.css"
 
 const AccountHomePage = () => {
 
     return (
       <div className="homePage">
-        <Sidebar/>
+        <UserSidebar/>
         <AccountHome/>
       </div>
     );

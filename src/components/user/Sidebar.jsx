@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./Sidebar.css"
 
-const Sidebar = () => 
+const Sidebar = ({ menuItems }) => 
 {
     const user = {
     id: 1,
@@ -37,11 +37,11 @@ const Sidebar = () =>
                         <img src={image} alt="" />
                     </div>
                     <ul className="sidebar-menu">
-                        <li><Link className="sidebar-menu-link" to="/user/home">Tableau de bord</Link></li>
-                        <li><Link className="sidebar-menu-link" to="/user/edit-profile">Gestion du compte</Link></li>
-                        <li><Link className="sidebar-menu-link" to="/user/scheduled-games">Parties programmées</Link></li>
-                        <li><Link className="sidebar-menu-link" to="/user/game-history">Historique des parties</Link></li>
-                        <li><Link className="sidebar-menu-link" to="/">Retour à l'accueil</Link> </li>
+                        {menuItems.map((item, index) => (
+                            <li key={index}>
+                                <Link className="sidebar-menu-link" to={item.link}>{item.label}</Link>
+                            </li>
+                        ))}
                     </ul>
                     <p>Suppression du compte</p>
                     <p>Retour à l'accueil</p>

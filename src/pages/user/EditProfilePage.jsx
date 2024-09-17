@@ -1,11 +1,11 @@
 import EditProfile from "../../components/user/EditProfile";
-import Sidebar from "../../components/user/Sidebar"
+import UserSidebar from "../../components/user/UserSidebar";
 import "./AccountHomePage.css"
 
 const EditProfilePage = () => {
     return (
       <div className="homePage">
-        <Sidebar/>
+        <UserSidebar/>
         <EditProfile/>
       </div>
     );
