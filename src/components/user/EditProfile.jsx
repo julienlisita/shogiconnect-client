@@ -44,17 +44,19 @@ const EditProfile = () => {
             <div className="editProfil-container">
                 <div className="editProfil">
                     <h1>Modification de compte</h1>
-                    {/* Modal pour la suppression du compte */}
+                    {/* Modal pour la confirmation de suppression du compte */}
                     {showModal && (
-                    <div className="modal">
-                        <div className="modal-content">
+                    <div className="modal-overlay">
+                        <div className="modal">
                             <h2>Confirmation</h2>
-                            <p>Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.</p>
-                            <div className="validationButton-container">
-                                <button className="validationButton" style={{ backgroundColor: 'red'}}onClick={confirmDeletion}>Oui, supprimer</button>
-                            </div>
-                            <div className="validationButton-container">
-                                <button className="validationButton" onClick={cancelDeletion}>Annuler</button>            
+                            <div className="modal-content">
+                                <p>Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.</p>
+                                <div className="validationButton-container">
+                                    <button className="validationButton" style={{ backgroundColor: 'red'}}onClick={confirmDeletion}>Oui, supprimer</button>
+                                </div>
+                                <div className="validationButton-container">
+                                    <button className="validationButton" onClick={cancelDeletion}>Annuler</button>            
+                                </div>
                             </div>
                         </div>
                     </div>
