@@ -10,7 +10,7 @@ import UserProfilePage from './pages/public/UserProfilePage';
 import ForumCategoriesPage from './pages/public/ForumCategoriesPage';
 import ForumTopicsPage from './pages/public/ForumTopicsPage';
 import ForumCommentsPage from './pages/public/ForumCommentsPage';
-import ScrollToTop from './components/utils/ScrollToTop';
+import ScrollToTop from './components/common/ScrollToTop';
 
 import AvailableGameListPage from './pages/user/AvailableGameListPage';
 import OnlineGamePage from './pages/user/OnlineGamePage';
