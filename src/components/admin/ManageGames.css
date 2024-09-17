@@ -1,0 +1,83 @@
+.manageGames-container
+{
+    flex:1;
+}
+
+.manageGames
+{
+    width:95%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.manageGames-content
+{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    margin-top: 40px;
+}
+
+.manageGames-displaySelection
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 2.78vw;
+}
+
+.manageGames-list 
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    flex-wrap:wrap;
+    width: 100%;
+    height: 600px;
+    overflow-y: auto;
+    margin-top: 2.78vw;
+}
+.manageGames-list-table
+{
+    width:100%;
+}
+
+.manageGames-list-table thead
+{
+    position:sticky;
+    top: 0;
+}
+
+.manageGames-list-table-username
+{
+    color:black;
+    font-weight: bold;
+}
+
+.manageGames-list-table-buttonContainer
+{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+
+.manageGames-CreateButton
+{
+    margin-top: 2.78vw;
+}
+
+@media  (max-width: 900px) 
+{
+    .manageGames-displaySelection
+    {
+        margin-top: 23px;
+    }
+    .manageGames-list 
+    {
+        margin-top: 23px;
+    }
+    .manageGames-CreateButton
+    {
+        margin-top: 23px;
+    }
+}
