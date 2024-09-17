@@ -43,8 +43,8 @@ const AccountHome = () => {
                                 <h2>Statistiques joueur</h2>
                                 <p>{`Parties jouées: ${nbrGames}`}</p>
                                 <p>{`Victoires: ${nbrGames}`}</p>
-                                <p>{`Défaites jouées: ${nbrGames}`}</p>
-                                <p>{`Nulles jouées: ${nbrGames}`}</p>
+                                <p>{`Défaites: ${nbrGames}`}</p>
+                                <p>{`Nulles: ${nbrGames}`}</p>
                             </div>
                         </div>
                         <div className="accountHome-content-rightBlock">

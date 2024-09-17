@@ -38,10 +38,9 @@ const Sidebar = () =>
                     </div>
                     <ul className="sidebar-menu">
                         <li><Link className="sidebar-menu-link" to="/user/home">Tableau de bord</Link></li>
-                        <li><Link className="sidebar-menu-link" to="/edit-profile">Modifier le profil</Link></li>
-                        <li><Link className="sidebar-menu-link" to="/scheduled-games">Parties programmées</Link></li>
-                        <li><Link className="sidebar-menu-link" to="/game-history">Historique des parties</Link></li>
-                        <li><Link className="sidebar-menu-link" to="/">Supprimer compte</Link></li>
+                        <li><Link className="sidebar-menu-link" to="/user/edit-profile">Gestion du compte</Link></li>
+                        <li><Link className="sidebar-menu-link" to="/user/scheduled-games">Parties programmées</Link></li>
+                        <li><Link className="sidebar-menu-link" to="/user/game-history">Historique des parties</Link></li>
                         <li><Link className="sidebar-menu-link" to="/">Retour à l'accueil</Link> </li>
                     </ul>
                     <p>Suppression du compte</p>
