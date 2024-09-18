@@ -9,6 +9,7 @@
     justify-content: center;
     margin-top: 2.78vw;
 }
+
 .availableGames-list 
 {
     display: flex;
@@ -20,6 +21,7 @@
     overflow-y: auto;
     margin-top: 2.78vw;
 }
+
 .availableGames-list-table
 {
     width:100%;
@@ -37,46 +39,10 @@
     font-weight: bold;
 }
 
-
-.availableGames-newGameForm
+.availableGames-newGameButton
 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2.08vw;
-    margin-top: 2.78vw;
-}
-
-.availableGames-newGameForm p 
-{
-    font-size: 32px;
-}
-
-.availableGames-newGameForm button
-{
-    width:150px;
-}
-
-.availableGames-newGameForm label, .availableGames-newGameForm select, .availableGames-newGameForm input
-{
-    font-size: 20px;
-   
-}
-.availableGames-newGameForm label
-{
-    font-weight: bold;
-}
-.availableGames-newGameForm select
-{
-    order: solid 1px #36444A;
-    background-color: white;
-    border: solid 1px #36444A;
-    color:black;
-}
-.availableGames-newGameForm input
-{
-    border: solid 1px #36444A;
+    margin-top:40px;
+    margin-bottom: 60px;
 }
 
 @media  (max-width: 900px) 

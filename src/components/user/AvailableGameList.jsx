@@ -4,15 +4,28 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import users from './../../assets/data/users.json';
 import games from './../../assets/data/games.json';
+import CreateGameModal from "./CreateGameModal";
 
 
 const AvailableGameList = () => {
     
     const [sortGameOption, setSortGameOption] = useState('date');
     
+    const [isCreateGameOpen, setIsCreateGameOpen] = useState(false);
+
+    const openCreateGameModal = () => {
+      setIsCreateGameOpen(true);
+    };
+  
+    const closeCreateGameModal = () => {
+      setIsCreateGameOpen(false);
+    };
+
     const getUserById = (user_id) => users.find(user => user.id == user_id);
+
+    const availableGames = games.filter(game => game.status == "disponible");
     
-    const sortedgames = games.sort((a, b) => {
+    const sortedgames = availableGames.sort((a, b) => {
         if (sortGameOption === 'date') {
             return new Date(a.rendez_vous_at) - new Date(b.rendez_vous_at); 
         } else if (sortGameOption === 'username') {
@@ -32,12 +45,6 @@ const AvailableGameList = () => {
     {
         e.preventDefault();
     }
-    const handleNewGame = (e) =>
-    {
-        e.preventDefault();
-    }
-    
-
     return (
         <div>
             <section className="bannerGameList banner">
@@ -73,38 +80,15 @@ const AvailableGameList = () => {
                                 <td>                
                                     <form action="" className="availableGames-subscriptionForm" onSubmit={handleJoinGame}>
                                         <button className="availableGames-subscriptionForm-button button">S'inscrire</button>
-                                    </form></td>
+                                    </form>
+                                </td>
                             </tr>
                             ))}
                         </tbody>
                     </table>
                 </div>
-                <h2>Créer une nouvelle partie</h2>
-                <form className="availableGames-newGameForm" onSubmit={handleNewGame}>
-                    <div>
-                        <label htmlFor="date">Choisir le jour</label>
-                    </div>
-                    <div>
-                        <input type="date" id = "date" name = "date"/>
-                    </div>
-                    <div>
-                        <label htmlFor="time">Choisir l'heure</label>
-                    </div>
-                    <div>
-                        <input type = "time" id = "time" name = "time"/>
-                    </div>
-                    <div>
-                        <label htmlFor="levelSelect">Choisir un niveau </label>
-                    </div>
-                    <div>
-                        <select id="levelSelect" defaultValue="intermédiaire" name="levelSelect">
-                            <option value="beginner">Débutant</option>
-                            <option value="medium">Intermédiaire</option>
-                            <option value="advanced">Avancé</option>
-                        </select>
-                    </div> 
-                    <button className="availableGames-newGameForm-button">Valider</button>
-                </form>
+                <button className="availableGames-newGameButton button" onClick={openCreateGameModal}>Créer une partie</button>
+                <CreateGameModal isOpen={isCreateGameOpen} onClose={closeCreateGameModal} />                
             </div>
         </div>
     );

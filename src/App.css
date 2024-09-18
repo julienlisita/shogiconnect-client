@@ -184,8 +184,41 @@ select
     display: flex;
     flex-direction: column; 
     justify-content: center;
-    gap:15px;
-    margin-top: 40px;
+    align-items: center;
+    gap: 2.08vw;
+    margin-top: 2.78vw;
+}
+
+
+.modal-content p 
+{
+    font-size: 32px;
+}
+
+.modal-content button
+{
+    width:150px;
+}
+
+.modal-content label, .modal-content select, .modal-content input
+{
+    font-size: 20px;
+   
+}
+.modal-content label
+{
+    font-weight: bold;
+}
+.modal-content select
+{
+    order: solid 1px #36444A;
+    background-color: white;
+    border: solid 1px #36444A;
+    color:black;
+}
+.modal-content input
+{
+    border: solid 1px #36444A;
 }
   
 .modal button 
