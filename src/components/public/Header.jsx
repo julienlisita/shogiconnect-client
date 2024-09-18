@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useState } from 'react';
 import { FaSignInAlt } from 'react-icons/fa';
 import { HiUserAdd } from "react-icons/hi";
+import LoginModal from './LoginModal';
+import SignupModal from './SignUpModal';
 
 
 
@@ -13,6 +15,18 @@ const Header = () => {
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     }
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
+
+    const [isSignupOpen, setIsSignupOpen] = useState(false);
+
+    const openSignupModal = () => setIsSignupOpen(true);
+
+    const closeSignupModal = () => setIsSignupOpen(false);
+
 
     return (
         <div>
@@ -37,15 +51,16 @@ const Header = () => {
 
             <nav className="header-nav2">
                 <ul className="header-nav2-login">
-                    <li><Link className="header-nav2-login-link" to="/login">Connexion</Link></li>
-                    <li><Link className="header-nav2-login-link" to="/register">Inscription</Link></li>
+                    <li><button onClick={openModal} className="btn-login">Connexion</button></li>
+                    <li><button onClick={openSignupModal} className="btn-login">Inscription</button></li>
                 </ul>
                 <div className="header-nav2-icons">
                     <FaSignInAlt  className="icon" />
                     <HiUserAdd className="icon" />
                 </div>
             </nav>
-
+            <LoginModal isOpen={isModalOpen} onClose={closeModal} />
+            <SignupModal isOpen={isSignupOpen} onClose={closeSignupModal} />
             </header>
         </div>
     );
