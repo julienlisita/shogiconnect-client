@@ -1,0 +1,83 @@
+.scheduledGames-container
+{
+    flex:1;
+}
+
+.scheduledGames
+{
+    width:95%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.scheduledGames-content
+{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    margin-top: 40px;
+}
+
+.scheduledGames-displaySelection
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 2.78vw;
+}
+
+.scheduledGames-list 
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    flex-wrap:wrap;
+    width: 100%;
+    max-height: 600px;
+    overflow-y: auto;
+    margin-top: 2.78vw;
+}
+.scheduledGames-list-table
+{
+    width:100%;
+}
+
+.scheduledGames-list-table thead
+{
+    position:sticky;
+    top: 0;
+}
+
+.scheduledGames-list-table-username
+{
+    color:black;
+    font-weight: bold;
+}
+
+.scheduledGames-list-table-buttonContainer
+{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+
+.scheduledGames-CreateButton
+{
+    margin-top: 2.78vw;
+}
+
+@media  (max-width: 900px) 
+{
+    .scheduledGames-displaySelection
+    {
+        margin-top: 23px;
+    }
+    .scheduledGames-list 
+    {
+        margin-top: 23px;
+    }
+    .scheduledGames-CreateButton
+    {
+        margin-top: 23px;
+    }
+}
