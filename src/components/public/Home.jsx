@@ -5,15 +5,64 @@ import img2 from "../../assets/images/banner7.jpg";
 import img3 from "../../assets/images/shogi-ex3.jpg";
 import { Link } from "react-router-dom";
 
-import users from './../../assets/data/users.json';
-import stats from './../../assets/data/stats.json';
-import topics from './../../assets/data/topics.json';
-import comments from './../../assets/data/comments.json';
-
+import { useState, useEffect } from "react";
 
 const Home = () => {
 
-    const getStatsByUserId = (user_id) => stats.find(stat => stat.user_id == user_id);
+    const [userStats, setUserStat] = useState([]);
+    const [topics, setTopics] = useState([]);
+    const [comments, setComments] = useState([]);
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/api/userStats')
+        .then((response) => {
+            return response.json();
+            })
+            .then((data) => {
+                setUserStat(data.data)
+                console.log(`userStats = ${data.data}`);
+            })
+            .catch((error) => console.error('Erreur lors de la récupération des stats:', error));
+    }, []);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/api/topics')
+        .then((response) => {
+            return response.json();
+            })
+            .then((data) => {
+                setTopics(data.data)
+                console.log(`topics = ${data.data}`);
+            })
+            .catch((error) => console.error('Erreur lors de la récupération des topics:', error));
+    }, []);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/api/comments')
+        .then((response) => {
+            return response.json();
+            })
+            .then((data) => {
+                setComments(data.data)
+                console.log(`comments = ${data.data}`);
+            })
+            .catch((error) => console.error('Erreur lors de la récupération des commentaires:', error));
+    }, []);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/api/users')
+        .then((response) => {
+            return response.json();
+            })
+            .then((data) => {
+                setUsers(data.data)
+                console.log(`users = ${data.data}`);
+            })
+            .catch((error) => console.error('Erreur lors de la récupération des utilisateurs:', error));
+    }, []);
+
+    const getStatsByUserId = (user_id) => userStats.find(stat => stat.UserId == user_id);
 
     const getUserById = (user_id) => users.find(user => user.id == user_id);
 
@@ -77,9 +126,9 @@ const Home = () => {
                                 {!commentsSortedByDate ? <p>En cours de chargement</p> :
                                     commentsSortedByDate.map((comment,index) => {
                                     return <tr key = {index}> 
-                                    <td><strong>{getTopicById(comment.topic_id).title}</strong></td>
+                                    <td><strong>{getTopicById(comment.TopicId).title}</strong></td>
                                     <td>{comment.content}</td>
-                                    <td>{`le ${new Date(comment.created_at).toLocaleDateString('fr-FR')} à ${new Date(comment.created_at).toLocaleTimeString()} \npar ${getUserById(comment.user_id).username}`}</td>
+                                    <td>{`le ${new Date(comment.created_at).toLocaleDateString('fr-FR')} à ${new Date(comment.created_at).toLocaleTimeString()} \npar ${getUserById(comment.UserId).username}`}</td>
                                 </tr>
                                     })}
                                 
