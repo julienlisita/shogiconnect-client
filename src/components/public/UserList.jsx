@@ -1,20 +1,42 @@
 import "./UserList.css"
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import image from "../../assets/images/user.png"
 import Pagination from "./../common/Pagination";
 
-import users from './../../assets/data/users.json';
-import stats from './../../assets/data/stats.json';
-  
-
 const UserList = () => {
 
-
+    const [userStats, setUserStat] = useState([]);
+    const [users, setUsers] = useState([]);
     const [sortOption, setSortOption] = useState('username');
 
-    const getStatByUserId = (user_id) => stats.find(stat => stat.user_id == user_id);
+    useEffect(() => {
+        fetch('http://localhost:3000/api/userStats')
+        .then((response) => {
+            return response.json();
+            })
+            .then((data) => {
+                setUserStat(data.data)
+                console.log(`userStats = ${data.data}`);
+            })
+            .catch((error) => console.error('Erreur lors de la récupération des stats:', error));
+    }, []);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/api/users')
+        .then((response) => {
+            return response.json();
+            })
+            .then((data) => {
+                setUsers(data.data)
+                console.log(`users = ${data.data}`);
+            })
+            .catch((error) => console.error('Erreur lors de la récupération des utilisateurs:', error));
+    }, []);
+
+
+    const getStatByUserId = (user_id) => userStats.find(stat => stat.UserId == user_id);
 
     const sortedUsers = users.sort((a, b) => {
         if (sortOption === 'score') {
