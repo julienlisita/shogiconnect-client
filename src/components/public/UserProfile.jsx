@@ -71,7 +71,7 @@ const UserProfile = () => {
                             <p className={statusClass(user)}>
                             {user.isOnline ? "Online" : "Offline"}</p>
                             <p>{user.country}</p>
-                            <p>{`Membre depuis le ${new Date(user.created_at).toLocaleDateString('fr-FR')}`}</p>
+                            <p>{`Membre depuis le ${new Date(user.createdAt).toLocaleDateString('fr-FR')}`}</p>
 
                         </div>
                         <h2>Statistiques</h2>
