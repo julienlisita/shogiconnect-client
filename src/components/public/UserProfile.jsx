@@ -1,17 +1,43 @@
 import "./UserProfile.css"
 import { useParams } from 'react-router-dom';
+import { useState,useEffect } from "react";
 import image from "../../assets/images/user.png"
-import users from './../../assets/data/users.json';
-import stats from './../../assets/data/stats.json';
 import activities from './../../assets/data/activities.json'
 
 const UserProfile = () => {
 
     const { user_id } = useParams();
 
+    const [userStats, setUserStat] = useState([]);
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/api/userStats')
+        .then((response) => {
+            return response.json();
+            })
+            .then((data) => {
+                setUserStat(data.data)
+                console.log(`userStats = ${data.data}`);
+            })
+            .catch((error) => console.error('Erreur lors de la récupération des stats:', error));
+    }, []);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/api/users')
+        .then((response) => {
+            return response.json();
+            })
+            .then((data) => {
+                setUsers(data.data)
+                console.log(`users = ${data.data}`);
+            })
+            .catch((error) => console.error('Erreur lors de la récupération des utilisateurs:', error));
+    }, []);
+
     const getUserById = (user_id) => users.find(user => user.id == user_id);
 
-    const getStatByUserId = (user_id) => stats.find(stat => stat.user_id == user_id);
+    const getStatByUserId = (user_id) => userStats.find(stat => stat.UserId == user_id);
 
     const user = getUserById(user_id);
 
@@ -20,8 +46,13 @@ const UserProfile = () => {
     const statusClass = (user) => {
         return user.isOnline ? "userCard-info-status-online" : "userCard-info-status-offline";
     }
-
-    const nbrGames = stat.wins + stat.losses + stat.draws;
+    
+    let nbrGames;
+    if (!user || !stat) return <p>Utilisateur ou statistiques non trouvés.</p>;
+    {
+        nbrGames = stat.wins +stat.losses + stat.draws
+    }
+    
 
     return (
         <div>
