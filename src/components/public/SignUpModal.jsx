@@ -9,7 +9,11 @@ const SignupModal = ({ isOpen, onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("https://your-api-endpoint/signup", {
+    console.log(email);
+    console.log(password);
+    console.log(username);
+
+    fetch("http://localhost:3000/api/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
