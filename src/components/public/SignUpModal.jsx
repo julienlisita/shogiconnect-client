@@ -18,7 +18,8 @@ const SignupModal = ({ isOpen, onClose }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password, username }),
+      credentials: "include",
     })
       .then((response) => response.json())
       .then((data) => {
