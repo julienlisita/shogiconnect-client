@@ -13,53 +13,36 @@ const Home = () => {
     const [topics, setTopics] = useState([]);
     const [comments, setComments] = useState([]);
     const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/userStats')
-        .then((response) => {
-            return response.json();
-            })
-            .then((data) => {
-                setUserStat(data.data)
-                console.log(`userStats = ${data.data}`);
-            })
-            .catch((error) => console.error('Erreur lors de la récupération des stats:', error));
-    }, []);
-
-    useEffect(() => {
-        fetch('http://localhost:3000/api/topics')
-        .then((response) => {
-            return response.json();
-            })
-            .then((data) => {
-                setTopics(data.data)
-                console.log(`topics = ${data.data}`);
-            })
-            .catch((error) => console.error('Erreur lors de la récupération des topics:', error));
-    }, []);
-
-    useEffect(() => {
-        fetch('http://localhost:3000/api/comments')
-        .then((response) => {
-            return response.json();
-            })
-            .then((data) => {
-                setComments(data.data)
-                console.log(`comments = ${data.data}`);
-            })
-            .catch((error) => console.error('Erreur lors de la récupération des commentaires:', error));
-    }, []);
-
-    useEffect(() => {
-        fetch('http://localhost:3000/api/users')
-        .then((response) => {
-            return response.json();
-            })
-            .then((data) => {
-                setUsers(data.data)
-                console.log(`users = ${data.data}`);
-            })
-            .catch((error) => console.error('Erreur lors de la récupération des utilisateurs:', error));
+        const fetchData = async () => {
+            try {
+                const [userStatsResponse, usersResponse, topicsResponse, commentsResponse] = await Promise.all([
+                    fetch('http://localhost:3000/api/userStats'),
+                    fetch('http://localhost:3000/api/users'),
+                    fetch('http://localhost:3000/api/topics'),
+                    fetch('http://localhost:3000/api/comments'),
+                ]);
+    
+                const userStatsData = await userStatsResponse.json();
+                const usersData = await usersResponse.json();
+                const commentsData = await commentsResponse.json();
+                const topicsData = await topicsResponse.json();
+    
+                setUserStat(userStatsData.data);
+                setUsers(usersData.data);
+                setComments(commentsData.data);
+                setTopics(topicsData.data);
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+    
+        fetchData();
     }, []);
 
     const getStatsByUserId = (user_id) => userStats.find(stat => stat.UserId == user_id);
@@ -71,6 +54,9 @@ const Home = () => {
     const usersSortedByScore = users.sort((a,b) => getStatsByUserId(b.id).score - getStatsByUserId(a.id).score);
 
     const commentsSortedByDate = comments.sort((a,b) => b.date - a.date);
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error}</p>;
 
     return (
         <div>
