@@ -7,13 +7,15 @@ const CreateGameModal = ({ isOpen, onClose }) => {
 
   const handleSubmitGame = (e) => {
     e.preventDefault();
-
-    fetch("https://your-api-endpoint/games", {
+    const rendezVousAt = new Date(`${date}T${time}`).toISOString();
+    
+    fetch("http://localhost:3000/api/games", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ date, time, level }),
+      body: JSON.stringify({ level, rendezVousAt }),
+      credentials: "include",
     })
       .then((response) => response.json())
       .then((data) => {
@@ -61,9 +63,9 @@ const CreateGameModal = ({ isOpen, onClose }) => {
               value={level}
               onChange={(e) => setLevel(e.target.value)}
             >
-              <option value="beginner">Débutant</option>
-              <option value="medium">Intermédiaire</option>
-              <option value="advanced">Avancé</option>
+              <option value="débutant">Débutant</option>
+              <option value="intermédiaire">Intermédiaire</option>
+              <option value="avancé">Avancé</option>
             </select>
             <button type="submit" className="availableGames-newGameForm-button">Valider</button>
             <button type="button" onClick={onClose} className="availableGames-newGameForm-button">Annuler</button>
