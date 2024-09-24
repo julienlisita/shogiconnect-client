@@ -9,55 +9,37 @@ const ForumCategories = () => {
     const [topics, setTopics] = useState([]);
     const [comments, setComments] = useState([]);
     const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/categories')
-        .then((response) => {
-            return response.json();
-            })
-            .then((data) => {
-                setCategories(data.data)
-                console.log(`categorie = ${data.data}`);
-            })
-            .catch((error) => console.error('Erreur lors de la récupération des catégories:', error));
-    }, []);
+        const fetchData = async () => {
+            try {
+                const [categoriesResponse, topicsResponse, commentsResponse, usersResponse] = await Promise.all([
+                    fetch('http://localhost:3000/api/categories'),
+                    fetch('http://localhost:3000/api/topics'),
+                    fetch('http://localhost:3000/api/comments'),
+                    fetch('http://localhost:3000/api/users')
+                ]);
 
-    useEffect(() => {
-        fetch('http://localhost:3000/api/topics')
-        .then((response) => {
-            return response.json();
-            })
-            .then((data) => {
-                setTopics(data.data)
-                console.log(`topics = ${data.data}`);
-            })
-            .catch((error) => console.error('Erreur lors de la récupération des topics:', error));
-    }, []);
+                const categoriesData = await categoriesResponse.json();
+                const topicsData = await topicsResponse.json();
+                const commentsData = await commentsResponse.json();
+                const usersData = await usersResponse.json();
 
-    useEffect(() => {
-        fetch('http://localhost:3000/api/comments')
-        .then((response) => {
-            return response.json();
-            })
-            .then((data) => {
-                setComments(data.data)
-                console.log(`comments = ${data.data}`);
-            })
-            .catch((error) => console.error('Erreur lors de la récupération des commentaires:', error));
-    }, []);
+                setCategories(categoriesData.data);
+                setTopics(topicsData.data);
+                setComments(commentsData.data);
+                setUsers(usersData.data);
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    useEffect(() => {
-        fetch('http://localhost:3000/api/users')
-        .then((response) => {
-            return response.json();
-            })
-            .then((data) => {
-                setUsers(data.data)
-                console.log(`users = ${data.data}`);
-            })
-            .catch((error) => console.error('Erreur lors de la récupération des utilisateurs:', error));
+        fetchData();
     }, []);
-
 
     const getTopicById = (topic_id) => topics.find(topic => topic.id == topic_id);  
     
@@ -74,6 +56,9 @@ const ForumCategories = () => {
     const getUserById = (user_id) => users.find(user => user.id == user_id);
 
     const lastCommentByCategoryUser = (category_id) => getUserById(lastCommentByCategory(category_id) && lastCommentByCategory(category_id).UserId);
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error}</p>;
 
     return (
         <div>
@@ -92,20 +77,24 @@ const ForumCategories = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {!categories ? <tr><td>En cours de chargement</td></tr>:
-                             categories.map((category) => (
-                            <tr key={category.id}>
-                                <td> <Link className = "categories-table-title" to={`/forum/category/${category.id}`}>{category.title}</Link><br/>{category.description}</td>
-                                <td>{nbrTopicsByCategory(category.id)}</td>
-                                <td>
-                                    {!lastCommentByCategory(category.id) ? `-` : `le ${ new Date(lastCommentByCategory(category.id).created_at).toLocaleDateString('fr-FR')} à 
-                                    ${new Date(lastCommentByCategory(category.id).created_at).toLocaleTimeString()}`}
-                                    <br/> 
-                                    { !lastCommentByCategoryUser(category.id) ? `-`: 
-                                    `par ${  lastCommentByCategoryUser(category.id).username }`} 
-                                </td>
-                            </tr>
-                            ))}
+                            {categories.length === 0 ? (
+                                <tr>
+                                    <td colSpan="3">Aucun catégorie à afficher</td>
+                                </tr>
+                            ) : (
+                            categories.map((category) => {
+                            return (
+                                <tr key={category.id}>
+                                    <td> <Link className = "categories-table-title" to={`/forum/category/${category.id}`}>{category.title}</Link><br/>{category.description}</td>
+                                    <td>{nbrTopicsByCategory(category.id)}</td>
+                                    <td>
+                                        {`le ${ new Date(lastCommentByCategory(category.id).createdAt).toLocaleDateString('fr-FR')} à 
+                                        ${new Date(lastCommentByCategory(category.id).createdAt).toLocaleTimeString()}`}
+                                        <br/> 
+                                        {`par ${  lastCommentByCategoryUser(category.id).username }`} 
+                                    </td>
+                                </tr>
+                            )}))}
                         </tbody>
                     </table>
                 </div>
