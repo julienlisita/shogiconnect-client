@@ -7,6 +7,8 @@ const AvailableGameList = () => {
 
     const [games, setGames] = useState([]);
     const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     const [sortGameOption, setSortGameOption] = useState('date');
     
@@ -26,14 +28,17 @@ const AvailableGameList = () => {
                 setGames(gamesData.data);
                 setUsers(usersData.data);
             } catch (error) {
-                console.error('Erreur lors de la récupération des données:', error);
+                setError(error.message);
+            } finally {
+                 setLoading(false);
             }
         };
     
         fetchData();
     }, []);
     
-
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error}</p>;
 
     const openCreateGameModal = () => {
       setIsCreateGameOpen(true);
