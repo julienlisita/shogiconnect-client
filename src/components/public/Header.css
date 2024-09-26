@@ -14,6 +14,15 @@
   z-index:1000;
 }
 
+.header li
+{
+  color: white;
+}
+.header li:hover
+{
+  color: #c98f62;
+}
+
 .header-nav1-menu, .header-nav2-login
 {
   display: flex;
@@ -41,7 +50,7 @@
   flex-direction: row;
 }
 
-.header-nav1-menu-link:hover, .header-nav2-login-link:hover
+.header-nav1-menu-link:hover, .header-nav2-login-link:hover, .icons:hover, .btn-login:hover
 {
   color:#c98f62;
 }
@@ -52,10 +61,6 @@
   flex-direction: row;
 }
 
-.header-nav2-login
-{
-  transform: translate(20px, 0); 
-}
 
 .burger-icon {
   display: none;
@@ -116,6 +121,10 @@
   transform: rotate(0);
   top: 20px; 
   transition: transform 0.4s ease, top 0.4s ease 0.4s;
+}
+
+.header-nav2-icons {
+  display: none;
 }
 
 @media (min-width: 800px) and (max-width: 1024px) {

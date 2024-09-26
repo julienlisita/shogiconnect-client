@@ -1,8 +1,8 @@
 import "./Header.css"
 import { Link } from "react-router-dom";
-import { useState } from 'react';
-import { FaSignInAlt } from 'react-icons/fa';
-import { HiUserAdd } from "react-icons/hi";
+import { useState,useEffect } from 'react';
+import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
+import { HiUserAdd, HiUser } from "react-icons/hi";
 import LoginModal from './LoginModal';
 import SignupModal from './SignUpModal';
 
@@ -11,10 +11,7 @@ import SignupModal from './SignUpModal';
 const Header = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    }
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -27,6 +24,50 @@ const Header = () => {
 
     const closeSignupModal = () => setIsSignupOpen(false);
 
+    useEffect(() => {
+        const checkAuth = async () => {
+            try {
+                const response = await fetch('http://localhost:3000/api/users/check', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: "include",
+                });
+        
+                if (!response.ok) {
+                    
+                    throw new Error('Erreur lors de la vérification de l\'authentification');
+                }
+        
+                const data = await response.json();
+                console.log(data); // Traitez les données de l'API ici
+                setIsLoggedIn(data.isLoggedIn);
+            } catch (error) {
+                console.error('Erreur:', error);
+            }
+        };
+    
+        checkAuth();
+    }, []);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    }
+
+    const handleLogin = () => {
+        setIsLoggedIn(true); // Met à jour l'état d'authentification
+    };
+
+    const handleLogout = async () => {
+        const response = await fetch('http://localhost:3000/api/users/logout', {
+          method: 'POST',
+          credentials: 'include',
+        });
+        if (response.ok) {
+          setIsLoggedIn(false);
+        }
+      };
 
     return (
         <div>
@@ -50,16 +91,31 @@ const Header = () => {
             </nav>
 
             <nav className="header-nav2">
-                <ul className="header-nav2-login">
-                    <li><button onClick={openModal} className="btn-login">Connexion</button></li>
-                    <li><button onClick={openSignupModal} className="btn-login">Inscription</button></li>
-                </ul>
-                <div className="header-nav2-icons">
-                    <FaSignInAlt  className="icon" />
-                    <HiUserAdd className="icon" />
-                </div>
+                    {isLoggedIn ? (
+                             <ul className="header-nav2-login">
+                                <li onClick={handleLogout} className="btn-login">Déconnexion</li>
+                                <li><Link to="/user/home" className="btn-login">Mon compte</Link></li>
+                            </ul>
+                        ) : (
+                            <ul className="header-nav2-login">
+                                <li onClick={openModal} className="btn-login">Connexion</li>
+                                <li onClick={openSignupModal} className="btn-login">Inscription</li>
+                            </ul>
+                        )}
+              
+                {isLoggedIn ? (
+                            <ul className="header-nav2-icons">
+                                 <li onClick={handleLogout} className="icon"><FaSignOutAlt /></li>
+                                 <li> <Link to="/compte" className="icon"><HiUser /></Link></li>
+                            </ul>
+                        ) : (
+                            <ul className="header-nav2-icons">
+                                <FaSignInAlt className="icon" onClick={openModal} />
+                                <HiUserAdd className="icon" onClick={openSignupModal} />
+                            </ul>
+                        )}
             </nav>
-            <LoginModal isOpen={isModalOpen} onClose={closeModal} />
+            <LoginModal isOpen={isModalOpen} onClose={closeModal}  onLogin={handleLogin} />
             <SignupModal isOpen={isSignupOpen} onClose={closeSignupModal} />
             </header>
         </div>

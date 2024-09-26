@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const LoginModal = ({ isOpen, onClose }) => {
+const LoginModal = ({ isOpen, onClose, onLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -27,6 +27,7 @@ const LoginModal = ({ isOpen, onClose }) => {
       })
       .then((data) => {
         console.log("Connexion réussie:", data);
+        onLogin();
         onClose();
       })
       .catch((error) => {
