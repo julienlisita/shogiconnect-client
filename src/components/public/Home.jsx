@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 
 const Home = () => {
 
-    const [userStats, setUserStat] = useState([]);
+    const [userStats, setUserStats] = useState([]);
     const [topics, setTopics] = useState([]);
     const [comments, setComments] = useState([]);
     const [users, setUsers] = useState([]);
@@ -31,7 +31,7 @@ const Home = () => {
                 const commentsData = await commentsResponse.json();
                 const topicsData = await topicsResponse.json();
     
-                setUserStat(userStatsData.data);
+                setUserStats(userStatsData.data);
                 setUsers(usersData.data);
                 setComments(commentsData.data);
                 setTopics(topicsData.data);
@@ -45,6 +45,9 @@ const Home = () => {
         fetchData();
     }, []);
 
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error}</p>;
+
     const getStatsByUserId = (user_id) => userStats.find(stat => stat.UserId == user_id);
 
     const getUserById = (user_id) => users.find(user => user.id == user_id);
@@ -55,8 +58,6 @@ const Home = () => {
 
     const commentsSortedByDate = comments.sort((a,b) => b.date - a.date);
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error}</p>;
 
     return (
         <div>
@@ -110,8 +111,8 @@ const Home = () => {
                             </thead> 
                             <tbody>  
                                 {!commentsSortedByDate ? <p>En cours de chargement</p> :
-                                    commentsSortedByDate.map((comment,index) => {
-                                    return <tr key = {index}> 
+                                    commentsSortedByDate.map((comment) => {
+                                    return <tr key = {comment.id}> 
                                     <td><strong>{getTopicById(comment.TopicId).title}</strong></td>
                                     <td>{comment.content}</td>
                                     <td>{`le ${new Date(comment.created_at).toLocaleDateString('fr-FR')} à ${new Date(comment.created_at).toLocaleTimeString()} \npar ${getUserById(comment.UserId).username}`}</td>
@@ -150,7 +151,7 @@ const Home = () => {
                             <tbody>
                                 {!usersSortedByScore ? <p>En cours de chargement</p> :
                                 usersSortedByScore.map((member,index) => {
-                                return <tr key = {index}> 
+                                return <tr key = {member.id}> 
                                         <td>{index+1}</td>
                                         <td>{member.username}</td>
                                         <td>{getStatsByUserId(member.id).score}</td>
