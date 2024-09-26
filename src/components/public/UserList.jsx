@@ -7,33 +7,38 @@ import Pagination from "./../common/Pagination";
 
 const UserList = () => {
 
-    const [userStats, setUserStat] = useState([]);
+    const [userStats, setUserStats] = useState([]);
     const [users, setUsers] = useState([]);
     const [sortOption, setSortOption] = useState('username');
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/userStats')
-        .then((response) => {
-            return response.json();
-            })
-            .then((data) => {
-                setUserStat(data.data)
-                console.log(`userStats = ${data.data}`);
-            })
-            .catch((error) => console.error('Erreur lors de la récupération des stats:', error));
+        const fetchData = async () => {
+            try {
+                const [userStatsResponse, usersResponse] = await Promise.all([
+                    fetch('http://localhost:3000/api/userStats'),
+                    fetch('http://localhost:3000/api/users')
+                ]);
+    
+                const userStatsData = await userStatsResponse.json();
+                const usersData = await usersResponse.json();
+    
+                setUserStats(userStatsData.data);
+                setUsers(usersData.data);
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                 setLoading(false);
+            }
+        };
+    
+        fetchData();
     }, []);
 
-    useEffect(() => {
-        fetch('http://localhost:3000/api/users')
-        .then((response) => {
-            return response.json();
-            })
-            .then((data) => {
-                setUsers(data.data)
-                console.log(`users = ${data.data}`);
-            })
-            .catch((error) => console.error('Erreur lors de la récupération des utilisateurs:', error));
-    }, []);
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error}</p>;
 
 
     const getStatByUserId = (user_id) => userStats.find(stat => stat.UserId == user_id);
@@ -51,7 +56,6 @@ const UserList = () => {
         return 0;
     });
 
-    const [currentPage, setCurrentPage] = useState(1);
     const usersPerPage = 21; 
   
     const indexOfLastUser = currentPage * usersPerPage;
@@ -85,7 +89,7 @@ const UserList = () => {
                     </select>
                 </form>
                 <div className="users-list">
-                    {!currentUsers ? <p>En cours de chargement</p> :
+                    {currentUsers.length  === 0 ? <p>Aucun membres</p> :
                     currentUsers.map(user => (
                       <Link key = {user.id} to={`/users/${user.id}`}>
                         <div className="userCard">
