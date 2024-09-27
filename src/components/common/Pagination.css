@@ -27,6 +27,11 @@
     border-radius: 0px;
   }
 
+  .page-link:hover
+  {
+    background-color: #e0d6cc;
+  }
+
   @media (max-width: 900px) 
   {
     .pagination {

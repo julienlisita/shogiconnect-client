@@ -1,9 +1,9 @@
 import "./Pagination.css"
 
-const Pagination = ({ membersPerPage, totalMembers, currentPage, setCurrentPage }) => {
+const Pagination = ({ usersPerPage, totalUsers, currentPage, setCurrentPage }) => {
     const pageNumbers = [];
   
-    for (let i = 1; i <= Math.ceil(totalMembers / membersPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(totalUsers / usersPerPage); i++) {
       pageNumbers.push(i);
     }
   

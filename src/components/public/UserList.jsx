@@ -107,7 +107,7 @@ const UserList = () => {
                         </div>
                       </Link>))}
                 </div>
-                <Pagination userPerPage={usersPerPage} totalUsers={users.length} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+                <Pagination usersPerPage={usersPerPage} totalUsers={users.length} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
             </section>
         </div>
     );
