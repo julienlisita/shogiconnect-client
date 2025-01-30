@@ -1,3 +1,5 @@
+// Header.jsx
+
 import "./Header.css"
 import { Link } from "react-router-dom";
 import { useState,useEffect } from 'react';
@@ -5,69 +7,23 @@ import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
 import { HiUserAdd, HiUser } from "react-icons/hi";
 import LoginModal from './LoginModal';
 import SignupModal from './SignUpModal';
-
-
+import useAuth from "../../hooks/useAuth";
 
 const Header = () => {
 
+    const { isAuthenticated, logout } = useAuth();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isSignupOpen, setIsSignupOpen] = useState(false);
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
-
-    const [isSignupOpen, setIsSignupOpen] = useState(false);
-
     const openSignupModal = () => setIsSignupOpen(true);
-
     const closeSignupModal = () => setIsSignupOpen(false);
-
-    useEffect(() => {
-        const checkAuth = async () => {
-            try {
-                const response = await fetch('http://localhost:3000/api/users/check', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    credentials: "include",
-                });
-        
-                if (!response.ok) {
-                    
-                    throw new Error('Erreur lors de la vérification de l\'authentification');
-                }
-        
-                const data = await response.json();
-                console.log(data); // Traitez les données de l'API ici
-                setIsLoggedIn(data.isLoggedIn);
-            } catch (error) {
-                console.error('Erreur:', error);
-            }
-        };
-    
-        checkAuth();
-    }, []);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     }
-
-    const handleLogin = () => {
-        setIsLoggedIn(true); // Met à jour l'état d'authentification
-    };
-
-    const handleLogout = async () => {
-        const response = await fetch('http://localhost:3000/api/users/logout', {
-          method: 'POST',
-          credentials: 'include',
-        });
-        if (response.ok) {
-          setIsLoggedIn(false);
-        }
-      };
 
     return (
         <div>
@@ -91,9 +47,9 @@ const Header = () => {
             </nav>
 
             <nav className="header-nav2">
-                    {isLoggedIn ? (
+                    {isAuthenticated ? (
                              <ul className="header-nav2-login">
-                                <li onClick={handleLogout} className="btn-login">Déconnexion</li>
+                                <li onClick={logout} className="btn-login">Déconnexion</li>
                                 <li><Link to="/user/home" className="btn-login">Mon compte</Link></li>
                             </ul>
                         ) : (
@@ -103,9 +59,9 @@ const Header = () => {
                             </ul>
                         )}
               
-                {isLoggedIn ? (
+                {isAuthenticated ? (
                             <ul className="header-nav2-icons">
-                                 <li onClick={handleLogout} className="icon"><FaSignOutAlt /></li>
+                                 <li onClick={logout} className="icon"><FaSignOutAlt /></li>
                                  <li> <Link to="/compte" className="icon"><HiUser /></Link></li>
                             </ul>
                         ) : (
@@ -115,7 +71,7 @@ const Header = () => {
                             </ul>
                         )}
             </nav>
-            <LoginModal isOpen={isModalOpen} onClose={closeModal}  onLogin={handleLogin} />
+            <LoginModal isOpen={isModalOpen} onClose={closeModal} />
             <SignupModal isOpen={isSignupOpen} onClose={closeSignupModal} />
             </header>
         </div>

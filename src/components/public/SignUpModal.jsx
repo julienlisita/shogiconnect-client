@@ -1,34 +1,25 @@
+// SignupModal.jsx
+
 import React, { useState } from "react";
+import useAuth from "../../hooks/useAuth";
 
 const SignupModal = ({ isOpen, onClose }) => {
-
+  const { signup } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
-    console.log(email);
-    console.log(password);
-    console.log(username);
-
-    fetch("http://localhost:3000/api/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password, username }),
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Inscription réussie:", data);
-        onClose(); 
-      })
-      .catch((error) => {
-        console.error("Erreur lors de l'inscription:", error);
-      });
+    try {
+      await signup(username, email, password);
+      onClose();
+    } catch (err) {
+      setError(err.message || "Impossible de se connecter, veuillez réessayer plus tard.");
+    }
   };
 
   if (!isOpen) return null;
@@ -64,6 +55,7 @@ const SignupModal = ({ isOpen, onClose }) => {
             />
           <button type="submit">S'inscrire</button>
           <button type="button" onClick={onClose}>Annuler</button>
+          {error && <p className="error-message">{error}</p>} 
         </form>
       </div>
     </div>

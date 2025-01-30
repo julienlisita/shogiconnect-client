@@ -1,39 +1,24 @@
-import { useState } from "react";
+// LoginModal.jsx
 
-const LoginModal = ({ isOpen, onClose, onLogin }) => {
+import { useState } from "react";
+import useAuth from "../../hooks/useAuth";
+
+const LoginModal = ({ isOpen, onClose}) => {
+  const { login } = useAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
-    console.log("Pseudo:", username);
-    console.log("Password:", password);
-
-    fetch("http://localhost:3000/api/users/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-      credentials: "include",
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Échec de la connexion");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Connexion réussie:", data);
-        onLogin();
-        onClose();
-      })
-      .catch((error) => {
-        console.error("Erreur lors de la connexion:", error);
-        setError("Erreur lors de la connexion, veuillez réessayer.");
-      });
+    try {
+      await login(username, password);
+      onClose();
+    } catch (err) {
+      setError(err.message || "Impossible de se connecter, veuillez réessayer plus tard.");
+    }
   };
 
   if (!isOpen) return null;
@@ -59,7 +44,7 @@ const LoginModal = ({ isOpen, onClose, onLogin }) => {
           />
           <button type="submit" className="btn-submit">Se connecter</button>
           <button type="button" className="btn-cancel" onClick={onClose}>Annuler</button>
-          {error && <p className="error-message">{error}</p>} {/* Affichage de l'erreur */}
+          {error && <p className="error-message">{error}</p>} 
         </form>
       </div>
     </div>
