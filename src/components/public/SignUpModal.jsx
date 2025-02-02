@@ -1,10 +1,10 @@
 // SignupModal.jsx
 
 import React, { useState } from "react";
-import useAuth from "../../hooks/useAuth";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 const SignupModal = ({ isOpen, onClose }) => {
-  const { signup } = useAuth();
+  const { signup } = useAuthContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");

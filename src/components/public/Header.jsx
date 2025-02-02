@@ -7,11 +7,11 @@ import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
 import { HiUserAdd, HiUser } from "react-icons/hi";
 import LoginModal from './LoginModal';
 import SignupModal from './SignUpModal';
-import useAuth from "../../hooks/useAuth";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 const Header = () => {
 
-    const { isAuthenticated, logout } = useAuth();
+    const { isAuthenticated, logout } = useAuthContext();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isSignupOpen, setIsSignupOpen] = useState(false);

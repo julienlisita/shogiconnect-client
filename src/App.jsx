@@ -23,11 +23,12 @@ import DashboardPage from './pages/admin/DashboardPage';
 import ManageUsersPage from './pages/admin/ManageUsersPage';
 import ManageForumPage from './pages/admin/ManageForumPage';
 import ManageGamesPage from './pages/admin/ManageGamesPage';
+import { AuthProvider } from './contexts/AuthContext';
 
 const App = () => {
 
   return (
-    <>
+    <AuthProvider> 
       <BrowserRouter>
       <ScrollToTop />
         <Routes>
@@ -101,7 +102,7 @@ const App = () => {
           <Route path="/admin/manage-games" element={<ManageGamesPage />} />
         </Routes>
       </BrowserRouter> 
-    </>
+    </AuthProvider>
   )
 };
 

@@ -1,10 +1,10 @@
 // LoginModal.jsx
 
 import { useState } from "react";
-import useAuth from "../../hooks/useAuth";
+import { useAuthContext } from '../../contexts/AuthContext';
 
 const LoginModal = ({ isOpen, onClose}) => {
-  const { login } = useAuth();
+  const { login } = useAuthContext();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
