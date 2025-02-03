@@ -1,58 +1,29 @@
-// authService.js
+// export default { login, logout, signup };
 
-const API_URL = "http://localhost:3000/api/auth";
+import axios from 'axios';
 
-const login = async (username, password) => {
-  try {
-    const response = await fetch(`${API_URL}/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-      credentials: "include",
-    });
-    
-    const responseData = await response.json();
-  
-    if (!response.ok) {
-      throw new Error(responseData.message || "Identifiant ou mot de passe incorrect");
-    }
-    return responseData;
-  } catch(error) {
-    throw new Error("Impossible de contacter le serveur. Vérifiez votre connexion.");
-  }
+const API_URL = 'http://localhost:3000/api/auth';
+
+const setAuthToken = (token) => {
+  axios.defaults.headers.common['Authorization'] = token ? `Bearer ${token}` : '';
+};
+const clearAuthToken = () => {
+  delete axios.defaults.headers.common['Authorization'];
 };
 
-const logout = async () => {
-  await fetch(`${API_URL}/logout`, {
-    method: "POST",
-    credentials: "include",
-  });
+const login = async (username, password) => {
+  const response = await axios.post(`${API_URL}/login`, { username, password });
+  return response.data; 
 };
 
 const signup = async (username, email, password) => {
-  try {
-    const response = await fetch(`${API_URL}/signup`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, email, password }),
-      credentials: "include",
-    });
-
-    const responseData = await response.json();
-
-    if (!response.ok) {
-      throw new Error(responseData.message || "Erreur lors de l'inscription");
-    }
-    return responseData;
-
-  } catch (error) {
-    throw new Error("Impossible de contacter le serveur. Vérifiez votre connexion.");
-  }
+  const response = await axios.post(`${API_URL}/signup`, { username, email, password });
+  return response.data;
 };
 
+const logout = () => {
+  localStorage.removeItem('token');
+  delete axios.defaults.headers.common['Authorization'];
+};
 
-export default { login, logout, signup };
+export default { setAuthToken, clearAuthToken, login, signup, logout };
