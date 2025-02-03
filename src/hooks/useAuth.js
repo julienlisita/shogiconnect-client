@@ -14,6 +14,7 @@ const useAuth = () => {
         return {
           id: decodedToken.userId,
           username: decodedToken.username,
+          roleId: decodedToken.roleId,
         };
       } catch (error) {
         console.error("Invalid token", error);
@@ -29,7 +30,7 @@ const useAuth = () => {
     try {
       const { token } = await authService.login(username, password);
       const decodedToken = jwtDecode(token);
-      setUser({ id: decodedToken.userId, username: decodedToken.username });
+      setUser({ id: decodedToken.userId, username: decodedToken.username, roleId: decodedToken.roleId });
       localStorage.setItem("token", token);
     } 
     catch (err) {
@@ -48,12 +49,11 @@ const useAuth = () => {
       try {
         const { token } = await authService.signup(username, email, password)
         const decodedToken = jwtDecode(token);
-        
         setUser({
           id: decodedToken.userId,
           username: decodedToken.username,
           email: decodedToken.email,
-          roleId: decodedToken.role_id,
+          roleId: decodedToken.roleId,
         });
   
         localStorage.setItem('token', token);
