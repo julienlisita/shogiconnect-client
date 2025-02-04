@@ -1,4 +1,4 @@
-// export default { login, logout, signup };
+// src/services/authService.js
 
 import axios from 'axios';
 
