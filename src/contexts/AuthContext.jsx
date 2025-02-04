@@ -1,4 +1,4 @@
-// AuthContext.jsx
+// src/contexts/AuthContext.jsx
 
 import { createContext, useContext } from 'react';
 import useAuth from '../hooks/useAuth';
