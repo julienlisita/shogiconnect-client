@@ -1,17 +1,17 @@
 // src/hooks/useCategories.js
 
 import { useState, useEffect } from 'react';
-import categoryService from '../services/commentService';
+import categoryService from '../services/categoryService';
 
-const useComments = () => {
+const useCategories = () => {
     const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchComments = async () => {
+        const fetchCategories = async () => {
             try {
-                const categoriesData = await categoryService.getComments();
+                const categoriesData = await categoryService.getCategories();
                 setCategories(categoriesData);
             } catch (err) {
                 setError(err.message);
@@ -20,10 +20,10 @@ const useComments = () => {
             }
         };
 
-        fetchComments();
+        fetchCategories();
     }, []);
 
     return { categories, loading, error };
 };
 
-export default useComments;
+export default useCategories;
