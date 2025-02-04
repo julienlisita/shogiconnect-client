@@ -1,52 +1,22 @@
 import "./Home.css"
+import { useUserContext } from "../../contexts/UserContext.jsx";
+import { useForumContext } from "../../contexts/ForumContext.jsx";
+
 import logo from '../../assets/images/logo-shogi-titre.png';
 import img1 from "../../assets/images/banner9.png";
 import img2 from "../../assets/images/banner7.jpg";
 import img3 from "../../assets/images/shogi-ex3.jpg";
 import { Link } from "react-router-dom";
 
-import { useState, useEffect } from "react";
-
 const Home = () => {
 
-    const [userStats, setUserStats] = useState([]);
-    const [topics, setTopics] = useState([]);
-    const [comments, setComments] = useState([]);
-    const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const { users, userStats, usersLoading,usersError } = useUserContext();
+    const { topics, comments, forumLoading,forumError } = useForumContext();
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const [userStatsResponse, usersResponse, topicsResponse, commentsResponse] = await Promise.all([
-                    fetch('http://localhost:3000/api/userStats'),
-                    fetch('http://localhost:3000/api/users'),
-                    fetch('http://localhost:3000/api/topics'),
-                    fetch('http://localhost:3000/api/comments'),
-                ]);
-    
-                const userStatsData = await userStatsResponse.json();
-                const usersData = await usersResponse.json();
-                const commentsData = await commentsResponse.json();
-                const topicsData = await topicsResponse.json();
-    
-                setUserStats(userStatsData.data);
-                setUsers(usersData.data);
-                setComments(commentsData.data);
-                setTopics(topicsData.data);
-            } catch (error) {
-                setError(error.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-    
-        fetchData();
-    }, []);
-
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error}</p>;
+    if (usersLoading || forumLoading) return <p>Loading...</p>;
+    if (usersError) return <p>Error loading users: {usersError}</p>;
+    if (forumError) return <p>Error loading forum: {forumError}</p>;
+   
 
     const getStatsByUserId = (user_id) => userStats.find(stat => stat.UserId == user_id);
 
