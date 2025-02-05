@@ -1,52 +1,22 @@
+// src/public/ForumTopics.jsx
+
 import "./ForumTopics.css"
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-
+import { useUserContext } from "../../contexts/UserContext.jsx";
+import { useForumContext } from "../../contexts/ForumContext.jsx";
 
 const ForumTopics = () => {
 
     const { category_id } = useParams();
+    const { users, usersLoading, usersError } = useUserContext();
+    const { categories, topics, comments, forumLoading,forumError } = useForumContext();
 
-    const [categories, setCategories] = useState([]);
-    const [topics, setTopics] = useState([]);
-    const [comments, setComments] = useState([]);
-    const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    if (usersLoading || forumLoading) return <p>Loading...</p>;
+    if (usersError) return <p>Error loading users: {usersError}</p>;
+    if (forumError) return <p>Error loading forum: {forumError}</p>;
 
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const [categoriesResponse, topicsResponse, commentsResponse, usersResponse] = await Promise.all([
-                    fetch('http://localhost:3000/api/categories'),
-                    fetch('http://localhost:3000/api/topics'),
-                    fetch('http://localhost:3000/api/comments'),
-                    fetch('http://localhost:3000/api/users')
-                ]);
-
-                const categoriesData = await categoriesResponse.json();
-                const topicsData = await topicsResponse.json();
-                const commentsData = await commentsResponse.json();
-                const usersData = await usersResponse.json();
-
-                setCategories(categoriesData.data);
-                setTopics(topicsData.data);
-                setComments(commentsData.data);
-                setUsers(usersData.data);
-            } catch (error) {
-                setError(error.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchData();
-    }, []);
-
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error}</p>;
+    // Fonctions utilitaires
 
     const getCategoryById = (category_id) => categories.find(category => category.id == category_id);  
 
@@ -57,12 +27,11 @@ const ForumTopics = () => {
     const commentsByTopic = (topic_id) => comments.filter(comment => comment.TopicId == topic_id);
     
     const lastCommentByTopic = (topic_id) => {
-            return commentsByTopic(topic_id).sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt))[0];
-        }   
+        const commentsSorted = commentsByTopic(topic_id).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        return commentsSorted.length > 0 ? commentsSorted[0] : null; // 🔹 Retourne `null` si pas de commentaire
+    };
     
     const getUserById = (user_id) => users.find(user => user.id == user_id);
-
-    const lastCommentByTopicUser = (topic_id) => getUserById( lastCommentByTopic(topic_id) && lastCommentByTopic(topic_id).UserId);
 
     const handleNewTopic = (e) => 
         {
@@ -74,7 +43,7 @@ const ForumTopics = () => {
             <section className="bannerTopics banner">
             </section>
             <section className="topics main-content">
-                <h1 className="main-content-title">Catégorie: {getCategoryById(category_id).title}</h1>
+                <h1 className="main-content-title">Catégorie: {getCategoryById(category_id) ? getCategoryById(category_id).title : "Inconnue"}</h1>
                 <h2>Liste des topics</h2>
                 <div className="topics-list">
                     <table className="topics-list-table">
@@ -92,19 +61,27 @@ const ForumTopics = () => {
                                 </tr>
                             ) : (
                             sortedTopicsByCategory(category_id).map((topic) => {
-                            return (<tr key={topic.id}>
-                                <td><Link className="topics-list-table-title" to={`/forum/category/${category_id}/topic/${topic.id}`}>{topic.title}</Link>
-                                <br />
-                                {topic.content}
-                                </td>
-                                <td>{commentsByTopic(topic.id).length}</td>
-                                <td>
-                                    {`le ${ new Date(lastCommentByTopic(topic.id).createdAt).toLocaleDateString('fr-FR')} à 
-                                        ${new Date(lastCommentByTopic(topic.id).createdAt).toLocaleTimeString()}`}
-                                    <br/> 
-                                    { `par ${  lastCommentByTopicUser(topic.id).username }`} 
-                                </td>
-                            </tr>
+                                const lastComment = lastCommentByTopic(topic.id);
+                                const lastUser = lastComment ? getUserById(lastComment.UserId) : null;
+                                return (<tr key={topic.id}>
+                                    <td><Link className="topics-list-table-title" to={`/forum/category/${category_id}/topic/${topic.id}`}>{topic.title}</Link>
+                                    <br />
+                                    {topic.content}
+                                    </td>
+                                    <td>{commentsByTopic(topic.id).length}</td>
+                                    <td>
+                                    {lastComment ? (
+                                        <>
+                                            {`le ${new Date(lastComment.createdAt).toLocaleDateString('fr-FR')} à 
+                                            ${new Date(lastComment.createdAt).toLocaleTimeString()}`}
+                                            <br />
+                                            {lastUser ? `par ${lastUser.username}` : ""}
+                                        </>
+                                        ) : (
+                                            "Pas de commentaire"
+                                        )}
+                                    </td>
+                                </tr>
                             )}))}
                         </tbody>
                     </table>

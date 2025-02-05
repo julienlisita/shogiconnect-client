@@ -1,3 +1,5 @@
+// src/public/ForumCategories.jsx
+
 import "./ForumCategories.css"
 import { Link } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext.jsx";
@@ -11,6 +13,8 @@ const ForumCategories = () => {
     if (usersLoading || forumLoading) return <p>Loading...</p>;
     if (usersError) return <p>Error loading users: {usersError}</p>;
     if (forumError) return <p>Error loading forum: {forumError}</p>;
+
+    // Fonctions utilitaires
 
     const getTopicById = (topic_id) => topics.find(topic => topic.id === topic_id);  
     
