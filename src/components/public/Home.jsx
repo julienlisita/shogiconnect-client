@@ -1,3 +1,5 @@
+// src/public/Home.jsx
+
 import "./Home.css"
 import { useUserContext } from "../../contexts/UserContext.jsx";
 import { useForumContext } from "../../contexts/ForumContext.jsx";

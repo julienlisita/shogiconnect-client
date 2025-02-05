@@ -1,47 +1,21 @@
+// src/public/ForumComments.jsx
+
 import "./ForumComments.css";
 import { useParams, Link } from 'react-router-dom';
-import { useState, useEffect } from "react";
+import { useUserContext } from "../../contexts/UserContext.jsx";
+import { useForumContext } from "../../contexts/ForumContext.jsx";
 
 const ForumComments = () => {
+
     const { topic_id } = useParams();
-    const [topics, setTopics] = useState([]);
-    const [comments, setComments] = useState([]);
-    const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const { users, usersLoading, usersError } = useUserContext();
+    const { topics, comments, forumLoading,forumError } = useForumContext();
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const [topicsResponse, commentsResponse, usersResponse] = await Promise.all([
-                    fetch('http://localhost:3000/api/topics'),
-                    fetch('http://localhost:3000/api/comments'),
-                    fetch('http://localhost:3000/api/users')
-                ]);
+    if (usersLoading || forumLoading) return <p>Loading...</p>;
+    if (usersError) return <p>Error loading users: {usersError}</p>;
+    if (forumError) return <p>Error loading forum: {forumError}</p>;
 
-                if (!topicsResponse.ok || !commentsResponse.ok || !usersResponse.ok) {
-                    throw new Error('Erreur lors de la récupération des données');
-                }
-
-                const topicsData = await topicsResponse.json();
-                const commentsData = await commentsResponse.json();
-                const usersData = await usersResponse.json();
-
-                setTopics(topicsData.data);
-                setComments(commentsData.data);
-                setUsers(usersData.data);
-            } catch (error) {
-                setError(error.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchData();
-    }, []);
-
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error}</p>;
+    // Fonctions utilitaires
 
     const getTopicById = (topic_id) => topics.find(topic => topic.id === parseInt(topic_id));
     const getUserById = (user_id) => users.find(user => user.id === user_id);
