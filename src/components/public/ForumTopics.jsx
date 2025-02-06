@@ -19,6 +19,9 @@ const ForumTopics = () => {
     if (usersError) return <p>Error loading users: {usersError}</p>;
     if (forumError) return <p>Error loading forum: {forumError}</p>;
 
+    // Vérification que l'utilisateur est un membre
+    const isMember = user && user.roleId === 1;
+
     // Fonctions utilitaires
 
     const getCategoryById = (category_id) => categories.find(category => category.id == category_id);  
@@ -40,8 +43,6 @@ const ForumTopics = () => {
         {
             console.log(newTopicData);
         };
-
-    const isMember = user && user.roleId === 1;
 
     return (
         <div>

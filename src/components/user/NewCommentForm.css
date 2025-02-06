@@ -1,0 +1,32 @@
+.comments-form
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.08vw;
+    margin-top: 2.78vw;
+}
+
+.comments-form textarea
+{
+    font-size: 20px;
+    width:100%;
+}
+
+@media  (max-width: 900px) {
+
+    .comments-form
+    {
+        margin-top: 23px;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .comments-form 
+    {
+        width:100%;
+    }
+}

@@ -2,18 +2,24 @@
 
 import "./ForumComments.css";
 import { useParams, Link } from 'react-router-dom';
+import { useAuthContext } from "../../contexts/AuthContext";
 import { useUserContext } from "../../contexts/UserContext.jsx";
 import { useForumContext } from "../../contexts/ForumContext.jsx";
+import NewCommentForm from "../user/NewCommentForm.jsx";
 
 const ForumComments = () => {
 
     const { topic_id } = useParams();
+    const { user, isAuthenticated } = useAuthContext();
     const { users, usersLoading, usersError } = useUserContext();
     const { topics, comments, forumLoading,forumError } = useForumContext();
 
     if (usersLoading || forumLoading) return <p>Loading...</p>;
     if (usersError) return <p>Error loading users: {usersError}</p>;
     if (forumError) return <p>Error loading forum: {forumError}</p>;
+
+    // Vérification que l'utilisateur est un membre
+    const isMember = user && user.roleId === 1;
 
     // Fonctions utilitaires
 
@@ -22,33 +28,8 @@ const ForumComments = () => {
     const commentsByTopic = (topic_id) => comments.filter(comment => comment.TopicId === parseInt(topic_id));
     const sortCommentsByTopic = (topic_id) => commentsByTopic(topic_id).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        const description = event.target.description.value.trim();
-
-        if (description) {
-            try {
-                const response = await fetch('http://localhost:3000/api/comments', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ content: description, UserId: 1, TopicId: topic_id }),
-                });
-
-                if (response.ok) {
-                    const newComment = await response.json();
-                    setComments(prevComments => [...prevComments, newComment.data]);
-                    event.target.reset();
-                } else {
-                    console.error('Erreur lors de l\'ajout du commentaire');
-                }
-            } catch (error) {
-                console.error('Erreur lors de l\'ajout du commentaire:', error);
-            }
-        } else {
-            console.error('Le commentaire ne peut pas être vide');
-        }
+    const handleCommentAdded = (newComment) => {
+        // Mettre à jour les commentaires dans l'état local si nécessaire
     };
 
     return (
@@ -90,10 +71,12 @@ const ForumComments = () => {
                     </table>
                 </div>
                 <h2>Ajouter un commentaire</h2>
-                <form onSubmit={handleSubmit} className="comments-form">
-                    <textarea name="description" id="description" rows="10" cols="80" placeholder="Saisir votre commentaire" required></textarea>
-                    <button type="submit" className="comments-form-button">Répondre</button>
-                </form>
+                { isAuthenticated && isMember ?  
+                    <div>
+                        <NewCommentForm topicId={topic_id} onCommentAdded={handleCommentAdded} />
+                    </div>
+                 :  <p>Vous devez être connecté en tant que membre pour écrire un commentaire</p>
+                }
             </section>
         </div>
     );
