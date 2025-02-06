@@ -3,12 +3,15 @@
 import "./ForumTopics.css"
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../../contexts/AuthContext";
 import { useUserContext } from "../../contexts/UserContext.jsx";
 import { useForumContext } from "../../contexts/ForumContext.jsx";
+import NewTopicForm from '../user/NewTopicForm';
 
 const ForumTopics = () => {
 
     const { category_id } = useParams();
+    const { user, isAuthenticated } = useAuthContext();
     const { users, usersLoading, usersError } = useUserContext();
     const { categories, topics, comments, forumLoading,forumError } = useForumContext();
 
@@ -33,10 +36,12 @@ const ForumTopics = () => {
     
     const getUserById = (user_id) => users.find(user => user.id == user_id);
 
-    const handleNewTopic = (e) => 
+    const handleNewTopic = (newTopicData) => 
         {
-            setSortGameOption(e.target.value);
+            console.log(newTopicData);
         };
+
+    const isMember = user && user.roleId === 1;
 
     return (
         <div>
@@ -87,17 +92,13 @@ const ForumTopics = () => {
                     </table>
                 </div>
                 <h2>Créer un nouveau topic</h2>
-                <form action="" className="topics-NewTopicForm" onSubmit={handleNewTopic}>
-                    <div className="topics-NewTopicForm-name">
-                        <textarea name="name" id="name"  defaultValue="nom du topic"></textarea>
-                    </div>
-                    <div className="topics-NewTopicForm-description">
-                        <textarea name="desription" id="desription"  rows="10" defaultValue="description"></textarea>
-                    </div>
-                    <div>
-                        <button className="topics-NewTopicForm-button">Publier</button>
-                    </div>
-                </form>
+                {isAuthenticated && isMember ? ( 
+                    <>
+                        <NewTopicForm onSubmit={handleNewTopic} />
+                    </>
+                ) : (
+                    <p>Vous devez être connecté en tant que membre pour créer un topic</p>
+                )}
             </section>
         </div>
     );

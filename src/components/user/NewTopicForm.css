@@ -1,0 +1,51 @@
+.topics-NewTopicForm
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+    gap: 2.08vw;
+    width:80%;
+    margin-top: 2.78vw;
+}
+
+.topics-NewTopicForm-title p
+{
+    font-size: 28px;
+    font-weight: bold;
+}
+
+
+.topics-NewTopicForm-description, .topics-NewTopicForm-name
+{
+    width:100%;
+}
+
+.topics-NewTopicForm textarea
+{
+    font-size: 20px;
+    width:100%;
+}
+
+.topics-NewTopicForm button
+{
+    width:150px;
+}
+
+@media  (max-width: 900px) {
+
+    .topics-NewTopicForm
+    {
+        margin-top: 23px;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .topics-NewTopicForm 
+    {
+        width:100%;
+    }
+}
