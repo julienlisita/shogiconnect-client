@@ -1,63 +1,33 @@
+// src/public/UserProfile.jsx
+
 import "./UserProfile.css"
 import { useParams } from 'react-router-dom';
-import { useState,useEffect } from "react";
 import image from "../../assets/images/user.png"
 import activities from './../../assets/data/activities.json'
+import { useUserContext } from "../../contexts/UserContext.jsx";
 
 const UserProfile = () => {
 
     const { user_id } = useParams();
+    const { users, userStats, usersLoading, usersError } = useUserContext();
 
-    const [userStats, setUserStats] = useState([]);
-    const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    if (usersLoading) return <p>Loading...</p>;
+    if (usersError) return <p>Error loading users: {usersError}</p>;
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const [userStatsResponse, usersResponse] = await Promise.all([
-                    fetch('http://localhost:3000/api/userStats'),
-                    fetch('http://localhost:3000/api/users')
-                ]);
+    // Fonctions utilitaires
+
+    const user = users?.find(user => user.id == user_id);
+
+    const stat = userStats?.find(stat => stat.UserId == user_id);
     
-                const userStatsData = await userStatsResponse.json();
-                const usersData = await usersResponse.json();
-    
-                setUserStats(userStatsData.data);
-                setUsers(usersData.data);
-            } catch (error) {
-                setError(error.message);
-            } finally {
-                 setLoading(false);
-            }
-        };
-    
-        fetchData();
-    }, []);
-
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error}</p>;
-
-    const getUserById = (user_id) => users.find(user => user.id == user_id);
-
-    const getStatByUserId = (user_id) => userStats.find(stat => stat.UserId == user_id);
-
-    const user = getUserById(user_id);
-
-    const stat = getStatByUserId(user_id);
-
-    const statusClass = (user) => {
-        return user.isOnline ? "userCard-info-status-online" : "userCard-info-status-offline";
-    }
-    
-    let nbrGames;
     if (!user || !stat) return <p>Utilisateur ou statistiques non trouvés.</p>;
-    {
-        nbrGames = stat.wins +stat.losses + stat.draws
-    }
-    
 
+    const statusClass = user.isOnline ? "userCard-info-status-online" : "userCard-info-status-offline";
+    
+    const nbrGames = stat ? (stat.wins + stat.losses + stat.draws) : 0;
+
+    const userActivities = activities.filter(activity => activity.userId == user.id);
+    
     return (
         <div>
              <section className="bannerProfile banner">
@@ -72,28 +42,29 @@ const UserProfile = () => {
                                 <img src={image} alt="" />
                             </div>
                             <p className="profile-leftBlock-infos-username">{user.username}</p>
-                            <p className={statusClass(user)}>
+                            <p className={statusClass}>
                             {user.isOnline ? "Online" : "Offline"}</p>
-                            <p>{user.country}</p>
+                            <p>{user.country || "Pays inconnu"}</p>
                             <p>{`Membre depuis le ${new Date(user.createdAt).toLocaleDateString('fr-FR')}`}</p>
 
                         </div>
                         <h2>Statistiques</h2>
                         <div className = "profile-leftBlock-stats">
                             <p>{`Partie jouées: ${nbrGames}`}</p>
-                            <p>{`Victoires: ${stat.wins}`}</p>
-                            <p>{`Défaites: ${stat.losses}`}</p>
-                            <p>{`Nulles: ${stat.draws}`}</p>
+                            <p>{`Victoires: ${stat?.wins || 0}`}</p>
+                            <p>{`Défaites: ${stat?.losses || 0}`}</p>
+                            <p>{`Nulles: ${stat?.draws || 0}`}</p>
                         </div>
                     </div>
                     <div className = "profile-rightBlock">
                         <h2>Biographie</h2>
                         <div className = "profile-rightBlock-biography">
-                            <p>{user.biography}</p>
+                            <p>{user.biography || "aucune biographie disponible" }</p>
                         </div>
                         <h2>Activité</h2>
                         <div className = "profile-rightBlock-activity">
                             <div className = "profile-rightBlock-activity-list">
+                            {userActivities.length > 0 ? (
                                 <table className = "profile-rightBlock-activity-list-table">
                                     <thead>
                                         <tr>
@@ -102,7 +73,7 @@ const UserProfile = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {activities.map((activity) => (
+                                        {userActivities.map((activity) => (
                                         <tr key={activity.id}>
                                             <td>{activity.activity_type}</td>
                                             <td>{`le ${new Date(activity.created_at).toLocaleDateString('fr-FR')} à ${new Date(activity.created_at).toLocaleTimeString()}`}</td>
@@ -110,6 +81,9 @@ const UserProfile = () => {
                                         ))}
                                     </tbody>
                                 </table>
+                            ): (
+                                <p>Aucune activité récente.</p>
+                            )}
                             </div>
                         </div>
                     </div>
