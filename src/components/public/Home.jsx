@@ -19,17 +19,20 @@ const Home = () => {
     if (usersError) return <p>Error loading users: {usersError}</p>;
     if (forumError) return <p>Error loading forum: {forumError}</p>;
    
+    // Fonctions utilitaires
 
-    const getStatsByUserId = (user_id) => userStats.find(stat => stat.UserId == user_id);
+    const getStatsByUserId = (user_id) => userStats ? userStats.find(stat => stat.UserId == user_id) : null;
 
     const getUserById = (user_id) => users.find(user => user.id == user_id);
 
     const getTopicById = (topic_id) => topics.find(topic => topic.id == topic_id);
 
-    const usersSortedByScore = users.sort((a,b) => getStatsByUserId(b.id).score - getStatsByUserId(a.id).score);
-
+    const usersSortedByScore = users
+    .filter(user => getStatsByUserId(user.id)) 
+    .sort((a, b) => getStatsByUserId(b.id).score - getStatsByUserId(a.id).score);
+   
     const commentsSortedByDate = comments.sort((a,b) => b.date - a.date);
-
+    
 
     return (
         <div>
@@ -84,10 +87,12 @@ const Home = () => {
                             <tbody>  
                                 {!commentsSortedByDate ? <p>En cours de chargement</p> :
                                     commentsSortedByDate.map((comment) => {
+                                    const user = getUserById(comment.UserId);
+                                    const topic = getTopicById(comment.TopicId);
                                     return <tr key = {comment.id}> 
-                                    <td><strong>{getTopicById(comment.TopicId).title}</strong></td>
+                                    <td><strong>{topic ? topic.title : "Sujet inconnu"}</strong></td>
                                     <td>{comment.content}</td>
-                                    <td>{`le ${new Date(comment.created_at).toLocaleDateString('fr-FR')} à ${new Date(comment.created_at).toLocaleTimeString()} \npar ${getUserById(comment.UserId).username}`}</td>
+                                    <td>{`le ${new Date(comment.created_at).toLocaleDateString('fr-FR')} à ${new Date(comment.created_at).toLocaleTimeString()} \npar ${user ? user.username : "Utilisateur inconnu"}`}</td>
                                 </tr>
                                     })}
                                 
