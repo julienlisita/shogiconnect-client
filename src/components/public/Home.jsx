@@ -92,7 +92,7 @@ const Home = () => {
                                     return <tr key = {comment.id}> 
                                     <td><strong>{topic ? topic.title : "Sujet inconnu"}</strong></td>
                                     <td>{comment.content}</td>
-                                    <td>{`le ${new Date(comment.created_at).toLocaleDateString('fr-FR')} à ${new Date(comment.created_at).toLocaleTimeString()} \npar ${user ? user.username : "Utilisateur inconnu"}`}</td>
+                                    <td>{`le ${new Date(comment.createdAt).toLocaleDateString('fr-FR')} à ${new Date(comment.createdAt).toLocaleTimeString()} \npar ${user ? user.username : "Utilisateur inconnu"}`}</td>
                                 </tr>
                                     })}
                                 
