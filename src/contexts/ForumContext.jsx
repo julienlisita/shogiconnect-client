@@ -8,13 +8,13 @@ const ForumContext = createContext();
 export const ForumProvider = ({ children }) => {
     const { categories, loading: categoriesLoading, error: categoriesError } = useCategories();
     const { topics, loading: topicsLoading, error: topicsError, createTopic } = useTopics();
-    const { comments, loading: commentsLoading, error: commentsError } = useComments();
+    const { comments, loading: commentsLoading, error: commentsError, createComment } = useComments();
 
     const loading = categoriesLoading || topicsLoading || commentsLoading;
     const error = categoriesError || topicsError || commentsError;
 
     return (
-        <ForumContext.Provider value={{ categories, topics, comments, loading, error, createTopic }}>
+        <ForumContext.Provider value={{ categories, topics, comments, loading, error, createTopic, createComment}}>
             {children}
         </ForumContext.Provider>
     );

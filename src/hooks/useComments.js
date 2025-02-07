@@ -8,22 +8,34 @@ const useComments = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const fetchComments = async () => {
-            try {
-                const commentsData = await commentService.getComments();
-                setComments(commentsData);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
+    // Récupération des commentaires au montage du composant
 
+    const fetchComments = async () => {
+        try {
+            const commentsData = await commentService.getComments();
+            setComments(commentsData);
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
         fetchComments();
     }, []);
 
-    return { comments, loading, error };
+    const createComment = async (newCommentData) => {
+            try {
+                const createdComment = await commentService.addComment(newCommentData);
+                fetchComments();
+            } catch (err) {
+                console.error("Erreur lors de l'ajout du commentaire :", err);
+                throw err;
+            }
+        };
+
+    return { comments, loading, error, createComment };
 };
 
 export default useComments;

@@ -9,4 +9,9 @@ const getComments = async () => {
     return response.data.data;
 };
 
-export default { getComments };
+const addComment = async (commentData) => {
+    const response = await axios.post(API_URL, commentData);
+    return response.data.data;
+};
+
+export default { getComments,addComment };

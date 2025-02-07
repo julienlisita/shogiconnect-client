@@ -12,7 +12,7 @@ const ForumComments = () => {
     const { topic_id } = useParams();
     const { user, isAuthenticated } = useAuthContext();
     const { users, usersLoading, usersError } = useUserContext();
-    const { topics, comments, forumLoading,forumError } = useForumContext();
+    const { topics, comments, forumLoading, forumError, createComment } = useForumContext();
 
     if (usersLoading || forumLoading) return <p>Loading...</p>;
     if (usersError) return <p>Error loading users: {usersError}</p>;
@@ -28,8 +28,14 @@ const ForumComments = () => {
     const commentsByTopic = (topic_id) => comments.filter(comment => comment.TopicId === parseInt(topic_id));
     const sortCommentsByTopic = (topic_id) => commentsByTopic(topic_id).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
-    const handleCommentAdded = (newComment) => {
-        // Mettre à jour les commentaires dans l'état local si nécessaire
+    // Fonction pour gérer la soumission du formulaire
+    const handleNewComment = async(newCommentData) => {
+        const newComment = {
+            ...newCommentData,
+            topicId: topic_id, 
+            userId: user.id,
+        };
+        await createComment(newComment); 
     };
 
     return (
@@ -73,7 +79,7 @@ const ForumComments = () => {
                 <h2>Ajouter un commentaire</h2>
                 { isAuthenticated && isMember ?  
                     <div>
-                        <NewCommentForm topicId={topic_id} onCommentAdded={handleCommentAdded} />
+                        <NewCommentForm onSubmit={handleNewComment} />
                     </div>
                  :  <p>Vous devez être connecté en tant que membre pour écrire un commentaire</p>
                 }
