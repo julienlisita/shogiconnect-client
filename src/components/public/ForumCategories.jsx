@@ -65,8 +65,8 @@ const ForumCategories = () => {
                                     <td>
                                     {lastComment ? (
                                         <>
-                                            {`le ${new Date(lastComment.created_at).toLocaleDateString('fr-FR')} à 
-                                            ${new Date(lastComment.created_at).toLocaleTimeString()}`}
+                                            {`le ${new Date(lastComment.createdAt).toLocaleDateString('fr-FR')} à 
+                                            ${new Date(lastComment.createdAt).toLocaleTimeString()}`}
                                             <br/> 
                                             {lastUser ? `par ${lastUser.username}` : "Utilisateur inconnu"}
                                         </>
