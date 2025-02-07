@@ -9,4 +9,10 @@ const getTopics = async () => {
     return response.data.data;
 };
 
-export default { getTopics };
+const addTopic = async (topicData) => {
+    const response = await axios.post(API_URL, topicData);
+    return response.data.data;
+};
+
+
+export default { getTopics, addTopic };

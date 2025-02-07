@@ -4,14 +4,18 @@ import { useState } from 'react';
 import "./NewTopicForm.css"
 
 const NewTopicForm = ({ onSubmit }) => {
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmit({ name, description });
-        setName('');
-        setDescription('');
+        const newTopicData = {
+            title,
+            content,
+        };
+        onSubmit(newTopicData); 
+        setTitle("");
+        setContent("");
     };
 
     return (
@@ -20,8 +24,8 @@ const NewTopicForm = ({ onSubmit }) => {
                 <textarea
                     name="name"
                     id="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                     placeholder="Nom du topic"
                 />
             </div>
@@ -29,8 +33,8 @@ const NewTopicForm = ({ onSubmit }) => {
                 <textarea
                     name="description"
                     id="description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
                     rows="10"
                     placeholder="Description"
                 />

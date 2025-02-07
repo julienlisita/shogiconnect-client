@@ -13,7 +13,7 @@ const ForumTopics = () => {
     const { category_id } = useParams();
     const { user, isAuthenticated } = useAuthContext();
     const { users, usersLoading, usersError } = useUserContext();
-    const { categories, topics, comments, forumLoading,forumError } = useForumContext();
+    const { categories, topics, comments, forumLoading,forumError, createTopic } = useForumContext();
 
     if (usersLoading || forumLoading) return <p>Loading...</p>;
     if (usersError) return <p>Error loading users: {usersError}</p>;
@@ -39,10 +39,15 @@ const ForumTopics = () => {
     
     const getUserById = (user_id) => users.find(user => user.id == user_id);
 
-    const handleNewTopic = (newTopicData) => 
-        {
-            console.log(newTopicData);
+    // Fonction pour gérer la soumission du formulaire
+    const handleNewTopic = async(newTopicData) => {
+        const newTopic = {
+            ...newTopicData,
+            categoryId: category_id, 
+            userId: user.id,
         };
+        await createTopic(newTopic); 
+    };
 
     return (
         <div>

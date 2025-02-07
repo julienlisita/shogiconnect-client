@@ -23,7 +23,17 @@ const useTopics = () => {
         fetchTopics();
     }, []);
 
-    return { topics, loading, error };
+    const createTopic = async (newTopicData) => {
+        try {
+            const createdTopic = await topicService.addTopic(newTopicData);
+            setTopics((prevTopics) => [...prevTopics, createdTopic]);
+        } catch (err) {
+            console.error("Erreur lors de l'ajout du topic :", err);
+            throw err;
+        }
+    };
+
+    return { topics, loading, error, createTopic };
 };
 
 export default useTopics;
