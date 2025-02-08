@@ -7,6 +7,7 @@ import { UserProvider } from './contexts/UserContext';
 import { ForumProvider } from './contexts/ForumContext';
 import AppRoutes from './routes/AppRoutes';
 import ScrollToTop from './components/common/ScrollToTop';
+import { ScheduledGameProvider } from './contexts/ScheduledGameContext';
 
 const App = () => {
 
@@ -14,10 +15,12 @@ const App = () => {
     <AuthProvider> 
       <UserProvider>
         <ForumProvider>
-          <BrowserRouter>
-            <ScrollToTop/>
-            <AppRoutes />
-          </BrowserRouter> 
+          <ScheduledGameProvider>
+            <BrowserRouter>
+              <ScrollToTop/>
+              <AppRoutes />
+            </BrowserRouter> 
+          </ScheduledGameProvider>
         </ForumProvider>
       </UserProvider>
     </AuthProvider>
