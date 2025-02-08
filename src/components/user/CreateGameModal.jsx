@@ -1,30 +1,19 @@
 import React, { useState } from "react";
 
-const CreateGameModal = ({ isOpen, onClose }) => {
+const CreateGameModal = ({ onSubmit, isOpen, onClose }) => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [level, setLevel] = useState("intermédiaire");
 
-  const handleSubmitGame = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const rendezVousAt = new Date(`${date}T${time}`).toISOString();
-    
-    fetch("http://localhost:3000/api/games", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ level, rendezVousAt }),
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Partie créée avec succès:", data);
-        onClose(); 
-      })
-      .catch((error) => {
-        console.error("Erreur lors de la création de la partie:", error);
-      });
+    const newScheduledGameData = {
+      rendezVousAt : rendezVousAt,
+      level : level,
+    };
+    onSubmit(newScheduledGameData); 
+    onClose();
   };
 
   const handleClickOverlay = () => {
@@ -37,7 +26,7 @@ const CreateGameModal = ({ isOpen, onClose }) => {
     <div className="modal-overlay" onClick={handleClickOverlay}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
         <h2>Création de partie</h2>
-        <form className="availableGames-newGameForm modal-content" onSubmit={handleSubmitGame}>
+        <form className="availableGames-newGameForm modal-content" onSubmit={handleSubmit}>
             <label htmlFor="date">Choisir le jour</label>
             <input
               type="date"

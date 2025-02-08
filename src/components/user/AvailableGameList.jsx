@@ -1,44 +1,20 @@
 import "./AvailableGameList.css"
 import { Link } from "react-router-dom";
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import CreateGameModal from "./CreateGameModal";
+import { useUserContext } from "../../contexts/UserContext.jsx";
+import { useScheduledGameContext } from "../../contexts/ScheduledGameContext.jsx";
 
 const AvailableGameList = () => {
 
-    const [games, setGames] = useState([]);
-    const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
+    const { users, usersLoading, usersError } = useUserContext();
+    const { scheduledGames, scheduledGamesLoading, scheduledGamesError, createScheduledGame } = useScheduledGameContext();
     const [sortGameOption, setSortGameOption] = useState('date');
-    
     const [isCreateGameOpen, setIsCreateGameOpen] = useState(false);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const [gamesResponse, usersResponse] = await Promise.all([
-                    fetch('http://localhost:3000/api/games'),
-                    fetch('http://localhost:3000/api/users')
-                ]);
-    
-                const gamesData = await gamesResponse.json();
-                const usersData = await usersResponse.json();
-    
-                setGames(gamesData.data);
-                setUsers(usersData.data);
-            } catch (error) {
-                setError(error.message);
-            } finally {
-                 setLoading(false);
-            }
-        };
-    
-        fetchData();
-    }, []);
-    
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error}</p>;
+    if (usersLoading || scheduledGamesLoading) return <p>Loading...</p>;
+    if (usersError) return <p>Error loading users: {usersError}</p>;
+    if (scheduledGamesError) return <p>Error loading forum: {forumError}</p>;
 
     const openCreateGameModal = () => {
       setIsCreateGameOpen(true);
@@ -50,7 +26,7 @@ const AvailableGameList = () => {
 
     const getUserById = (user_id) => users.find(user => user.id == user_id);
 
-    const availableGames = games.filter(game => game.status == "disponible");
+    const availableGames = scheduledGames.filter(game => game.status == "disponible");
     
     const sortedGames = availableGames.length > 0 ? availableGames.sort((a, b) => {
         if (sortGameOption === 'date') {
@@ -74,6 +50,11 @@ const AvailableGameList = () => {
     {
         e.preventDefault();
     }
+
+    // Fonction pour gérer la soumission du formulaire
+    const handleNewScheduledGame = async(newScheduledGameData) => {
+        await createScheduledGame(newScheduledGameData); 
+    };
 
     return (
         <div>
@@ -130,7 +111,7 @@ const AvailableGameList = () => {
                     </table>
                 </div>
                 <button className="availableGames-newGameButton button" onClick={openCreateGameModal}>Créer une partie</button>
-                <CreateGameModal isOpen={isCreateGameOpen} onClose={closeCreateGameModal} />                
+                <CreateGameModal onSubmit={handleNewScheduledGame} isOpen={isCreateGameOpen} onClose={closeCreateGameModal} />                
             </div>
         </div>
     );
