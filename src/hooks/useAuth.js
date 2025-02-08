@@ -1,4 +1,4 @@
-// useAuth.js
+// src/hooks/useAuth.js
 
 import { useState } from "react";
 import { jwtDecode } from "jwt-decode";
@@ -11,6 +11,7 @@ const useAuth = () => {
     if (token) {
       try {
         const decodedToken = jwtDecode(token);
+        authService.setAuthToken(token); 
         return {
           id: decodedToken.userId,
           username: decodedToken.username,
@@ -32,6 +33,7 @@ const useAuth = () => {
       const decodedToken = jwtDecode(token);
       setUser({ id: decodedToken.userId, username: decodedToken.username, roleId: decodedToken.roleId });
       localStorage.setItem("token", token);
+      authService.setAuthToken(token); 
     } 
     catch (err) {
         throw new Error(err.message || "Impossible de se connecter, veuillez réessayer plus tard.");
@@ -42,6 +44,7 @@ const useAuth = () => {
   const logout = () => {
     setUser(null);
     localStorage.removeItem("token");
+    authService.clearAuthToken(); 
     authService.logout();
   };
 
