@@ -33,7 +33,22 @@ const useScheduledGames = () => {
         }
     };
 
-    return { scheduledGames, loading, error, createScheduledGame };
+    const joinScheduledGame = async (scheduledGameId) => {
+        try {
+            const updatedScheduledGame = await scheduledGameService.joinScheduledGame(scheduledGameId);
+            setScheduledGames((prevScheduledGames) => 
+                prevScheduledGames.map(game => 
+                    game.id === scheduledGameId ? updatedScheduledGame : game
+                )
+            );
+        } catch (err) {
+            console.error("Erreur lors de l'inscription au jeu :", err);
+            throw err;
+        }
+    };
+
+
+    return { scheduledGames, loading, error, createScheduledGame, joinScheduledGame };
 };
 
 export default useScheduledGames;

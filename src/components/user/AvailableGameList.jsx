@@ -3,14 +3,20 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import CreateGameModal from "./CreateGameModal";
 import { useUserContext } from "../../contexts/UserContext.jsx";
+import { useAuthContext } from "../../contexts/AuthContext.jsx";
 import { useScheduledGameContext } from "../../contexts/ScheduledGameContext.jsx";
+import ModalMessage from "../common/modalMessage.jsx"
+
 
 const AvailableGameList = () => {
 
     const { users, usersLoading, usersError } = useUserContext();
-    const { scheduledGames, scheduledGamesLoading, scheduledGamesError, createScheduledGame } = useScheduledGameContext();
+    const {user} = useAuthContext();
+    const { scheduledGames, scheduledGamesLoading, scheduledGamesError, createScheduledGame, joinScheduledGame } = useScheduledGameContext();
     const [sortGameOption, setSortGameOption] = useState('date');
     const [isCreateGameOpen, setIsCreateGameOpen] = useState(false);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [modalMessage, setModalMessage] = useState("");
 
     if (usersLoading || scheduledGamesLoading) return <p>Loading...</p>;
     if (usersError) return <p>Error loading users: {usersError}</p>;
@@ -24,9 +30,20 @@ const AvailableGameList = () => {
       setIsCreateGameOpen(false);
     };
 
+    // Fonction pour ouvrir la modal avec un message
+    const openModal = (message) => {
+        setModalMessage(message);
+        setModalIsOpen(true);
+    };
+
+    // Fonction pour fermer la modal
+    const closeModal = () => {
+        setModalIsOpen(false);
+    };
+
     const getUserById = (user_id) => users.find(user => user.id == user_id);
 
-    const availableGames = scheduledGames.filter(game => game.status == "disponible");
+    const availableGames = scheduledGames.filter(game => game.status === "disponible");
     
     const sortedGames = availableGames.length > 0 ? availableGames.sort((a, b) => {
         if (sortGameOption === 'date') {
@@ -46,14 +63,22 @@ const AvailableGameList = () => {
         setSortGameOption(e.target.value);
     };
 
-    const handleJoinGame = (e) =>
-    {
-        e.preventDefault();
-    }
-
     // Fonction pour gérer la soumission du formulaire
     const handleNewScheduledGame = async(newScheduledGameData) => {
         await createScheduledGame(newScheduledGameData); 
+    };
+
+    // Fonction pour gérer l'inscription à une partie
+    const handleJoinGame = async (gameId, OrganizerId) => {
+        if(user.id == OrganizerId)
+        {
+            openModal("Vous ne pouvez pas vous inscrire à votre propre partie.");
+        }
+        else
+        {
+            await joinScheduledGame(gameId);
+            openModal("Inscription réussie !");
+        }
     };
 
     return (
@@ -99,9 +124,7 @@ const AvailableGameList = () => {
                                             <td>{game.level}</td>
                                             <td>{`Le ${new Date(game.rendezVousAt).toLocaleDateString('fr-FR')} ${new Date(game.rendezVousAt).toLocaleTimeString()}`}</td>
                                             <td>
-                                                <form action="" className="availableGames-subscriptionForm" onSubmit={handleJoinGame}>
-                                                    <button className="availableGames-subscriptionForm-button button">S'inscrire</button>
-                                                </form>
+                                                <button onClick={() => handleJoinGame(game.id, game.OrganizerId)}>Rejoindre</button>
                                             </td>
                                         </tr>
                                     );
@@ -111,7 +134,9 @@ const AvailableGameList = () => {
                     </table>
                 </div>
                 <button className="availableGames-newGameButton button" onClick={openCreateGameModal}>Créer une partie</button>
-                <CreateGameModal onSubmit={handleNewScheduledGame} isOpen={isCreateGameOpen} onClose={closeCreateGameModal} />                
+                <CreateGameModal onSubmit={handleNewScheduledGame} isOpen={isCreateGameOpen} onClose={closeCreateGameModal} />    
+                {/* Modal affichant les messages */}
+                <ModalMessage isOpen={modalIsOpen} message={modalMessage} onClose={closeModal} />            
             </div>
         </div>
     );

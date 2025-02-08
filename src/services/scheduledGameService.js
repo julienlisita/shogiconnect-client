@@ -14,4 +14,9 @@ const addScheduledGame = async (scheduledGameData) => {
     return response.data.data;
 };
 
-export default { getScheduledGames, addScheduledGame };
+const joinScheduledGame = async (scheduledGameId) => {
+    const response = await axios.post(`${API_URL}/${scheduledGameId}/join`);
+    return response.data.data;
+};
+
+export default { getScheduledGames, addScheduledGame, joinScheduledGame };
