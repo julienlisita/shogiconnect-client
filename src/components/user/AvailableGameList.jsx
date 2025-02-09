@@ -2,11 +2,10 @@ import "./AvailableGameList.css"
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import CreateGameModal from "./CreateGameModal";
+import ModalMessage from "../common/ModalMessage";
 import { useUserContext } from "../../contexts/UserContext.jsx";
 import { useAuthContext } from "../../contexts/AuthContext.jsx";
 import { useScheduledGameContext } from "../../contexts/ScheduledGameContext.jsx";
-import ModalMessage from "../common/modalMessage.jsx"
-
 
 const AvailableGameList = () => {
 
@@ -66,6 +65,7 @@ const AvailableGameList = () => {
     // Fonction pour gérer la soumission du formulaire
     const handleNewScheduledGame = async(newScheduledGameData) => {
         await createScheduledGame(newScheduledGameData); 
+        openModal("Partie créée !");
     };
 
     // Fonction pour gérer l'inscription à une partie
@@ -135,7 +135,6 @@ const AvailableGameList = () => {
                 </div>
                 <button className="availableGames-newGameButton button" onClick={openCreateGameModal}>Créer une partie</button>
                 <CreateGameModal onSubmit={handleNewScheduledGame} isOpen={isCreateGameOpen} onClose={closeCreateGameModal} />    
-                {/* Modal affichant les messages */}
                 <ModalMessage isOpen={modalIsOpen} message={modalMessage} onClose={closeModal} />            
             </div>
         </div>
