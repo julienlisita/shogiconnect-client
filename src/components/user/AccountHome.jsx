@@ -1,72 +1,75 @@
-import "./AccountHome.css"
-import stats from './../../assets/data/stats.json';
-import activities from './../../assets/data/activities.json';
-
+import "./AccountHome.css";
+import { useAuthContext } from "../../contexts/AuthContext.jsx";
+import { useProfileContext } from "../../contexts/ProfileContext.jsx";
+import { useUserContext } from "../../contexts/UserContext.jsx";
+import { useEffect } from "react";
 
 const AccountHome = () => {
+  const { user } = useAuthContext();
+  const { profile, activities, profileLoading, profileError } = useProfileContext();
+  const { userStats, userStatsLoading, usersError } = useUserContext();
 
-   const user = {
-        id: 1,
-        username: "ShadowNinja",
-        country: "France",
-        isOnline: true,
-        biography: "Je suis un maître de la furtivité, et j'ai toujours un coup d'avance sur mes adversaires. Le Shogi est pour moi une manière de développer mon esprit tactique et de rester en éveil. Depuis des années, j'étudie les stratégies et les mouvements des grands maîtres du Shogi. J'aime aussi analyser chaque partie que je joue, en cherchant constamment à m'améliorer. Pour moi, le Shogi n'est pas seulement un jeu, c'est un art qui reflète l'harmonie entre la patience, la précision et la détermination. Mon objectif est de devenir un joueur reconnu sur la scène internationale.",
-        user_role_id: 1,
-        created_at: "2024-09-01 09:00:00"
-      }
+  if (!user  || profileLoading || userStatsLoading) return <p>Loading...</p>;
+  if (usersError) return <p>Error loading users: {usersError}</p>;
+  if (profileError) return <p>Error loading profile: {profileError}</p>;
 
-    const getStatByUserId = (user_id) => stats.find(stat => stat.user_id == user_id);
+  const stat = userStats?.find((stat) => stat.UserId == user.id);
+  const nbrGames = stat?.wins + stat?.losses + stat?.draws;
 
-    const getActivityListByUserId = (user_id) => activities.filter(activity => activity.user_id == user_id);
+  const activitiesSortedByDate =
+    Array.isArray(activities) ? [...activities].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) : [];
 
-    const myActivities = getActivityListByUserId(user.id);
-    const activitiesSortedBydate = myActivities && myActivities.sort((a,b) => new Date(b.created_at) - new Date(a.created_at))
 
-    const stat = getStatByUserId(user.id);
-    const nbrGames = stat.wins + stat.losses + stat.draws;
-
-    return (
-            <div className="accountHome-container">
-                <div className="accountHome">
-                    <h1>Dashboard membre</h1>
-                    <div className="accountHome-content">
-                        <div className="accountHome-content-leftBlock">
-                            <div className="accountHome-content-leftBlock-infos">
-                                <h2>Infos personnelles</h2>
-                                <p>{`Inscrit depuis le ${new Date(user.created_at).toLocaleDateString('fr-FR')}`}</p>
-                                <p>{`Pays: ${user.country}`}</p>
-                                <div className="accountHome-content-leftBlock-infos-biographyContainer">
-                                    <p>{user.biography}</p>
-                                </div>
-                            </div>
-                            <div className="accountHome-content-leftBlock-stats">
-                                <h2>Statistiques joueur</h2>
-                                <p>{`Parties jouées: ${nbrGames}`}</p>
-                                <p>{`Victoires: ${nbrGames}`}</p>
-                                <p>{`Défaites: ${nbrGames}`}</p>
-                                <p>{`Nulles: ${nbrGames}`}</p>
-                            </div>
-                        </div>
-                        <div className="accountHome-content-rightBlock">
-                            <h2>Activité de jeu</h2>
-                            <div className="accountHome-content-rightBlock-activityContainer">
-                            {
-                                !activities ? <p>aucune activité</p> :
-                                <div>
-                                    {
-                                        activitiesSortedBydate.map((activity) => {
-                                            return <p key={activity.id}>{`${activity.activity_type} le ${new Date(user.created_at).toLocaleDateString('fr-FR')} à ${new Date(user.created_at).toLocaleTimeString()}`}</p>
-                                        })
-                                    }
-                                </div>
-                            } 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
+  // Affichage avec vérifications supplémentaires pour éviter les erreurs sur des données undefined
+  return (
+    <div className="accountHome-container">
+      <div className="accountHome">
+        <h1>Dashboard membre</h1>
+        <div className="accountHome-content">
+          <div className="accountHome-content-leftBlock">
+            <div className="accountHome-content-leftBlock-infos">
+              <h2>Infos personnelles</h2>
+              {/* Vérification si profile.createdAt existe avant de l'utiliser */}
+              <p>
+                {profile?.createdAt
+                  ? `Inscrit depuis le ${new Date(profile.createdAt).toLocaleDateString('fr-FR')}`
+                  : "Date d'inscription inconnue"}
+              </p>
+              <p>{profile?.country ? `Pays: ${profile.country}` : "Pays inconnu"}</p>
+              <div className="accountHome-content-leftBlock-infos-biographyContainer">
+                <p>{profile?.biography || "Biographie inconnue"}</p>
+              </div>
             </div>
-    );
+            <div className="accountHome-content-leftBlock-stats">
+              <h2>Statistiques joueur</h2>
+              <p>{`Parties jouées: ${nbrGames || 0}`}</p>
+              <p>{`Victoires: ${stat?.wins || 0}`}</p>
+              <p>{`Défaites: ${stat?.losses || 0}`}</p>
+              <p>{`Nulles: ${stat?.draws || 0}`}</p>
+            </div>
+          </div>
+          <div className="accountHome-content-rightBlock">
+            <h2>Activité de jeu</h2>
+            <div className="accountHome-content-rightBlock-activityContainer">
+              {activitiesSortedByDate.length === 0 ? (
+                <p>Aucune activité</p>
+              ) : (
+                <div>
+                  {activitiesSortedByDate.map((activity) => (
+                    <p key={activity.id}>
+                      {`${activity.activity_type} le ${new Date(activity.createdAt).toLocaleDateString(
+                        'fr-FR'
+                      )} à ${new Date(activity.createdAt).toLocaleTimeString('fr-FR')}`}
+                    </p>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default AccountHome;
