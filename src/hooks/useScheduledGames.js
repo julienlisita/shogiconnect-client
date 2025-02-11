@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import scheduledGameService from '../services/scheduledGameService';
+import { useAuthContext } from "../contexts/AuthContext";
 
 const useScheduledGames = () => {
+    const { isAuthenticated } = useAuthContext();
     const [scheduledGames, setScheduledGames] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -19,9 +21,11 @@ const useScheduledGames = () => {
                 setLoading(false);
             }
         };
-
-        fetchScheduledGames();
-    }, []);
+        if(isAuthenticated)
+        {
+            fetchScheduledGames();
+        }
+    }, [isAuthenticated]);
 
     const createScheduledGame = async (newScheduledGameData) => {
         try {
