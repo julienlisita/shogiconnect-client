@@ -49,7 +49,7 @@ const AccountHome = () => {
             </div>
           </div>
           <div className="accountHome-content-rightBlock">
-            <h2>Activité de jeu</h2>
+            <h2>Activité</h2>
             <div className="accountHome-content-rightBlock-activityContainer">
               {activitiesSortedByDate.length === 0 ? (
                 <p>Aucune activité</p>
@@ -57,7 +57,7 @@ const AccountHome = () => {
                 <div>
                   {activitiesSortedByDate.map((activity) => (
                     <p key={activity.id}>
-                      {`${activity.activity_type} le ${new Date(activity.createdAt).toLocaleDateString(
+                      {`${activity.description} le ${new Date(activity.createdAt).toLocaleDateString(
                         'fr-FR'
                       )} à ${new Date(activity.createdAt).toLocaleTimeString('fr-FR')}`}
                     </p>
