@@ -17,7 +17,7 @@ const AvailableGameList = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState("");
 
-    if (usersLoading || scheduledGamesLoading) return <p>Loading...</p>;
+    if (!user || usersLoading || scheduledGamesLoading) return <p>Loading...</p>;
     if (usersError) return <p>Error loading users: {usersError}</p>;
     if (scheduledGamesError) return <p>Error loading forum: {forumError}</p>;
 
