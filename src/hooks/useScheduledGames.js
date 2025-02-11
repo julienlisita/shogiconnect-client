@@ -27,6 +27,7 @@ const useScheduledGames = () => {
         }
     }, [isAuthenticated]);
 
+    // Créer une partie en tant qu'organisateur
     const createScheduledGame = async (newScheduledGameData) => {
         try {
             const createdScheduledGame = await scheduledGameService.addScheduledGame(newScheduledGameData);
@@ -37,6 +38,20 @@ const useScheduledGames = () => {
         }
     };
 
+    // Supprimer une partie en tant qu'organisateur
+    const deleteScheduledGame = async (gameId) => {
+        try {
+            await scheduledGameService.deleteScheduledGame(gameId);
+            setScheduledGames((prevScheduledGames) =>
+                prevScheduledGames.filter(game => game.id !== gameId)
+            );
+        } catch (err) {
+            console.error("Erreur lors de la suppression de la partie :", err);
+            throw err;
+        }
+    };
+
+    // S'inscrire à une partie en tant que participant
     const joinScheduledGame = async (scheduledGameId) => {
         try {
             const updatedScheduledGame = await scheduledGameService.joinScheduledGame(scheduledGameId);
@@ -51,8 +66,23 @@ const useScheduledGames = () => {
         }
     };
 
+    // Se désinscrire d'une partie en tant que participant
+    const unsubscribeFromScheduledGame = async (gameId) => {
+        try {
+            const updatedScheduledGame = await scheduledGameService.unsubscribeFromScheduledGame(gameId);
+            setScheduledGames((prevScheduledGames) =>
+                prevScheduledGames.map(game =>
+                    game.id === gameId ? updatedScheduledGame : game
+                )
+            );
+        } catch (err) {
+            console.error("Erreur lors de la désinscription de la partie :", err);
+            throw err;
+        }
+    };
 
-    return { scheduledGames, loading, error, createScheduledGame, joinScheduledGame };
+
+    return { scheduledGames, loading, error, createScheduledGame, deleteScheduledGame, joinScheduledGame, unsubscribeFromScheduledGame };
 };
 
 export default useScheduledGames;
