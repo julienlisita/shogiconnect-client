@@ -4,11 +4,12 @@ import activityService from "../services/activityService";
 import { useAuthContext } from "../contexts/AuthContext";
 
 const useProfile = () => {
-  const { user, isAuthenticated } = useAuthContext();
+  const { user, logout, isAuthenticated } = useAuthContext();
   const [profile, setProfile] = useState(null);
   const [activities, setActivities] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -49,14 +50,26 @@ const useProfile = () => {
 
   const updateProfile = async (updatedData) => {
     try {
-      const updatedProfile = await profileService.updateProfile(user.id, updatedData);
+      const updatedProfile = await profileService.updateProfile(updatedData);
       setProfile(updatedProfile);
     } catch (err) {
       setError("Failed to update profile");
     }
   };
 
-  return { profile, activities, loading, error, updateProfile };
+  const deleteProfile = async () => {
+    try {  
+      await profileService.deleteProfile(); 
+      logout();
+      setProfile(null); 
+      setActivities(null); 
+    } catch (err) {
+      console.error("Erreur lors de la suppression du profil:", err);
+      setError("Failed to delete profile");
+    }
+  };
+
+  return { profile, activities, loading, error, updateProfile, deleteProfile };
 };
 
 export default useProfile;

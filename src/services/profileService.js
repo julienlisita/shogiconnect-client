@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/api/users/profile"; 
+const API_URL = "http://localhost:3000/api/users/me"; 
 
 // Fonction pour récupérer les données du profil
 const getProfile = async () => {
@@ -14,4 +14,15 @@ const updateProfile = async (updatedData) => {
     return response.data.data;
 };
 
-export default { getProfile, updateProfile };
+// Fonction pour supprimer le profil
+const deleteProfile = async () => {
+    try {
+        const response = await axios.delete(API_URL); 
+        return response.data.data; 
+      } catch (error) {
+        console.error('Erreur lors de la suppression du profil:', error);
+        throw error; 
+      }
+};
+
+export default { getProfile, updateProfile, deleteProfile };
