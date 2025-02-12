@@ -25,7 +25,7 @@ const useAuth = () => {
     return null;
   });
 
-  const isAuthenticated = !!user;
+  const [isAuthenticated, setIsAuthenticated] = useState(!!user);
 
   const login = async (username, password) => {
     try {
@@ -33,6 +33,7 @@ const useAuth = () => {
       const decodedToken = jwtDecode(token);
       setUser({ id: decodedToken.userId, username: decodedToken.username, roleId: decodedToken.roleId });
       localStorage.setItem("token", token);
+      setIsAuthenticated(true);
       authService.setAuthToken(token); 
     } 
     catch (err) {
@@ -43,7 +44,7 @@ const useAuth = () => {
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem("token");
+    setIsAuthenticated(false);
     authService.clearAuthToken(); 
     authService.logout();
   };
@@ -58,7 +59,7 @@ const useAuth = () => {
           email: decodedToken.email,
           roleId: decodedToken.roleId,
         });
-  
+        setIsAuthenticated(true);
         localStorage.setItem('token', token);
       } catch (error) {
         if (error.response) {
