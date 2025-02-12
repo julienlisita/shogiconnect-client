@@ -1,84 +1,104 @@
 import "./EditProfile.css"
 import Select from 'react-select';
-import { useState } from "react";
+import countryList from "react-select-country-list";
+import { useState,useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../contexts/AuthContext.jsx";
+import { useProfileContext } from "../../contexts/ProfileContext.jsx";
+import ConfirmationModal from "../common/ModalConfirmation.jsx";
 
 const EditProfile = () => {
 
-    const user = {
-        id: 1,
-        username: "ShadowNinja",
-        country: "France",
-        isOnline: true,
-        biography: "Je suis un maître de la furtivité, et j'ai toujours un coup d'avance sur mes adversaires. Le Shogi est pour moi une manière de développer mon esprit tactique et de rester en éveil. Depuis des années, j'étudie les stratégies et les mouvements des grands maîtres du Shogi. J'aime aussi analyser chaque partie que je joue, en cherchant constamment à m'améliorer. Pour moi, le Shogi n'est pas seulement un jeu, c'est un art qui reflète l'harmonie entre la patience, la précision et la détermination. Mon objectif est de devenir un joueur reconnu sur la scène internationale.",
-        user_role_id: 1,
-        created_at: "2024-09-01 09:00:00"
-      }
+    const navigate = useNavigate(); 
+    const { user } = useAuthContext();
+    const { profile, profileLoading, profileError, deleteProfile } = useProfileContext();
+    const [showModal, setShowModal] = useState(false);
+    const [username, setUsername] = useState("");
+    const [bio, setBio] = useState("");
+    const [selectedCountry, setSelectedCountry] = useState(null);
+    const [email, setEmail] = useState("");
 
-      const countries = [
-        { value: 'FR', label: 'France' },
-        { value: 'US', label: 'United States' },
-        { value: 'DE', label: 'Germany' },
-        // Ajoute ici tous les pays nécessaires
-      ];
-
-      const customStyles = {
-        control: (provided) => ({...provided,backgroundColor: '#D9D9D9', }),
-      };
-
-      const [showModal, setShowModal] = useState(false);
-
-      const handleDeleteClick = () => {
-        setShowModal(true); 
-      };
+    const options = countryList().getData(); 
     
-      const confirmDeletion = () => {
-        console.log('Compte supprimé');
-        setShowModal(false);
-      };
-    
-      const cancelDeletion = () => {
-        setShowModal(false); 
-      };
+    if (!user  || profileLoading ) return <p>Loading...</p>;
+    if (profileError) return <p>Error loading profile: {profileError}</p>;
+
+    useEffect(() => {
+        if (profile) {
+            setUsername(profile.username || "");
+            setBio(profile.biography || "");
+            setSelectedCountry(profile.country ? options.find(option => option.label === profile.country) : null);
+            setEmail(profile.email || "");
+        }
+    }, [profile]);
+
+    const handleDeleteClick = () => {
+    setShowModal(true); 
+    };
+
+    const confirmDeletion = () => {
+    deleteProfile();
+    navigate("/");
+    setShowModal(false);
+    };
+
+    const cancelDeletion = () => {
+    setShowModal(false); 
+    };
 
     return (
             <div className="editProfil-container">
                 <div className="editProfil">
                     <h1>Modification de compte</h1>
                     {/* Modal pour la confirmation de suppression du compte */}
-                    {showModal && (
-                    <div className="modal-overlay">
-                        <div className="modal">
-                            <h2>Confirmation</h2>
-                            <div className="modal-content">
-                                <p>Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.</p>
-                                <div className="validationButton-container">
-                                    <button className="validationButton" style={{ backgroundColor: 'red'}}onClick={confirmDeletion}>Oui, supprimer</button>
-                                </div>
-                                <div className="validationButton-container">
-                                    <button className="validationButton" onClick={cancelDeletion}>Annuler</button>            
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    )}
+                    <ConfirmationModal
+                    isOpen={showModal}
+                    onClose={cancelDeletion}
+                    onConfirm={confirmDeletion}
+                    message="Êtes-vous sûr de vouloir supprimer votre compte ?"
+                    />
                     <div className="editProfil-content">
                         <form className="editProfil-content-profileForm">
                             <h2>Informations</h2>
                             <div>   
                                 <label htmlFor="username">Nom d'utilisateur</label><br />
-                                <input name = "username" id = "username" type="text" />
+                                <input name = "username" id = "username" type="text" value={username} onChange={(e)=>setUsername(e.target.value)}/>
                             </div>
                             <div>
                                 <label htmlFor="bio">Biographie</label> <br />
-                                <textarea name="bio" id="bio" rows="10"></textarea>
+                                <textarea name="bio" id="bio" rows="10" value={bio} onChange={(e)=>setBio(e.target.value)} ></textarea>
                             </div>
                             <div>
                                 <label htmlFor="country">Pays</label><br />
-                                <Select className="selectCountry" name="country" id="country" options={countries} styles ={customStyles} />
+                                <Select 
+                                options={options} 
+                                value={selectedCountry} 
+                                onChange={(selectedOption) => setSelectedCountry(selectedOption)} 
+                                placeholder="Sélectionnez un pays"
+                                styles={{
+                                    control: (provided) => ({
+                                        ...provided,
+                                        backgroundColor: "#D9D9D9", // 🎨 Change la couleur de fond
+                                        borderRadius: "8px",
+                                        borderColor: "#black",
+                                        padding: "5px",
+                                        boxShadow: "none",
+                                    }),
+                                    menu: (provided) => ({
+                                        ...provided,
+                                        backgroundColor: "#D9D9D9", // Couleur du menu déroulant
+                                    }),
+                                    option: (provided, { isFocused, isSelected }) => ({
+                                        ...provided,
+                                        backgroundColor: isSelected ? "#A0785A" : isFocused ? "#D9D9D9" : "white",
+                                        color: isSelected ? "white" : "black",
+                                    }),
+                                }}
+                                />
                             </div>
                             <div>
                                 <label htmlFor="email">Mail</label><br />
-                                <input name = "email" id = "emain" type="email" />
+                                <input name = "email" id = "emain" type="email" value={email} onChange={(e)=>setEmail(e.target.value)} />
                             </div>
                             <div className="validationButton-container">
                                 <button className="validationButton">Valider</button>

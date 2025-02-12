@@ -2,7 +2,6 @@ import "./AccountHome.css";
 import { useAuthContext } from "../../contexts/AuthContext.jsx";
 import { useProfileContext } from "../../contexts/ProfileContext.jsx";
 import { useUserContext } from "../../contexts/UserContext.jsx";
-import { useEffect } from "react";
 
 const AccountHome = () => {
   const { user } = useAuthContext();
@@ -12,6 +11,7 @@ const AccountHome = () => {
   if (!user  || profileLoading || userStatsLoading) return <p>Loading...</p>;
   if (usersError) return <p>Error loading users: {usersError}</p>;
   if (profileError) return <p>Error loading profile: {profileError}</p>;
+  if (usersError) return <p>Error loading users: {usersError}</p>;
 
   const stat = userStats?.find((stat) => stat.UserId == user.id);
   const nbrGames = stat?.wins + stat?.losses + stat?.draws;
