@@ -16,7 +16,7 @@ const UserMenu = ({ isAuthenticated, logout, openLogin, openSignup }) => {
                     </ul>
                     <ul className="user-menu-icons">
                         <li onClick={logout} className="icon"><FaSignOutAlt /></li>
-                        <li><Link to="/compte" className="icon"><HiUser /></Link></li>
+                        <li><Link to="/user/home" className="icon"><HiUser /></Link></li>
                     </ul>
                 </>
             ) : (

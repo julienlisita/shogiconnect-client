@@ -1,4 +1,4 @@
-import "./EditProfile.css"
+import "./ProfileManagement.css"
 import Select from 'react-select';
 import countryList from "react-select-country-list";
 import { useState,useEffect } from "react";

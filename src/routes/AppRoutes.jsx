@@ -17,7 +17,7 @@ import ForumCommentsPage from '../pages/public/ForumCommentsPage';
 import AvailableGameListPage from '../pages/user/AvailableGameListPage';
 import OnlineGamePage from '../pages/user/OnlineGamePage';
 import AccountHomePage from '../pages/user/AccountHomePage';
-import EditProfilePage from '../pages/user/EditProfilePage';
+import ProfileManagementPage from '../pages/user/ProfileManagementPage';
 import ScheduledGameListPage from '../pages/user/ScheduledGameListPage';
 import GameHistoryPage from '../pages/user/GameHistoryPage';
 
@@ -62,7 +62,7 @@ const AppRoutes = () => {
             {/* Page d'accueil du compte utilisateurs */}
             <Route path="user/home" element={<ProtectedRoute allowedRoles={[ROLE_USER]}><AccountHomePage/></ProtectedRoute>} />
             {/* Modifier le profil de l'utilisateur connecté */}
-            <Route path="user/edit-profile" element={<ProtectedRoute allowedRoles={[ROLE_USER]}><EditProfilePage/></ProtectedRoute> } />
+            <Route path="user/profile-Management" element={<ProtectedRoute allowedRoles={[ROLE_USER]}><ProfileManagementPage/></ProtectedRoute> } />
             {/* Page de gestion des parties programmées */}
             <Route path="user/scheduled-games" element={<ProtectedRoute allowedRoles={[ROLE_USER]}><ScheduledGameListPage/> </ProtectedRoute>} />
             {/* Page de l'historique des parties */}
