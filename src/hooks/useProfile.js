@@ -10,7 +10,7 @@ const useProfile = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   
-
+  // récupérer les données du profil de l'utilisateur connécté
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -48,6 +48,7 @@ const useProfile = () => {
     }
   }, [ isAuthenticated]);
 
+  // Mettre à jour son propre profil
   const updateProfile = async (updatedData) => {
     try {
       const updatedProfile = await profileService.updateProfile(updatedData);
@@ -57,6 +58,7 @@ const useProfile = () => {
     }
   };
 
+  // Supprimer son propre profil
   const deleteProfile = async () => {
     try {  
       await profileService.deleteProfile(); 

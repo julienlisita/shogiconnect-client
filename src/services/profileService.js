@@ -8,13 +8,13 @@ const getProfile = async () => {
     return response.data.data;
 };
 
-// Fonction pour mettre à jour les données du profil
+// Fonction pour mettre à jour les données de son propre profil
 const updateProfile = async (updatedData) => {
-    const response = await axios.put({API_URL}, updatedData);
+    const response = await axios.put(API_URL, updatedData);
     return response.data.data;
 };
 
-// Fonction pour supprimer le profil
+// Fonction pour supprimer son porpore profil
 const deleteProfile = async () => {
     try {
         const response = await axios.delete(API_URL); 

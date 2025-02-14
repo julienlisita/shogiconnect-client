@@ -21,21 +21,23 @@ const AvailableGameList = () => {
     if (usersError) return <p>Error loading users: {usersError}</p>;
     if (scheduledGamesError) return <p>Error loading forum: {forumError}</p>;
 
+    // Fonction pour ouvrir la modal de création de partie
     const openCreateGameModal = () => {
       setIsCreateGameOpen(true);
     };
   
+    // Fonction pour fermer la modal de création de partie
     const closeCreateGameModal = () => {
       setIsCreateGameOpen(false);
     };
 
-    // Fonction pour ouvrir la modal avec un message
+    // Fonction pour ouvrir la modal de message
     const openModal = (message) => {
         setModalMessage(message);
         setModalIsOpen(true);
     };
 
-    // Fonction pour fermer la modal
+    // Fonction pour fermer la modal le message
     const closeModal = () => {
         setModalIsOpen(false);
     };
