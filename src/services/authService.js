@@ -26,4 +26,10 @@ const logout = () => {
   delete axios.defaults.headers.common['Authorization'];
 };
 
-export default { setAuthToken, clearAuthToken, login, signup, logout };
+const changePassword = async (oldPassword, newPassword) => {
+  const response = await axios.patch(`${API_URL}/change-password`, {oldPassword, newPassword});
+  return response.data;
+};
+
+
+export default { setAuthToken, clearAuthToken, login, signup, logout, changePassword };

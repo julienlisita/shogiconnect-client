@@ -71,7 +71,20 @@ const useAuth = () => {
       }
     };
 
-  return { user, isAuthenticated, login, logout, signup };
+    const changePassword = async (oldPassword, newPassword) => {
+      try {
+        const response = await authService.changePassword(oldPassword, newPassword);
+        return response.message; 
+      } catch (error) {
+        if (error.response) {
+          throw new Error(error.response.data.message || "Échec du changement de mot de passe.");
+        } else {
+          throw new Error("Une erreur réseau ou inconnue s'est produite.");
+        }
+      }
+    };
+
+  return { user, isAuthenticated, login, logout, signup, changePassword };
 };
 
 export default useAuth;
