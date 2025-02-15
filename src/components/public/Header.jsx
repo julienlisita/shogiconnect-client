@@ -10,7 +10,7 @@ import UserMenu from "../common/Usermenu";
 
 const Header = () => {
 
-    const { isAuthenticated, logout } = useAuthContext();
+    const { isAuthenticated, user, logout } = useAuthContext();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isSignupOpen, setIsSignupOpen] = useState(false);
@@ -33,6 +33,7 @@ const Header = () => {
                     logout={logout} 
                     openLogin={openModal} 
                     openSignup={openSignupModal} 
+                    roleId ={user?.roleId}
                 />
                 <LoginModal isOpen={isModalOpen} onClose={closeModal} />
                 <SignupModal isOpen={isSignupOpen} onClose={closeSignupModal} />

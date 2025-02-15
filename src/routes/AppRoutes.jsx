@@ -56,17 +56,17 @@ const AppRoutes = () => {
             {/* Routes spécifiques aux membres connectés */}
 
             {/* Liste des parties disponibles*/}          
-            <Route path="/available-games" element={<ProtectedRoute allowedRoles={[ROLE_USER]}><AvailableGameListPage/></ProtectedRoute>} />
+            <Route path="/available-games" element={<ProtectedRoute allowedRoles={[ROLE_USER,ROLE_ADMIN]}><AvailableGameListPage/></ProtectedRoute>} />
             {/* Jeu en ligne */}         
-            <Route path="/games/:game_id" element={<ProtectedRoute allowedRoles={[ROLE_USER]}><OnlineGamePage/></ProtectedRoute>} />
+            <Route path="/games/:game_id" element={<ProtectedRoute allowedRoles={[ROLE_USER,ROLE_ADMIN]}><OnlineGamePage/></ProtectedRoute>} />
             {/* Page d'accueil du compte utilisateurs */}
-            <Route path="user/home" element={<ProtectedRoute allowedRoles={[ROLE_USER]}><AccountHomePage/></ProtectedRoute>} />
+            <Route path="user/home" element={<ProtectedRoute allowedRoles={[ROLE_USER,ROLE_ADMIN]}><AccountHomePage/></ProtectedRoute>} />
             {/* Modifier le profil de l'utilisateur connecté */}
-            <Route path="user/profile-Management" element={<ProtectedRoute allowedRoles={[ROLE_USER]}><ProfileManagementPage/></ProtectedRoute> } />
+            <Route path="user/profile-Management" element={<ProtectedRoute allowedRoles={[ROLE_USER,ROLE_ADMIN]}><ProfileManagementPage/></ProtectedRoute> } />
             {/* Page de gestion des parties programmées */}
-            <Route path="user/scheduled-games" element={<ProtectedRoute allowedRoles={[ROLE_USER]}><ScheduledGameListPage/> </ProtectedRoute>} />
+            <Route path="user/scheduled-games" element={<ProtectedRoute allowedRoles={[ROLE_USER,ROLE_ADMIN]}><ScheduledGameListPage/> </ProtectedRoute>} />
             {/* Page de l'historique des parties */}
-            <Route path="user/game-history" element={<ProtectedRoute allowedRoles={[ROLE_USER]}><GameHistoryPage/> </ProtectedRoute>} />
+            <Route path="user/game-history" element={<ProtectedRoute allowedRoles={[ROLE_USER,ROLE_ADMIN]}><GameHistoryPage/> </ProtectedRoute>} />
 
             {/* Routes spécifique au administrateurs connectés */}
 
