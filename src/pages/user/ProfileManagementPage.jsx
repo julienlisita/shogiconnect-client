@@ -1,7 +1,7 @@
 import ProfileManagement from "../../components/user/ProfileManagement";
 import UserSidebar from "../../components/user/UserSidebar";
 
-const EditProfilePage = () => {
+const ProfileManagementPage = () => {
     return (
       <div className="pageWithSidebar">
         <UserSidebar/>
@@ -10,4 +10,4 @@ const EditProfilePage = () => {
     );
   };
   
-  export default EditProfilePage;
+  export default ProfileManagementPage;

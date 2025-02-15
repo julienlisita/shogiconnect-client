@@ -8,10 +8,10 @@ import { useProfileContext } from "../../contexts/ProfileContext.jsx";
 import ConfirmationModal from "../common/ModalConfirmation.jsx";
 import ModalMessage from "../common/ModalMessage";
 
-const EditProfile = () => {
+const ProfilManagement = () => {
 
     const navigate = useNavigate(); 
-    const { user } = useAuthContext();
+    const { user, changePassword } = useAuthContext();
     const { profile, profileLoading, profileError, updateProfile, deleteProfile } = useProfileContext();
     const [showConfirmationModal, setShowConfirmationModal] = useState(false);
     const [showMessageModal, setShowMessageModal] = useState(false);
@@ -20,6 +20,9 @@ const EditProfile = () => {
     const [bio, setBio] = useState("");
     const [selectedCountry, setSelectedCountry] = useState(null);
     const [email, setEmail] = useState("");
+    const [oldPassword, setOldPassword] = useState("");
+    const [newPassword, setNewPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
 
     const options = countryList().getData(); 
     
@@ -55,13 +58,32 @@ const EditProfile = () => {
             username: username,
             email: email,
             country: selectedCountry?.label || "", 
-            biography: bio || "",  // Evite les valeurs null/undefined
+            biography: bio || "", 
         };
         try {
             await updateProfile(updatedData);
             openModal("Profil modifié!");
         } catch (error) {
             console.error("Erreur lors de la mise à jour du profil :", error);
+        }
+    };
+
+    const handleChangePassword = async (e) => {
+        e.preventDefault();
+        
+        if (newPassword !== confirmPassword) {
+            openModal("Les nouveaux mots de passe ne correspondent pas.");
+            return;
+        }
+    
+        try {
+            const message = await changePassword(oldPassword, newPassword);
+            openModal(message); 
+            setOldPassword("");
+            setNewPassword("");
+            setConfirmPassword("");
+        } catch (error) {
+            openModal(error.message);
         }
     };
 
@@ -128,26 +150,26 @@ const EditProfile = () => {
                             </div>
                             <div>
                                 <label htmlFor="email">Mail</label><br />
-                                <input name = "email" id = "emain" type="email" value={email} onChange={(e)=>setEmail(e.target.value)} />
+                                <input name = "email" id = "email" type="email" value={email} onChange={(e)=>setEmail(e.target.value)} />
                             </div>
                             <div className="validationButton-container">
                                 <button className="validationButton">Valider</button>
                             </div>
                            
                         </form>
-                        <form className="editProfil-content-passwordForm">
+                        <form className="editProfil-content-passwordForm" onSubmit={handleChangePassword}>
                             <h2>Mot de passe</h2>
                             <div>
                                 <label htmlFor="oldpassword">Ancien mot de passe</label><br />
-                                <input name="oldpassword" id="oldpassword" type="password"/>
+                                <input name="oldpassword" id="oldpassword" type="password" value={oldPassword} onChange={(e)=>setOldPassword(e.target.value)}/>
                             </div>
                             <div>
                                 <label htmlFor="newpassword">Nouveau mot de passe</label><br />
-                                <input name="newpassword" id="newpassword" type="password"/>
+                                <input name="newpassword" id="newpassword" type="password" value={newPassword} onChange={(e)=>setNewPassword(e.target.value)}/>
                             </div>
                             <div>
                                 <label htmlFor="passwordconfirmed">Confirmation du mot de passe</label><br />
-                                <input name="passwordconfirmed" id="passwordconfirmed" type="password"/>
+                                <input name="passwordconfirmed" id="passwordconfirmed" type="password" value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)}/>
                             </div>
                             <div className="validationButton-container">
                                 <button className="validationButton">Valider</button>
@@ -163,4 +185,4 @@ const EditProfile = () => {
     );
 };
 
-export default EditProfile;
+export default ProfilManagement;
