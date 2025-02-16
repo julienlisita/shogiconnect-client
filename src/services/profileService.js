@@ -25,4 +25,22 @@ const deleteProfile = async () => {
       }
 };
 
-export default { getProfile, updateProfile, deleteProfile };
+// Mettre à jour l'avatar de l'utilisateur
+const updateAvatar = async (avatarData) => {
+  const formData = new FormData();
+  formData.append("avatar", avatarData);
+
+  try {
+      const response = await axios.patch(`${API_URL}/avatar`, formData, {
+          headers: {
+              "Content-Type": "multipart/form-data",
+          },
+      });
+      return response.data; 
+  } catch (error) {
+      console.error("Erreur lors de la mise à jour de l'avatar", error);
+      throw error;
+  }
+};
+
+export default { getProfile, updateProfile, deleteProfile, updateAvatar };

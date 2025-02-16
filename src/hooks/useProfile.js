@@ -71,7 +71,21 @@ const useProfile = () => {
     }
   };
 
-  return { profile, activities, loading, error, updateProfile, deleteProfile };
+  // Fonction pour mettre à jour l'avatar
+  const updateAvatar = async (avatarData) => {
+    try {
+        const updatedProfile = await profileService.updateAvatar(avatarData); // Mettre à jour l'avatar via le service
+        setProfile((prevProfile) => ({
+          ...prevProfile,
+          avatar: updatedProfile.avatar
+        }));
+    } catch (err) {
+        setError('Erreur lors de la mise à jour de l\'avatar');
+        console.error(err);
+    }
+};
+
+  return { profile, activities, loading, error, updateProfile, deleteProfile, updateAvatar };
 };
 
 export default useProfile;
