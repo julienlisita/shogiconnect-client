@@ -16,18 +16,23 @@ const ChangePasswordForm = () => {
         e.preventDefault();
         
         if (newPassword !== confirmPassword) {
-            openModal("Les nouveaux mots de passe ne correspondent pas.");
+            setModalMessage("Les nouveaux mots de passe ne correspondent pas.");
+            setShowMessageModal(true);
             return;
         }
     
         try {
             const message = await changePassword(oldPassword, newPassword);
-            openModal(message); 
+            setModalMessage(message);
+            setShowMessageModal(true);
+            setModalMessage(message);
+            setShowMessageModal(true);
             setOldPassword("");
             setNewPassword("");
             setConfirmPassword("");
         } catch (error) {
-            openModal(error.message);
+            setModalMessage(error.message);
+            setShowMessageModal(true);
         }
     };
   
