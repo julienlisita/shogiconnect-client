@@ -6,6 +6,7 @@ import { useProfileContext } from "../../contexts/ProfileContext.jsx";
 import ConfirmationModal from "../common/ModalConfirmation.jsx";
 import EditProfileForm from "./EditPorfilForm.jsx";
 import ChangePasswordForm from "./ChangePasswordForm.jsx";
+import ChangeAvatarForm from "./ChangeAvatarForm.jsx";
 
 const ProfilManagement = () => {
 
@@ -41,7 +42,10 @@ const cancelDeletion = () => {
                     <h1>Modification de compte</h1>
                     <div className="editProfil-content">
                         <EditProfileForm/>
-                        <ChangePasswordForm/>
+                        <div className="editProfil-content-rightBlock">
+                            <ChangeAvatarForm/>
+                            <ChangePasswordForm/>
+                        </div>
                     </div>
                     <div className = "deteteButton-container">
                         <button  onClick={handleDeleteClick} style={{ backgroundColor: 'red', color: 'white' }}>Supprimer le compte</button>
