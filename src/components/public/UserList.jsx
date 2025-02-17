@@ -20,6 +20,9 @@ const UserList = () => {
 
     const getStatByUserId = (user_id) => userStats ? userStats.find(stat => stat.UserId == user_id) : null;
 
+    const getAvatar = (user) => user && user.avatar ? `http://localhost:3000/uploads/${user.avatar}` : image;
+    
+
     const sortedUsers = users.sort((a, b) => {
         if (sortOption === 'score') {
             const aStat = getStatByUserId(a.id);
@@ -75,7 +78,7 @@ const UserList = () => {
                       <Link key = {user.id} to={`/users/${user.id}`}>
                         <div className="userCard">
                           <div className="userCard-avatar">
-                              <img src={image} alt="" />
+                              <img src={getAvatar(user)} alt="" />
                           </div>
                           <div className="userCard-info">
                               <p className="userCard-info-username">{user.username}</p>

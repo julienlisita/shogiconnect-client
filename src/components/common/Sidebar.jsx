@@ -1,35 +1,36 @@
-import image from "./../../assets/images/user.png"
+import image from "./../../assets/images/user.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useAuthContext } from "../../contexts/AuthContext";
-import "./Sidebar.css"
+import { useUserContext } from "../../contexts/UserContext.jsx";
+import { useProfileContext } from "../../contexts/ProfileContext.jsx";
+import "./Sidebar.css";
 
-const Sidebar = ({ menuItems }) => 
-{
-    const { user, isAuthenticated } = useAuthContext();
-    
-    const username = user.username;
-
+const Sidebar = ({ menuItems }) => {
+    const { user } = useAuthContext();
+    const {profile, profileLoading, profileError} = useProfileContext();
+    const {usersLoading, usersError } = useUserContext();
     const [isOpen, setIsOpen] = useState(false);
 
-    const toggleSidebar = () => {
-        setIsOpen(!isOpen);
-    };
+    if (usersLoading || profileLoading) return <p>Loading...</p>;
+    if (profileError) return <p>Error profile users: {profileError}</p>;
+    if (usersError) return <p>Error loading users: {usersError}</p>;
+
+    const toggleSidebar = () => setIsOpen(!isOpen);
+
+    const username = user.username;
+    const avatar = profile && profile.avatar ? `http://localhost:3000/uploads/${profile.avatar}` : image;
 
     return (
         <div className="principal">
             <div className="sidebarContainer">
-                {/* Menu burger pour afficher/cacher la sidebar */}
                 <div className={`burger-menu ${isOpen ? 'open' : ''}`} onClick={toggleSidebar}>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                    <div></div><div></div><div></div>
                 </div>
-                {/* Sidebar qui change de classe en fonction de son état */}
                 <div className={`sidebar ${isOpen ? 'open' : 'sidebar-hidden'}`}>
                     <p className="sidebar-welcome">{`Bienvenue ${username}`}</p>
                     <div className="sidebar-avatar">
-                        <img src={image} alt="" />
+                        <img src={avatar} alt="Avatar" />
                     </div>
                     <ul className="sidebar-menu">
                         {menuItems.map((item, index) => (
@@ -44,8 +45,7 @@ const Sidebar = ({ menuItems }) =>
             </div>
             <div className="container-fake"></div>
         </div>
-        
     );
-}
+};
 
 export default Sidebar;

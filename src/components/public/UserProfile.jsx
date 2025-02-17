@@ -27,6 +27,9 @@ const UserProfile = () => {
     const nbrGames = stat ? (stat.wins + stat.losses + stat.draws) : 0;
 
     const userActivities = activities.filter(activity => activity.userId == user.id);
+
+    const avatar = user && user.avatar ? `http://localhost:3000/uploads/${user.avatar}` : image;
+    
     
     return (
         <div>
@@ -39,7 +42,7 @@ const UserProfile = () => {
                         <h2>Infos</h2>
                         <div className = "profile-leftBlock-infos">
                             <div className="profile-leftBlock-infos-avatar">
-                                <img src={image} alt="" />
+                                <img src={avatar} alt="" />
                             </div>
                             <p className="profile-leftBlock-infos-username">{user.username}</p>
                             <p className={statusClass}>
