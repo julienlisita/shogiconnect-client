@@ -7,14 +7,14 @@ import useUserStats from '../hooks/useUserStats';
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-    const { users, loading: usersLoading, error: usersError } = useUsers();
+    const { users, loading: usersLoading, error: usersError, deleteUser } = useUsers();
     const { userStats, loading: userStatsLoading, error: userStatsError } = useUserStats();
    
     const loading = usersLoading || userStatsLoading;
     const error = usersError || userStatsError;
 
     return (
-        <UserContext.Provider value={{ users, userStats, loading, error }}>
+        <UserContext.Provider value={{ users, userStats, loading, error, deleteUser }}>
             {children}
         </UserContext.Provider>
     );

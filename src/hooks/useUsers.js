@@ -8,6 +8,7 @@ const useUsers = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+     // Récupérer la liste des utilisateurs au montage du composant
     useEffect(() => {
         const fetchUsers = async () => {
             try {
@@ -23,8 +24,18 @@ const useUsers = () => {
         fetchUsers();
     }, []);
 
+    // Supprimer un utilisateur
+    const deleteUser = async (userId) => {
+        try {
+            await userService.deleteUser(userId);
+            setUsers((prevUsers) => prevUsers.filter(user => user._id !== userId));
+        } catch (err) {
+            console.error("Erreur lors de la suppression de l'utilisateur :", err);
+            throw err;
+        }
+    };
 
-    return { users, loading, error };
+    return { users, loading, error, deleteUser };
 };
 
 export default useUsers;
