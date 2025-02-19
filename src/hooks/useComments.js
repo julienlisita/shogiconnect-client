@@ -8,8 +8,7 @@ const useComments = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // Récupération des commentaires au montage du composant
-
+    // Récupérer des commentaires au montage du composant
     const fetchComments = async () => {
         try {
             const commentsData = await commentService.getComments();
@@ -25,6 +24,7 @@ const useComments = () => {
         fetchComments();
     }, []);
 
+    // créer un commentaire
     const createComment = async (newCommentData) => {
             try {
                 const createdComment = await commentService.addComment(newCommentData);
@@ -35,7 +35,18 @@ const useComments = () => {
             }
         };
 
-    return { comments, loading, error, createComment };
+    // Supprimer un commentaire
+    const deleteComment = async (commentId) => {
+        try {
+            await commentService.deleteComment(commentId);
+            setComments(comments.filter(comment => comment._id !== commentId));
+        } catch (err) {
+            console.error("Erreur lors de la suppression du commentaire :", err);
+            throw err;
+        }
+    };
+
+    return { comments, loading, error, createComment, deleteComment };
 };
 
 export default useComments;
