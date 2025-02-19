@@ -8,6 +8,7 @@ const useTopics = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    // Récupérer la liste des topics au montage du composant
     useEffect(() => {
         const fetchTopics = async () => {
             try {
@@ -23,6 +24,7 @@ const useTopics = () => {
         fetchTopics();
     }, []);
 
+    // Créer un topic
     const createTopic = async (newTopicData) => {
         try {
             const createdTopic = await topicService.addTopic(newTopicData);
@@ -33,7 +35,18 @@ const useTopics = () => {
         }
     };
 
-    return { topics, loading, error, createTopic };
+    // Supprimer un topic
+    const deleteTopic = async (topicId) => {
+        try {
+            await topicService.deleteTopic(topicId);
+            setTopics((prevTopics) => prevTopics.filter(topic => topic._id !== topicId));
+        } catch (err) {
+            console.error("Erreur lors de la suppression du topic :", err);
+            throw err;
+        }
+    };
+
+    return { topics, loading, error, createTopic, deleteTopic };
 };
 
 export default useTopics;
