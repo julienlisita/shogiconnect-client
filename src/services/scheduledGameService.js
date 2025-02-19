@@ -16,7 +16,7 @@ const addScheduledGame = async (scheduledGameData) => {
     return response.data.data;
 };
 
-// Supprimer une partie en tant qu'organisateur
+// Supprimer une partie en tant qu'organisateur ou admin
 const deleteScheduledGame = async (scheduledGameId) => {
     const response = await axios.delete(`${API_URL}/${scheduledGameId}`);
     return response.data.data;

@@ -10,6 +10,7 @@ const useScheduledGames = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    // Récupérer la liste des rendez-vous de partie
     useEffect(() => {
         const fetchScheduledGames = async () => {
             try {
@@ -27,7 +28,7 @@ const useScheduledGames = () => {
         }
     }, [isAuthenticated]);
 
-    // Créer une partie en tant qu'organisateur
+    // Créer un rendez-vous de partie en tant qu'organisateur
     const createScheduledGame = async (newScheduledGameData) => {
         try {
             const createdScheduledGame = await scheduledGameService.addScheduledGame(newScheduledGameData);
@@ -38,7 +39,7 @@ const useScheduledGames = () => {
         }
     };
 
-    // Supprimer une partie en tant qu'organisateur
+    // Supprimer un rendez-vous de partie en tant qu'organisateur ou admin
     const deleteScheduledGame = async (gameId) => {
         try {
             await scheduledGameService.deleteScheduledGame(gameId);
