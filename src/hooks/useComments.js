@@ -39,7 +39,7 @@ const useComments = () => {
     const deleteComment = async (commentId) => {
         try {
             await commentService.deleteComment(commentId);
-            setComments(comments.filter(comment => comment._id !== commentId));
+            setComments(comments.filter(comment => comment.id !== commentId));
         } catch (err) {
             console.error("Erreur lors de la suppression du commentaire :", err);
             throw err;

@@ -39,7 +39,7 @@ const useTopics = () => {
     const deleteTopic = async (topicId) => {
         try {
             await topicService.deleteTopic(topicId);
-            setTopics((prevTopics) => prevTopics.filter(topic => topic._id !== topicId));
+            setTopics((prevTopics) => prevTopics.filter(topic => topic.id !== topicId));
         } catch (err) {
             console.error("Erreur lors de la suppression du topic :", err);
             throw err;

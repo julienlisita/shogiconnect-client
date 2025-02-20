@@ -28,7 +28,7 @@ const useUsers = () => {
     const deleteUser = async (userId) => {
         try {
             await userService.deleteUser(userId);
-            setUsers((prevUsers) => prevUsers.filter(user => user._id !== userId));
+            setUsers((prevUsers) => prevUsers.filter(user => user.id !== userId));
         } catch (err) {
             console.error("Erreur lors de la suppression de l'utilisateur :", err);
             throw err;
