@@ -1,0 +1,84 @@
+.manageTopics-container
+{
+    flex:1;
+}
+
+.manageTopics
+{
+    width:95%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.manageTopics-content
+{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    margin-top: 40px;
+}
+
+.manageTopics-displaySelection
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 2.78vw;
+}
+
+.manageTopics-list 
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    flex-wrap:wrap;
+    width: 100%;
+    height: 600px;
+    overflow-y: auto;
+    margin-top: 2.78vw;
+}
+.manageTopics-list-table
+{
+    width:100%;
+}
+
+.manageTopics-list-table thead
+{
+    position:sticky;
+    top: 0;
+}
+
+.manageTopics-list-table-username
+{
+    color:black;
+    font-weight: bold;
+}
+
+.manageTopics-list-table-buttonContainer
+{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+
+.manageTopics-CreateButton
+{
+    margin-top: 2.78vw;
+}
+
+@media  (max-width: 900px) 
+{
+    .manageTopics-displaySelection
+    {
+        margin-top: 23px;
+    }
+    .manageTopics-list 
+    {
+        margin-top: 23px;
+    }
+    .manageTopics-CreateButton
+    {
+        margin-top: 23px;
+    }
+}
+

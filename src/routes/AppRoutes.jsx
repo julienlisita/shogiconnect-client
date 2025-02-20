@@ -23,7 +23,8 @@ import GameHistoryPage from '../pages/user/GameHistoryPage';
 
 import DashboardPage from '../pages/admin/DashboardPage';
 import ManageUsersPage from '../pages/admin/ManageUsersPage';
-import ManageForumPage from '../pages/admin/ManageForumPage';
+import ManageTopicsPage from '../pages/admin/ManageTopicsPage';
+import ManageCommentsPage from '../pages/admin/ManageCommentsPage';
 import ManageGamesPage from '../pages/admin/ManageGamesPage';
 
 const ROLE_USER = 1
@@ -74,8 +75,10 @@ const AppRoutes = () => {
             <Route path="/admin/dashboard" element={<ProtectedRoute allowedRoles={[ROLE_ADMIN]}><DashboardPage /></ProtectedRoute>} />
             {/* Page de gestion des utilisateurs (admin) */}
             <Route path="/admin/manage-users" element={<ProtectedRoute allowedRoles={[ROLE_ADMIN]}><ManageUsersPage /></ProtectedRoute>} />
-            {/* Page de gestion du forum (admin) */}
-            <Route path="/admin/manage-forum" element={<ProtectedRoute allowedRoles={[ROLE_ADMIN]}><ManageForumPage /></ProtectedRoute>} />
+            {/* Page de gestion des topics (admin) */}
+            <Route path="/admin/manage-topics" element={<ProtectedRoute allowedRoles={[ROLE_ADMIN]}><ManageTopicsPage /></ProtectedRoute>} />
+            {/* Page de gestion des commentaires (admin) */}
+            <Route path="/admin/manage-comments/:topic_id" element={<ProtectedRoute allowedRoles={[ROLE_ADMIN]}><ManageCommentsPage /></ProtectedRoute>} />
             {/* Page de gestion des parties (admin) */}
             <Route path="/admin/manage-games" element={<ProtectedRoute allowedRoles={[ROLE_ADMIN]}><ManageGamesPage /></ProtectedRoute>} />
 
