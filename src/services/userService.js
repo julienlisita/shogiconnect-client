@@ -12,13 +12,10 @@ const getUsers = async () => {
 };
 
 // Supprimer un utilisateur par ID (admin uniquement)
-const deleteUser = async (userId, token) => {
+const deleteUser = async (userId) => {
     const response = await axios.delete(`${API_URL}/${userId}`, {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
     });
-    return response.data;
+    return response.data.data;
 };
 
 export default { getUsers, deleteUser };
