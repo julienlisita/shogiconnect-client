@@ -1,0 +1,83 @@
+.manageComments-container
+{
+    flex:1;
+}
+
+.manageComments
+{
+    width:95%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.manageComments-content
+{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    margin-top: 40px;
+}
+
+.manageComments-displaySelection
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 2.78vw;
+}
+
+.manageComments-list 
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    flex-wrap:wrap;
+    width: 100%;
+    height: 600px;
+    overflow-y: auto;
+    margin-top: 2.78vw;
+}
+.manageComments-list-table
+{
+    width:100%;
+}
+
+.manageComments-list-table thead
+{
+    position:sticky;
+    top: 0;
+}
+
+.manageComments-list-table-username
+{
+    color:black;
+    font-weight: bold;
+}
+
+.manageComments-list-table-buttonContainer
+{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+
+.manageComments-CreateButton
+{
+    margin-top: 2.78vw;
+}
+
+@media  (max-width: 900px) 
+{
+    .manageComments-displaySelection
+    {
+        margin-top: 23px;
+    }
+    .manageComments-list 
+    {
+        margin-top: 23px;
+    }
+    .manageComments-CreateButton
+    {
+        margin-top: 23px;
+    }
+}
