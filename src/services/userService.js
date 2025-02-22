@@ -18,4 +18,11 @@ const deleteUser = async (userId) => {
     return response.data.data;
 };
 
-export default { getUsers, deleteUser };
+// Mettre à jour le rôle d'un utilisateur (admin uniquement)
+const updateUserRole = async (userId, newRole) => {
+    const response = await axios.patch(`${API_URL}/${userId}/role`, { RoleId: newRole });
+    return response.data.data;
+};
+
+
+export default { getUsers, deleteUser, updateUserRole };

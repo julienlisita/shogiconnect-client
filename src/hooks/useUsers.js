@@ -34,8 +34,23 @@ const useUsers = () => {
             throw err;
         }
     };
+    
+    // Mettre à jour le rôle d'un utilisateur
+    const updateUserRole = async (userId, newRole) => {
+        try {
+            const updatedUser = await userService.updateUserRole(userId, newRole);
+            setUsers((prevUsers) => 
+                prevUsers.map(user => 
+                    user.id === userId ? { ...user, RoleId: newRole } : user
+                )
+            );
+        } catch (err) {
+            console.error("Erreur lors de la mise à jour du rôle de l'utilisateur :", err);
+            throw err;
+        }
+    };
 
-    return { users, loading, error, deleteUser };
+    return { users, loading, error, deleteUser, updateUserRole };
 };
 
 export default useUsers;
