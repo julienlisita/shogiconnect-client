@@ -2,12 +2,15 @@ import "./ManageUsers.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
+import RoleModal from "./RoleModal";
+import ConfirmationModal from "../common/ModalConfirmation";
 
 const ManageUsers = () => {
 
-    const {users, usersLoading, usersError, deleteUser} = useUserContext();
+    const {users, usersLoading, usersError, deleteUser, updateUserRole} = useUserContext();
     const [sortUserOption, setSortUserOption] = useState('username');
-    const [showModal, setShowModal] = useState(false);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+    const [isRoleModalOpen, setIsRoleModalOpen] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
 
     if (usersLoading) return <p>Loading...</p>;
@@ -18,16 +21,16 @@ const ManageUsers = () => {
      const handleDeleteUser = (userId) =>
         {
             setSelectedUser(userId)
-            setShowModal(true); 
+            setIsDeleteModalOpen(true);
         }
         const confirmDeletion = () => 
         {
             deleteUser(selectedUser)
-            setShowModal(false);
+            setIsDeleteModalOpen(false);
         };
         
         const cancelDeletion = () => {
-            setShowModal(false); 
+            setIsDeleteModalOpen(false);
         };    
 
     // Gérer le changement de tri des utilisateurs
@@ -57,27 +60,32 @@ const ManageUsers = () => {
         }
     }
 
+    const openRoleModal = (user) => {
+        setSelectedUser(user);
+        setIsRoleModalOpen(true);
+    };
+
+    const closeRoleModal = () => {
+        setIsRoleModalOpen(false);
+        setSelectedUser(null);
+    };
+
+    const handleRoleChange = async (userId, newRole) => {
+      await updateUserRole(userId,newRole);
+      closeRoleModal(); 
+    };
+
     return (
         <div className="manageUsers-container">
             <div className="manageUsers">
                 <h1>Gestion des utilisateurs</h1>
-                {/* Modal pour la confirmation de suppression d'un topic' */}
-                {showModal && (
-                <div className="modal-overlay">
-                    <div className="modal">
-                        <h2>Confirmation</h2>
-                        <div className="modal-content">
-                            <p>Êtes-vous sûr de vouloir supprimer cette partie ?</p>
-                            <div className="validationButton-container">
-                                <button className="validationButton" style={{ backgroundColor: 'red'}}onClick={confirmDeletion}>Oui</button>
-                            </div>
-                            <div className="validationButton-container">
-                                <button className="validationButton" onClick={cancelDeletion}>Annuler</button>            
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                )}
+                {/* Modal pour la confirmation de suppression d'un utilisateur' */}
+                <ConfirmationModal
+                isOpen={isDeleteModalOpen}
+                onClose={cancelDeletion}
+                onConfirm={confirmDeletion}
+                message="Êtes-vous sûr de vouloir supprimer cet utilisateur ?"
+                />
                 <form className="manageUsers-displaySelection">
                     <select className="orderSelect" id="sortBy" value={sortUserOption} name="sortBy" onChange={handleSortUserChange}>
                         <option value="username">Par pseudo</option>
@@ -104,7 +112,7 @@ const ManageUsers = () => {
                                 <td>{getRoleLabel(user.RoleId)}</td>
                                 <td>    
                                     <div className="manageUsers-list-table-buttonContainer">
-                                        <button className="manageUsers-table-modifyButton button">Modifier rôle</button>
+                                        <button className="manageUsers-table-modifyButton button" onClick={() => openRoleModal(user)}>Modifier rôle</button>
                                     </div>            
                                 </td>
                                 <td>
@@ -118,6 +126,16 @@ const ManageUsers = () => {
                     </table>
                 </div>
             </div>
+
+             {/* Modal */}
+             {selectedUser && (
+                <RoleModal
+                    isOpen={isRoleModalOpen}
+                    onClose={closeRoleModal}
+                    onConfirm={handleRoleChange}
+                    user={selectedUser}
+                />
+            )}
         </div>   
     )
 };
