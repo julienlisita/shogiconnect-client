@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useParams,Link } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
 import { useForumContext } from "../../contexts/ForumContext.jsx";
+import ConfirmationModal from "../common/ModalConfirmation";
 
 const ManageComments = () => {
 
@@ -10,7 +11,7 @@ const ManageComments = () => {
     const { users, usersLoading, usersError} = useUserContext();
     const { comments, commentsLoading, commentsError, deleteComment } = useForumContext();
     const [sortCommentOption, setSortCommentOption] = useState('author');
-    const [showModal, setShowModal] = useState(false);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [selectedCommentId, setSelectedCommentId] = useState(null);
 
     if (usersLoading || commentsLoading) return <p>Loading...</p>;
@@ -27,16 +28,16 @@ const ManageComments = () => {
     const handleDeleteComment = (commentId) =>
     {
         setSelectedCommentId(commentId)
-        setShowModal(true); 
+        setIsDeleteModalOpen(true); 
     }
     const confirmDeletion = () => 
     {
         deleteComment(selectedCommentId)
-        setShowModal(false);
+        setIsDeleteModalOpen(false);
     };
     
     const cancelDeletion = () => {
-        setShowModal(false); 
+        setIsDeleteModalOpen(false); 
     };
 
     const getUserById = (user_id) => users.find(user => user.id == user_id);
@@ -60,22 +61,12 @@ const ManageComments = () => {
             <div className="manageComments">
                 <h1>Gestion des Commentaires</h1>
                 {/* Modal pour la confirmation de suppression d'un commentaire' */}
-                {showModal && (
-                <div className="modal-overlay">
-                    <div className="modal">
-                        <h2>Confirmation</h2>
-                        <div className="modal-content">
-                            <p>Êtes-vous sûr de vouloir supprimer ce commentaire ?</p>
-                            <div className="validationButton-container">
-                                <button className="validationButton" style={{ backgroundColor: 'red'}}onClick={confirmDeletion}>Oui</button>
-                            </div>
-                            <div className="validationButton-container">
-                                <button className="validationButton" onClick={cancelDeletion}>Annuler</button>            
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                )}
+                <ConfirmationModal
+                isOpen={isDeleteModalOpen}
+                onClose={cancelDeletion}
+                onConfirm={confirmDeletion}
+                message="Êtes-vous sûr de vouloir supprimer ce commentaire ?"
+                />
                 <form className="manageComments-displaySelection">
                     <select className = "orderSelect" id="sortBy" value={sortCommentOption} name="sortBy" onChange={handleSortCommentChange}>
                         <option value="author">Par auteur</option>
@@ -94,7 +85,7 @@ const ManageComments = () => {
                         </thead>
                         <tbody>
                         {sortedComments.length === 0 ? (
-                                <tr><td colSpan="4">Commentaires non disponibles</td></tr>
+                                <tr><td colSpan="4">Aucun commentaire</td></tr>
                             ) : (
                                 sortedComments.map((comment) => {
                                     const author = getUserById(comment.UserId);

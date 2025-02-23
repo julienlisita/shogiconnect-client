@@ -3,13 +3,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
 import { useForumContext } from "../../contexts/ForumContext.jsx";
+import ConfirmationModal from "../common/ModalConfirmation";
 
 const ManageTopics = () => {
 
     const { users, usersLoading, usersError} = useUserContext();
     const { topics, topicsLoading, topicsError, deleteTopic } = useForumContext();
     const [sortTopicOption, setSortTopicOption] = useState('title');
-    const [showModal, setShowModal] = useState(false);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [selectedTopicId, setSelectedTopicId] = useState(null);
 
     if (usersLoading || topicsLoading) return <p>Loading...</p>;
@@ -26,16 +27,16 @@ const ManageTopics = () => {
     const handleDeleteTopic = (topicId) =>
     {
         setSelectedTopicId(topicId)
-        setShowModal(true); 
+        setIsDeleteModalOpen(true); 
     }
     const confirmDeletion = () => 
     {
         deleteTopic(selectedTopicId)
-        setShowModal(false);
+        setIsDeleteModalOpen(false);
     };
     
     const cancelDeletion = () => {
-        setShowModal(false); 
+        setIsDeleteModalOpen(false); 
     };
 
     const getUserById = (user_id) => users.find(user => user.id == user_id);
@@ -61,22 +62,12 @@ const ManageTopics = () => {
             <div className="manageTopics">
                 <h1>Gestion des Topics</h1>
                 {/* Modal pour la confirmation de suppression d'un topic' */}
-                {showModal && (
-                <div className="modal-overlay">
-                    <div className="modal">
-                        <h2>Confirmation</h2>
-                        <div className="modal-content">
-                            <p>Êtes-vous sûr de vouloir supprimer cette partie ?</p>
-                            <div className="validationButton-container">
-                                <button className="validationButton" style={{ backgroundColor: 'red'}}onClick={confirmDeletion}>Oui</button>
-                            </div>
-                            <div className="validationButton-container">
-                                <button className="validationButton" onClick={cancelDeletion}>Annuler</button>            
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                )}
+                <ConfirmationModal
+                isOpen={isDeleteModalOpen}
+                onClose={cancelDeletion}
+                onConfirm={confirmDeletion}
+                message="Êtes-vous sûr de vouloir supprimer ce topic ?"
+                />
                 <form className="manageTopics-displaySelection">
                     <select className = "orderSelect" id="sortBy" value={sortTopicOption} name="sortBy" onChange={handleSortTopicChange}>
                         <option value="title">Par titre</option>
@@ -97,7 +88,7 @@ const ManageTopics = () => {
                         </thead>
                         <tbody>
                         {sortedTopics.length === 0 ? (
-                                <tr><td colSpan="4">Topics non disponibles</td></tr>
+                                <tr><td colSpan="4">Aucun topic</td></tr>
                             ) : (
                                 sortedTopics.map((topic) => {
                                     const author = getUserById(topic.UserId);
