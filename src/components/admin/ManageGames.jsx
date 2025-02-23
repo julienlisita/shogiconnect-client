@@ -3,13 +3,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
 import { useScheduledGameContext } from "../../contexts/ScheduledGameContext.jsx";
+import ConfirmationModal from "../common/ModalConfirmation";
 
 const ManageGames = () => {
 
     const { users, usersLoading, usersError} = useUserContext();
-    const { scheduledGames, scheduledGamesLoading, scheduledGamesError, deleteScheduledGame } = useScheduledGameContext();
+    const { scheduledGames, scheduledGamesLoading, scheduledGamesError, deleteScheduledGame, unsubscribeFromScheduledGame } = useScheduledGameContext();
     const [sortGameOption, setSortGameOption] = useState('organizer');
-    const [showModal, setShowModal] = useState(false);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [selectedGameId, setSelectedGameId] = useState(null);
 
     if (usersLoading || scheduledGamesLoading) return <p>Loading...</p>;
@@ -26,16 +27,32 @@ const ManageGames = () => {
     const handleDeleteGame = (gameId) =>
     {
         setSelectedGameId(gameId)
-        setShowModal(true); 
+        setIsDeleteModalOpen(true); 
     }
     const confirmDeletion = () => 
     {
         deleteScheduledGame(selectedGameId)
-        setShowModal(false);
+        setIsDeleteModalOpen(false);
     };
     
     const cancelDeletion = () => {
-        setShowModal(false); 
+        setIsDeleteModalOpen(false); 
+    };
+
+    const handleUnsubscribeGame = (gameId) =>
+    {
+        setSelectedGameId(gameId)
+        setIsDeleteModalOpen(true); 
+    };
+    
+    const confirmUnsubscription = () => 
+    {
+        unsubscribeFromScheduledGame(selectedGameId)
+        setIsDeleteModalOpen(false);
+    };
+    
+    const cancelUnsubscirption = () => {
+        setIsDeleteModalOpen(false); 
     };
 
     const getUserById = (user_id) => users.find(user => user.id == user_id);
@@ -63,22 +80,18 @@ const ManageGames = () => {
             <div className="manageGames">
                 <h1>Gestion des rendez-vous de partie</h1>
                 {/* Modal pour la confirmation de suppression d'une partie' */}
-                {showModal && (
-                <div className="modal-overlay">
-                    <div className="modal">
-                        <h2>Confirmation</h2>
-                        <div className="modal-content">
-                            <p>Êtes-vous sûr de vouloir supprimer cette partie ?</p>
-                            <div className="validationButton-container">
-                                <button className="validationButton" style={{ backgroundColor: 'red'}}onClick={confirmDeletion}>Oui</button>
-                            </div>
-                            <div className="validationButton-container">
-                                <button className="validationButton" onClick={cancelDeletion}>Annuler</button>            
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                )}
+                 <ConfirmationModal
+                isOpen={isDeleteModalOpen}
+                onClose={cancelDeletion}
+                onConfirm={confirmDeletion}
+                message="Êtes-vous sûr de vouloir supprimer cet utilisateur ?"
+                />
+                <ConfirmationModal
+                isOpen={isDeleteModalOpen}
+                onClose={cancelUnsubscirption}
+                onConfirm={confirmUnsubscription}
+                message="Êtes-vous sûr de vouloir désinscrire le participant ?"
+                />
                 <form className="manageGames-displaySelection">
                     <select className = "orderSelect" id="sortBy" value={sortGameOption} name="sortBy" onChange={handleSortGameChange}>
                         <option value="rendezVous">Par date de rendez-vous</option>
@@ -106,7 +119,7 @@ const ManageGames = () => {
                                     const participant = getUserById(game.ParticipantId);
                                     return (
                                         <tr key={game.id}>
-                                                                                     <td>{`Le ${new Date(game.rendezVousAt).toLocaleDateString('fr-FR')} ${new Date(game.rendezVousAt).toLocaleTimeString()}`}</td>
+                                            <td>{`Le ${new Date(game.rendezVousAt).toLocaleDateString('fr-FR')} ${new Date(game.rendezVousAt).toLocaleTimeString()}`}</td>
                                             <td>
                                                 {organizer ? (
                                                     <Link to={`/users/${organizer.id}`}>{organizer.username}</Link>
@@ -122,7 +135,7 @@ const ManageGames = () => {
                                                 )}
                                             </td>
                                             <td>
-                                                <button>Désinscrire</button>
+                                                <button onClick={() => handleUnsubscribeGame(game.id)}>Désinscrire</button>
                                             </td>
                                             <td>
                                                 <button onClick={() => handleDeleteGame(game.id)}>Supprimer</button>
