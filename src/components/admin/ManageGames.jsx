@@ -11,6 +11,7 @@ const ManageGames = () => {
     const { scheduledGames, scheduledGamesLoading, scheduledGamesError, deleteScheduledGame, unsubscribeFromScheduledGame } = useScheduledGameContext();
     const [sortGameOption, setSortGameOption] = useState('organizer');
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+    const [isUnsubscribeModalOpen, setIsUnsubscribeModalOpen] = useState(false);
     const [selectedGameId, setSelectedGameId] = useState(null);
 
     if (usersLoading || scheduledGamesLoading) return <p>Loading...</p>;
@@ -42,17 +43,17 @@ const ManageGames = () => {
     const handleUnsubscribeGame = (gameId) =>
     {
         setSelectedGameId(gameId)
-        setIsDeleteModalOpen(true); 
+        setIsUnsubscribeModalOpen(true); 
     };
     
     const confirmUnsubscription = () => 
     {
         unsubscribeFromScheduledGame(selectedGameId)
-        setIsDeleteModalOpen(false);
+        setIsUnsubscribeModalOpen(false);
     };
     
     const cancelUnsubscirption = () => {
-        setIsDeleteModalOpen(false); 
+        setIsUnsubscribeModalOpen(false); 
     };
 
     const getUserById = (user_id) => users.find(user => user.id == user_id);
@@ -87,7 +88,7 @@ const ManageGames = () => {
                 message="Êtes-vous sûr de vouloir supprimer cet utilisateur ?"
                 />
                 <ConfirmationModal
-                isOpen={isDeleteModalOpen}
+                isOpen={isUnsubscribeModalOpen}
                 onClose={cancelUnsubscirption}
                 onConfirm={confirmUnsubscription}
                 message="Êtes-vous sûr de vouloir désinscrire le participant ?"
