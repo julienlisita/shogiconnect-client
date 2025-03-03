@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import profileService from '../services/profileService';
-import activityService from "../services/activityService";
+import userActivityService from "../services/userActivityService";
 import { useAuthContext } from "../contexts/AuthContext";
 
 const useProfile = () => {
@@ -21,7 +21,7 @@ const useProfile = () => {
 
         const [profileData, activitiesData] = await Promise.all([
           profileService.getProfile(),
-          activityService.getActivities(user.id),
+          userActivityService.getUserActivities(user.id),
         ]);
 
         if (profileData) {
