@@ -1,12 +1,17 @@
 import { useState, useEffect } from "react";
 import profileService from '../services/profileService';
 import userActivityService from "../services/userActivityService";
+import adminActivityService from "../services/adminActivityService";
 import { useAuthContext } from "../contexts/AuthContext";
+
+const ROLE_USER = 1
+const ROLE_ADMIN = 2
 
 const useProfile = () => {
   const { user, logout, isAuthenticated } = useAuthContext();
   const [profile, setProfile] = useState(null);
-  const [activities, setActivities] = useState(null);
+  const [userActivities, setUserActivities] = useState(null);
+  const [adminActivities, setAdminActivities] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   
@@ -19,22 +24,31 @@ const useProfile = () => {
           return;
         }
 
-        const [profileData, activitiesData] = await Promise.all([
+        const [profileData, userActivitiesData, adminActivitiesData] = await Promise.all([
           profileService.getProfile(),
           userActivityService.getUserActivities(user.id),
+          user.RoleId === ROLE_ADMIN ? adminActivityService.getAdminActivities(user.id) : Promise.resolve(null),
         ]);
 
+        // Mise à jour du profil
         if (profileData) {
           setProfile(profileData);
         } else {
           setError("Profile data is empty");
         }
 
-        if (activitiesData) {
-          setActivities(activitiesData);
+        // Mise à jour des activités utilisateur
+        if (userActivitiesData) {
+          setUserActivities(userActivitiesData);
         } else {
           setError("Activities data is empty");
         }
+
+        // Mise à jour des activités admin (si applicable)
+        if (user.RoleId === ROLE_ADMIN && adminActivitiesData) {
+          setAdminActivities(adminActivitiesData);
+        }
+
       } catch (err) {
         console.log("Error fetching profile:", err);
         setError("Failed to fetch profile");
@@ -64,7 +78,7 @@ const useProfile = () => {
       await profileService.deleteProfile(); 
       logout();
       setProfile(null); 
-      setActivities(null); 
+      setUserActivities(null); 
     } catch (err) {
       console.error("Erreur lors de la suppression du profil:", err);
       setError("Failed to delete profile");
@@ -85,7 +99,7 @@ const useProfile = () => {
     }
 };
 
-  return { profile, activities, loading, error, updateProfile, deleteProfile, updateAvatar };
+  return { profile, userActivities, adminActivities, loading, error, updateProfile, deleteProfile, updateAvatar };
 };
 
 export default useProfile;

@@ -5,7 +5,7 @@ import { useUserContext } from "../../contexts/UserContext.jsx";
 
 const AccountHome = () => {
   const { user } = useAuthContext();
-  const { profile, activities, profileLoading, profileError } = useProfileContext();
+  const { profile, userActivities, profileLoading, profileError } = useProfileContext();
   const { userStats, userStatsLoading, usersError } = useUserContext();
 
   if (!user  || profileLoading || userStatsLoading) return <p>Loading...</p>;
@@ -17,7 +17,7 @@ const AccountHome = () => {
   const nbrGames = stat?.wins + stat?.losses + stat?.draws;
 
   const activitiesSortedByDate =
-    Array.isArray(activities) ? [...activities].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) : [];
+    Array.isArray(userActivities) ? [...userActivities].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) : [];
 
 
   // Affichage avec vérifications supplémentaires pour éviter les erreurs sur des données undefined
