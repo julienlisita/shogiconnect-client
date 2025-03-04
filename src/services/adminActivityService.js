@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/api/AdminActivities"; 
+const API_URL = "http://localhost:3000/api/adminActivities"; 
 
 // Récupère les activités d'un utilisateur
 const getAdminActivities = async (adminId) => {
