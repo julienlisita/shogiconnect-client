@@ -4,14 +4,14 @@ import { useProfileContext } from "../../contexts/ProfileContext.jsx";
 import { useUserContext } from "../../contexts/UserContext.jsx";
 
 const AccountHome = () => {
-  const { user } = useAuthContext();
+  const { user, userError } = useAuthContext();
   const { profile, userActivities, profileLoading, profileError } = useProfileContext();
-  const { userStats, userStatsLoading, usersError } = useUserContext();
+  const { userStats, userStatsLoading, userStatsError } = useUserContext();
 
   if (!user  || profileLoading || userStatsLoading) return <p>Loading...</p>;
-  if (usersError) return <p>Error loading users: {usersError}</p>;
+  if (userError) return <p>Error loading users: {userError}</p>;
   if (profileError) return <p>Error loading profile: {profileError}</p>;
-  if (usersError) return <p>Error loading users: {usersError}</p>;
+  if (userStatsError) return <p>Error loading users: {usersError}</p>;
 
   const stat = userStats?.find((stat) => stat.UserId == user.id);
   const nbrGames = stat?.wins + stat?.losses + stat?.draws;
