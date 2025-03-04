@@ -27,9 +27,9 @@ const useProfile = () => {
         const [profileData, userActivitiesData, adminActivitiesData] = await Promise.all([
           profileService.getProfile(),
           userActivityService.getUserActivities(user.id),
-          user.RoleId === ROLE_ADMIN ? adminActivityService.getAdminActivities(user.id) : Promise.resolve(null),
+          user.roleId === ROLE_ADMIN ? adminActivityService.getAdminActivities(user.id) : Promise.resolve(null),
         ]);
-
+  
         // Mise à jour du profil
         if (profileData) {
           setProfile(profileData);
@@ -45,7 +45,7 @@ const useProfile = () => {
         }
 
         // Mise à jour des activités admin (si applicable)
-        if (user.RoleId === ROLE_ADMIN && adminActivitiesData) {
+        if (user.roleId === ROLE_ADMIN && adminActivitiesData) {
           setAdminActivities(adminActivitiesData);
         }
 
