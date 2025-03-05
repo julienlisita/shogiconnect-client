@@ -11,10 +11,24 @@ const AccountHome = () => {
   if (!user  || profileLoading || userStatsLoading) return <p>Loading...</p>;
   if (userError) return <p>Error loading users: {userError}</p>;
   if (profileError) return <p>Error loading profile: {profileError}</p>;
-  if (userStatsError) return <p>Error loading users: {usersError}</p>;
+  if (userStatsError) return <p>Error loading users: {userStatsError}</p>;
 
   const stat = userStats?.find((stat) => stat.UserId == user.id);
   const nbrGames = stat?.wins + stat?.losses + stat?.draws;
+
+  const formatActivityMessage = (activity) => {
+    switch (activity.activity_type) {
+        case "CREATE_TOPIC":
+            return `a créé un nouveau topic`;
+        case "CREATE_COMMENT":
+            return `a créé un nouveau commentaire`;
+        case "CREATE_SCHEDULED_GAME":
+            return `a créé un nouveau rendez-vous de partie`;
+      default:
+        return `Action inconnue`;
+    }
+  }; 
+
 
   const activitiesSortedByDate =
     Array.isArray(userActivities) ? [...userActivities].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) : [];
@@ -46,6 +60,9 @@ const AccountHome = () => {
               <p>{`Victoires: ${stat?.wins || 0}`}</p>
               <p>{`Défaites: ${stat?.losses || 0}`}</p>
               <p>{`Nulles: ${stat?.draws || 0}`}</p>
+              <p>{`Topic créés: ${stat?.totalTopicsCreated || 0}`}</p>
+              <p>{`Commentaires créés: ${stat?.totalCommentsCreated || 0}`}</p>
+              <p>{`Rendez-vous de partie créés: ${stat?.totalScheduledGamesCreated || 0}`}</p>
             </div>
           </div>
           <div className="accountHome-content-rightBlock">
@@ -57,7 +74,7 @@ const AccountHome = () => {
                 <div>
                   {activitiesSortedByDate.map((activity) => (
                     <p key={activity.id}>
-                      {`${activity.description} le ${new Date(activity.createdAt).toLocaleDateString(
+                      {`${formatActivityMessage(activity)} le ${new Date(activity.createdAt).toLocaleDateString(
                         'fr-FR'
                       )} à ${new Date(activity.createdAt).toLocaleTimeString('fr-FR')}`}
                     </p>
