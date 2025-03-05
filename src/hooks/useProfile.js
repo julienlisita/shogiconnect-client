@@ -25,9 +25,20 @@ const useProfile = () => {
         }
 
         const [profileData, userActivitiesData, adminActivitiesData] = await Promise.all([
-          profileService.getProfile(),
-          userActivityService.getUserActivities(user.id),
-          user.roleId === ROLE_ADMIN ? adminActivityService.getAdminActivities(user.id) : Promise.resolve(null),
+          profileService.getProfile().catch(err => {
+            console.error("Error fetching profile:", err);
+            return null;
+          }),
+          userActivityService.getUserActivities(user.id).catch(err => {
+            console.error("Error fetching user activities:", err);
+            return null;
+          }),
+          user.roleId === ROLE_ADMIN 
+            ? adminActivityService.getAdminActivities(user.id).catch(err => {
+                console.error("Error fetching admin activities:", err);
+                return null;
+              })
+            : Promise.resolve(null),
         ]);
   
         // Mise à jour du profil
