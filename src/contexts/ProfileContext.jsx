@@ -4,10 +4,10 @@ import useProfile from "../hooks/useProfile";
 const ProfileContext = createContext();
 
 export const ProfileProvider = ({ children }) => {
-    const {profile, userActivities, adminActivities,  loading, error, updateProfile, deleteProfile, updateAvatar} = useProfile();
+    const {profile, userActivities, adminActivities, siteStats,  loading, error, updateProfile, deleteProfile, updateAvatar} = useProfile();
 
     return (
-        <ProfileContext.Provider value={{profile, userActivities, adminActivities, loading, error, updateProfile, deleteProfile, updateAvatar}}>
+        <ProfileContext.Provider value={{profile, userActivities, adminActivities, siteStats, loading, error, updateProfile, deleteProfile, updateAvatar}}>
             {children}
         </ProfileContext.Provider>
     );

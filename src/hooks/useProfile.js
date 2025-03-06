@@ -3,6 +3,7 @@ import profileService from '../services/profileService';
 import userActivityService from "../services/userActivityService";
 import adminActivityService from "../services/adminActivityService";
 import { useAuthContext } from "../contexts/AuthContext";
+import siteStatsService from "../services/siteStatsService";
 
 const ROLE_USER = 1
 const ROLE_ADMIN = 2
@@ -12,10 +13,11 @@ const useProfile = () => {
   const [profile, setProfile] = useState(null);
   const [userActivities, setUserActivities] = useState(null);
   const [adminActivities, setAdminActivities] = useState(null);
+  const [siteStats, setSiteStats] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   
-  // récupérer les données du profil de l'utilisateur connécté
+  // Récupérer les données du profil de l'utilisateur connécté
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -24,7 +26,7 @@ const useProfile = () => {
           return;
         }
 
-        const [profileData, userActivitiesData, adminActivitiesData] = await Promise.all([
+        const [profileData, userActivitiesData, adminActivitiesData, siteStatsData] = await Promise.all([
           profileService.getProfile().catch(err => {
             console.error("Error fetching profile:", err);
             return null;
@@ -39,7 +41,15 @@ const useProfile = () => {
                 return null;
               })
             : Promise.resolve(null),
+          user.roleId === ROLE_ADMIN 
+          ? siteStatsService.getSiteStats().catch(err => {
+              console.error("Error fetching site stats:", err);
+              return null;
+            })
+          : Promise.resolve(null),
         ]);
+
+        // Mise à jour des données
   
         // Mise à jour du profil
         if (profileData) {
@@ -58,6 +68,11 @@ const useProfile = () => {
         // Mise à jour des activités admin (si applicable)
         if (user.roleId === ROLE_ADMIN && adminActivitiesData) {
           setAdminActivities(adminActivitiesData);
+        }
+
+        // Mise à jour
+        if (user.roleId === ROLE_ADMIN && siteStatsData) {
+          setSiteStats(siteStatsData);
         }
 
       } catch (err) {
@@ -110,7 +125,7 @@ const useProfile = () => {
     }
 };
 
-  return { profile, userActivities, adminActivities, loading, error, updateProfile, deleteProfile, updateAvatar };
+  return { profile, userActivities, adminActivities, siteStats, loading, error, updateProfile, deleteProfile, updateAvatar };
 };
 
 export default useProfile;
