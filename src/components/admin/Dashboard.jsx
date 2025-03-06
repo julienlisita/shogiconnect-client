@@ -6,7 +6,7 @@ import { useUserContext } from "../../contexts/UserContext.jsx";
 const Dashboard = () => {
 
     const { user, userError } = useAuthContext();
-    const { adminActivities, profileLoading, profileError } = useProfileContext();
+    const { adminActivities, siteStats, profileLoading, profileError } = useProfileContext();
     const { adminStats, adminStatsLoading, adminError } = useUserContext();
 
     if (!user  || profileLoading || adminStatsLoading) return <p>Loading...</p>;
@@ -14,12 +14,12 @@ const Dashboard = () => {
     if (profileError) return <p>Error loading profile: {profileError}</p>;
     if (adminError) return <p>Error loading users: {adminError}</p>;
 
-    const stat = adminStats?.find((stat) => stat.AdminId == user.id);
-
-    const nbrUsersDeleted = stat ? stat.usersDeleted : 0;
-    const nbrTopicsDeleted = stat ? stat.topicsDeleted : 0;
-    const nbrCommentsDeleted = stat ? stat.commentsDeleted : 0;
-    const nbrScheduledGamesDeleted = stat ? stat.scheduledGamesDeleted : 0;
+    const {
+        nbrUsersDeleted = 0,
+        nbrTopicsDeleted = 0,
+        nbrCommentsDeleted = 0,
+        nbrScheduledGamesDeleted = 0
+    } = adminStats?.find(stat => stat.AdminId === user.id) || {};
 
     const formatActivityMessage = (activity) => {
         switch (activity.activity_type) {
@@ -46,13 +46,15 @@ const Dashboard = () => {
                     <div className="dashboard-content">
                         <div className="dashboard-content-leftBlock">
                             <div className="dashboard-content-leftBlock-stats1">
-                                <h2>Statistiques membres</h2>
-                                <p>{`Membres actifs: `}</p>
-                                <p>{`Parties en cours: `}</p>
-                                <p>{`Nouveaux membres:`}</p>
-                                <p>{`Parties crées: `}</p>
-                                <p>{`Topics crées: `}</p>
-                                <p>{`Commentaires postés: `}</p>
+                                <h2>Statistiques du site</h2>
+                                <p>{`Membres créés: ${siteStats ? siteStats.totalUsers : 0}`}</p>
+                                <p>{`Membres actifs:${siteStats ? siteStats.activeUsers : 0}`}</p>
+                                <p>{`Topics créés: ${siteStats ? siteStats.totalTopics : 0}`}</p>
+                                <p>{`Topics actifs: ${siteStats ? siteStats.activeTopics : 0}`}</p>
+                                <p>{`Commentaires postés: ${siteStats ? siteStats.totalComments : 0}`}</p>
+                                <p>{`Commentaires actif: ${siteStats ? siteStats.activeComments : 0}`}</p>
+                                <p>{`Rendez-vous de partie créés: ${siteStats ? siteStats.totalScheduledGames : 0}`}</p>
+                                <p>{`Rendez-vous de partie actifs: ${siteStats ? siteStats.activeScheduledGames : 0}`}</p>
                             </div>
                             <div className="dashboard-content-leftBlock-stats2">
                                 <h2>Statistiques de gestion</h2>
