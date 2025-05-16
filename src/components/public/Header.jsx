@@ -5,8 +5,8 @@ import { useState } from 'react';
 import LoginModal from './LoginModal';
 import SignupModal from './SignUpModal';
 import { useAuthContext } from "../../contexts/AuthContext";
-import NavMenu from "../common/Navmenu";
-import UserMenu from "../common/Usermenu";
+import NavMenu from "../common/NavMenu";
+import UserMenu from "../common/UserMenu";
 
 const Header = () => {
 
