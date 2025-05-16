@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/api/auth';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const setAuthToken = (token) => {
   axios.defaults.headers.common['Authorization'] = token ? `Bearer ${token}` : '';
@@ -12,12 +12,12 @@ const clearAuthToken = () => {
 };
 
 const login = async (username, password) => {
-  const response = await axios.post(`${API_URL}/login`, { username, password });
+  const response = await axios.post(`${API_BASE_URL}/auth/login`, { username, password });
   return response.data; 
 };
 
 const signup = async (username, email, password) => {
-  const response = await axios.post(`${API_URL}/signup`, { username, email, password });
+  const response = await axios.post(`${API_BASE_URL}/auth/signup`, { username, email, password });
   return response.data;
 };
 
@@ -27,7 +27,7 @@ const logout = () => {
 };
 
 const changePassword = async (oldPassword, newPassword) => {
-  const response = await axios.patch(`${API_URL}/change-password`, {oldPassword, newPassword});
+  const response = await axios.patch(`${API_BASE_URL}/auth/change-password`, {oldPassword, newPassword});
   return response.data;
 };
 

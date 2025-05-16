@@ -1,10 +1,12 @@
-import axios from "axios";
+// src/services/adminActivityService.js
 
-const API_URL = "http://localhost:3000/api/adminActivities"; 
+import axios from 'axios';
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 // Récupère les activités d'un utilisateur
 const getAdminActivities = async (adminId) => {
-    const response = await axios.get(`${API_URL}/user/${adminId}`);
+    const response = await axios.get(`${API_BASE_URL}/adminActivities/user/${adminId}`);
     return response.data.data;
 };
 

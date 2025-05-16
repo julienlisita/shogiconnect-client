@@ -1,23 +1,25 @@
-import axios from "axios";
+// src/services/profileService.js
 
-const API_URL = "http://localhost:3000/api/users/me"; 
+import axios from 'axios';
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 // Fonction pour récupérer les données du profil
 const getProfile = async () => {
-    const response = await axios.get(API_URL);
+    const response = await axios.get(`${API_BASE_URL}/users/me`);
     return response.data.data;
 };
 
 // Fonction pour mettre à jour les données de son propre profil
 const updateProfile = async (updatedData) => {
-    const response = await axios.put(API_URL, updatedData);
+    const response = await axios.put(`${API_BASE_URL}/users/me`, updatedData);
     return response.data.data;
 };
 
 // Fonction pour supprimer son porpore profil
 const deleteProfile = async () => {
     try {
-        const response = await axios.delete(API_URL); 
+        const response = await axios.delete(`${API_BASE_URL}/users/me`); 
         return response.data.data; 
       } catch (error) {
         console.error('Erreur lors de la suppression du profil:', error);
@@ -31,7 +33,7 @@ const updateAvatar = async (avatarData) => {
   formData.append("avatar", avatarData);
 
   try {
-      const response = await axios.patch(`${API_URL}/avatar`, formData, {
+      const response = await axios.patch(`${API_BASE_URL}/users/me/avatar`, formData, {
           headers: {
               "Content-Type": "multipart/form-data",
           },
