@@ -2,7 +2,7 @@ import "./AvailableGameList.css"
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import CreateGameModal from "./CreateGameModal";
-import ModalMessage from "../common/ModalMessage";
+import ModalMessage from "../common/ModalMessage.jsx";
 import { useUserContext } from "../../contexts/UserContext.jsx";
 import { useAuthContext } from "../../contexts/AuthContext.jsx";
 import { useScheduledGameContext } from "../../contexts/ScheduledGameContext.jsx";

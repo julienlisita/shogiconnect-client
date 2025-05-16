@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useParams,Link } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
 import { useForumContext } from "../../contexts/ForumContext.jsx";
-import ConfirmationModal from "../common/ModalConfirmation";
+import ConfirmationModal from "../common/ModalConfirmation.jsx";
 
 const ManageComments = () => {
 

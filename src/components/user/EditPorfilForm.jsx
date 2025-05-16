@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Select from 'react-select';
 import countryList from "react-select-country-list";
 import { useProfileContext } from "../../contexts/ProfileContext.jsx";
-import ModalMessage from "../common/ModalMessage";
+import ModalMessage from "../common/ModalMessage.jsx";
 
 
 const EditProfileForm = () => {

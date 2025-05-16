@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
 import RoleModal from "./RoleModal";
-import ConfirmationModal from "../common/ModalConfirmation";
+import ConfirmationModal from "../common/ModalConfirmation.jsx";
 
 const ManageUsers = () => {
 

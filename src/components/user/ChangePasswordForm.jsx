@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuthContext } from "../../contexts/AuthContext.jsx";
-import ModalMessage from "../common/ModalMessage";
+import ModalMessage from "../common/ModalMessage.jsx";
 
 const ChangePasswordForm = () => {
 

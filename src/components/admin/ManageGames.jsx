@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
 import { useScheduledGameContext } from "../../contexts/ScheduledGameContext.jsx";
-import ConfirmationModal from "../common/ModalConfirmation";
+import ConfirmationModal from "../common/ModalConfirmation.jsx";
 
 const ManageGames = () => {
 
