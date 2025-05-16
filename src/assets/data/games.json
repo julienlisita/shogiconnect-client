@@ -1,0 +1,23 @@
+[
+    { "id": 1, "organizer_id": 1, "participant_id": 20, "game_id": 301, "status": "disponible", "level": "débutant", "created_at": "2024-09-09T12:30:00", "rendez_vous_at": "2024-09-15T14:00:00" },
+    { "id": 2, "organizer_id": 2, "participant_id": 19, "game_id": 302, "status": "reservée", "level": "intermédiaire", "created_at": "2024-09-08T10:00:00", "rendez_vous_at": "2024-09-14T16:00:00" },
+    { "id": 3, "organizer_id": 3, "participant_id": 18, "game_id": 303, "status": "en cours", "level": "avancé", "created_at": "2024-09-07T09:30:00", "rendez_vous_at": "2024-09-13T18:30:00" },
+    { "id": 4, "organizer_id": 4, "participant_id": 17, "game_id": 304, "status": "terminée", "level": "débutant", "created_at": "2024-09-06T11:00:00", "rendez_vous_at": "2024-09-12T13:30:00" },
+    { "id": 5, "organizer_id": 5, "participant_id": 16, "game_id": 305, "status": "terminé", "level": "intermédiaire", "created_at": "2024-09-05T15:00:00", "rendez_vous_at": "2024-09-11T10:00:00" },
+    { "id": 6, "organizer_id": 6, "participant_id": 15, "game_id": 306, "status": "terminé", "level": "avancé", "created_at": "2024-09-04T17:45:00", "rendez_vous_at": "2024-09-10T14:15:00" },
+    { "id": 7, "organizer_id": 7, "participant_id": 14, "game_id": 307, "status": "en cours", "level": "débutant", "created_at": "2024-09-03T08:00:00", "rendez_vous_at": "2024-09-09T12:00:00" },
+    { "id": 8, "organizer_id": 8, "participant_id": 13, "game_id": 308, "status": "terminé", "level": "intermédiaire", "created_at": "2024-09-02T12:30:00", "rendez_vous_at": "2024-09-08T15:45:00" },
+    { "id": 9, "organizer_id": 9, "participant_id": 12, "game_id": 309, "status": "terminée", "level": "avancé", "created_at": "2024-09-01T18:15:00", "rendez_vous_at": "2024-09-07T11:30:00" },
+    { "id": 10, "organizer_id": 10, "participant_id": 11, "game_id": 310, "status": "disponible", "level": "débutant", "created_at": "2024-08-31T09:00:00", "rendez_vous_at": "2024-09-06T17:00:00" },
+    { "id": 11, "organizer_id": 11, "participant_id": 10, "game_id": 311, "status": "disponible", "level": "intermédiaire", "created_at": "2024-08-30T10:30:00", "rendez_vous_at": "2024-09-05T19:00:00" },
+    { "id": 12, "organizer_id": 12, "participant_id": 9, "game_id": 312, "status": "disponible", "level": "avancé", "created_at": "2024-08-29T14:45:00", "rendez_vous_at": "2024-09-04T09:30:00" },
+    { "id": 13, "organizer_id": 13, "participant_id": 8, "game_id": 313, "status": "terminée", "level": "débutant", "created_at": "2024-08-28T16:00:00", "rendez_vous_at": "2024-09-03T18:30:00" },
+    { "id": 14, "organizer_id": 14, "participant_id": 7, "game_id": 314, "status": "terminée", "level": "intermédiaire", "created_at": "2024-08-27T08:45:00", "rendez_vous_at": "2024-09-02T15:15:00" },
+    { "id": 15, "organizer_id": 15, "participant_id": 6, "game_id": 315, "status": "terminée", "level": "avancé", "created_at": "2024-08-26T20:00:00", "rendez_vous_at": "2024-09-01T16:00:00" },
+    { "id": 16, "organizer_id": 16, "participant_id": 5, "game_id": 316, "status": "terminée", "level": "débutant", "created_at": "2024-08-25T22:15:00", "rendez_vous_at": "2024-08-31T12:30:00" },
+    { "id": 17, "organizer_id": 17, "participant_id": 4, "game_id": 317, "status": "disponible", "level": "intermédiaire", "created_at": "2024-08-24T09:30:00", "rendez_vous_at": "2024-08-30T13:00:00" },
+    { "id": 18, "organizer_id": 18, "participant_id": 3, "game_id": 318, "status": "disponible", "level": "avancé", "created_at": "2024-08-23T07:45:00", "rendez_vous_at": "2024-08-29T10:45:00" },
+    { "id": 19, "organizer_id": 19, "participant_id": 2, "game_id": 319, "status": "disponible", "level": "débutant", "created_at": "2024-08-22T06:00:00", "rendez_vous_at": "2024-08-28T11:15:00" },
+    { "id": 20, "organizer_id": 20, "participant_id": 1, "game_id": 320, "status": "disponible", "level": "intermédiaire", "created_at": "2024-08-21T18:30:00", "rendez_vous_at": "2024-08-27T14:00:00" }
+  ]
+  

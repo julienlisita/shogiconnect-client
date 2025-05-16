@@ -1,0 +1,402 @@
+[
+    {
+      "id": 1,
+      "content": "Superbe introduction au Shogi ! J'apprécie vraiment le fait que tu aies pris le temps d'expliquer les bases en détail. Cela m'a permis de mieux comprendre les principes fondamentaux du jeu. Je me sens maintenant plus confiant pour commencer une partie. Merci beaucoup !",
+      "created_at": "2024-09-01T09:15:00",
+      "topic_id": 1,
+      "user_id": 10,
+      "activity_id": 21
+    },
+    {
+      "id": 2,
+      "content": "Je ne suis pas tout à fait d'accord avec ton explication. Certains points sont un peu vagues, mais cela reste une bonne base pour les débutants.",
+      "created_at": "2024-09-01T09:45:00",
+      "topic_id": 2,
+      "user_id": 25,
+      "activity_id": 25
+    },
+    {
+      "id": 3,
+      "content": "Merci pour ces explications ! C'était très clair et bien présenté.",
+      "created_at": "2024-09-01T10:00:00",
+      "topic_id": 3,
+      "user_id": 18,
+      "activity_id": 22
+    },
+    {
+      "id": 4,
+      "content": "Je suis toujours un peu confus sur la règle de promotion des pièces, mais je vais revoir tes explications.",
+      "created_at": "2024-09-01T10:30:00",
+      "topic_id": 4,
+      "user_id": 5,
+      "activity_id": 24
+    },
+    {
+      "id": 5,
+      "content": "J'ai beaucoup appris grâce à cette discussion, merci !",
+      "created_at": "2024-09-01T11:00:00",
+      "topic_id": 5,
+      "user_id": 12,
+      "activity_id": 30
+    },
+    {
+      "id": 6,
+      "content": "J'aimerais avoir plus de détails sur les stratégies intermédiaires. Peut-on approfondir ce sujet ?",
+      "created_at": "2024-09-01T11:30:00",
+      "topic_id": 6,
+      "user_id": 23,
+      "activity_id": 33
+    },
+    {
+      "id": 7,
+      "content": "Très bon sujet, merci pour cette discussion !",
+      "created_at": "2024-09-01T12:00:00",
+      "topic_id": 7,
+      "user_id": 7,
+      "activity_id": 27
+    },
+    {
+      "id": 8,
+      "content": "Je me demande si quelqu'un ici a des astuces pour améliorer sa défense.",
+      "created_at": "2024-09-01T12:30:00",
+      "topic_id": 8,
+      "user_id": 14,
+      "activity_id": 32
+    },
+    {
+      "id": 9,
+      "content": "Ton explication des ouvertures de jeu est très claire. Merci !",
+      "created_at": "2024-09-01T13:00:00",
+      "topic_id": 9,
+      "user_id": 32,
+      "activity_id": 45
+    },
+    {
+      "id": 10,
+      "content": "Je pense qu'il y a encore des zones d'ombre sur les promotions, mais c'était utile quand même.",
+      "created_at": "2024-09-01T13:30:00",
+      "topic_id": 10,
+      "user_id": 16,
+      "activity_id": 36
+    },
+    {
+      "id": 11,
+      "content": "Les parties en ligne sont toujours un peu compliquées pour moi, des conseils ?",
+      "created_at": "2024-09-01T14:00:00",
+      "topic_id": 11,
+      "user_id": 28,
+      "activity_id": 34
+    },
+    {
+      "id": 12,
+      "content": "Merci pour ton aide. Ça m'a bien éclairé !",
+      "created_at": "2024-09-01T14:30:00",
+      "topic_id": 12,
+      "user_id": 21,
+      "activity_id": 29
+    },
+    {
+      "id": 13,
+      "content": "J'aime bien les parties en mode rapide. Ça te force à réfléchir vite.",
+      "created_at": "2024-09-01T15:00:00",
+      "topic_id": 13,
+      "user_id": 11,
+      "activity_id": 31
+    },
+    {
+      "id": 14,
+      "content": "Le système de pièces promues est vraiment intéressant dans le Shogi, mais complexe à maîtriser.",
+      "created_at": "2024-09-01T15:30:00",
+      "topic_id": 14,
+      "user_id": 24,
+      "activity_id": 35
+    },
+    {
+      "id": 15,
+      "content": "Je commence à bien comprendre les bases, mais je galère encore avec les fins de partie.",
+      "created_at": "2024-09-01T16:00:00",
+      "topic_id": 15,
+      "user_id": 6,
+      "activity_id": 38
+    },
+    {
+      "id": 16,
+      "content": "J'aime bien comment le jeu te pousse à réfléchir de manière stratégique.",
+      "created_at": "2024-09-01T16:30:00",
+      "topic_id": 16,
+      "user_id": 17,
+      "activity_id": 41
+    },
+    {
+      "id": 17,
+      "content": "J'aimerais bien jouer contre des adversaires plus expérimentés pour progresser.",
+      "created_at": "2024-09-01T17:00:00",
+      "topic_id": 17,
+      "user_id": 33,
+      "activity_id": 47
+    },
+    {
+      "id": 18,
+      "content": "J'ai découvert de nouvelles techniques grâce à toi, merci pour le partage.",
+      "created_at": "2024-09-01T17:30:00",
+      "topic_id": 18,
+      "user_id": 9,
+      "activity_id": 50
+    },
+    {
+      "id": 19,
+      "content": "Superbe discussion, c'est très motivant de voir autant de passionnés.",
+      "created_at": "2024-09-01T18:00:00",
+      "topic_id": 19,
+      "user_id": 13,
+      "activity_id": 48
+    },
+    {
+      "id": 20,
+      "content": "Les pièces du Shogi sont fascinantes. Chacune a un rôle unique à jouer.",
+      "created_at": "2024-09-01T18:30:00",
+      "topic_id": 20,
+      "user_id": 2,
+      "activity_id": 55
+    },
+    {
+      "id": 21,
+      "content": "Merci pour cette explication détaillée sur les mouvements des pièces.",
+      "created_at": "2024-09-02T09:15:00",
+      "topic_id": 1,
+      "user_id": 4,
+      "activity_id": 22
+    },
+    {
+      "id": 22,
+      "content": "Je m'entraîne régulièrement mais j'ai du mal à anticiper les mouvements adverses.",
+      "created_at": "2024-09-02T10:45:00",
+      "topic_id": 2,
+      "user_id": 29,
+      "activity_id": 31
+    },
+    {
+      "id": 23,
+      "content": "Les jeux de stratégie comme le Shogi sont les meilleurs pour entraîner l'esprit.",
+      "created_at": "2024-09-02T11:00:00",
+      "topic_id": 3,
+      "user_id": 5,
+      "activity_id": 28
+    },
+    {
+      "id": 24,
+      "content": "Je suis nouveau dans le jeu mais j'apprends rapidement grâce à ce forum.",
+      "created_at": "2024-09-02T11:30:00",
+      "topic_id": 4,
+      "user_id": 26,
+      "activity_id": 39
+    },
+    {
+      "id": 25,
+      "content": "Les différentes variantes de Shogi sont vraiment intéressantes. J'aime bien le style rapide.",
+      "created_at": "2024-09-02T12:00:00",
+      "topic_id": 5,
+      "user_id": 19,
+      "activity_id": 26
+    },
+    {
+      "id": 26,
+      "content": "Je n'avais jamais réalisé à quel point le Shogi est riche en stratégie.",
+      "created_at": "2024-09-02T12:30:00",
+      "topic_id": 6,
+      "user_id": 8,
+      "activity_id": 23
+    },
+    {
+        "id": 27,
+        "content": "Je trouve la règle des promotions un peu difficile à saisir, mais je pense que ça viendra avec le temps.",
+        "created_at": "2024-09-02T13:00:00",
+        "topic_id": 7,
+        "user_id": 30,
+        "activity_id": 50
+      },
+      {
+        "id": 28,
+        "content": "Est-ce que quelqu'un aurait des recommandations de livres pour améliorer sa stratégie au Shogi ?",
+        "created_at": "2024-09-02T13:30:00",
+        "topic_id": 8,
+        "user_id": 3,
+        "activity_id": 44
+      },
+      {
+        "id": 29,
+        "content": "Merci pour cette discussion très intéressante sur l'ouverture de jeu.",
+        "created_at": "2024-09-02T14:00:00",
+        "topic_id": 9,
+        "user_id": 27,
+        "activity_id": 58
+      },
+      {
+        "id": 30,
+        "content": "Je commence à comprendre comment utiliser les pièces défensives de manière plus efficace.",
+        "created_at": "2024-09-02T14:30:00",
+        "topic_id": 10,
+        "user_id": 20,
+        "activity_id": 61
+      },
+      {
+        "id": 31,
+        "content": "C'est vraiment utile d'avoir ce genre de forum pour échanger sur le Shogi.",
+        "created_at": "2024-09-02T15:00:00",
+        "topic_id": 11,
+        "user_id": 15,
+        "activity_id": 54
+      },
+      {
+        "id": 32,
+        "content": "La promotion des pièces est un des aspects les plus intrigants du Shogi. J'essaie de comprendre toutes les possibilités.",
+        "created_at": "2024-09-02T15:30:00",
+        "topic_id": 12,
+        "user_id": 31,
+        "activity_id": 60
+      },
+      {
+        "id": 33,
+        "content": "Je suis content de voir autant de joueurs actifs ici !",
+        "created_at": "2024-09-02T16:00:00",
+        "topic_id": 13,
+        "user_id": 22,
+        "activity_id": 64
+      },
+      {
+        "id": 34,
+        "content": "Comment gérez-vous les situations où vous êtes en désavantage ? J'ai du mal à reprendre le dessus.",
+        "created_at": "2024-09-02T16:30:00",
+        "topic_id": 14,
+        "user_id": 9,
+        "activity_id": 62
+      },
+      {
+        "id": 35,
+        "content": "Merci pour ce forum. C'est un endroit génial pour améliorer ses compétences.",
+        "created_at": "2024-09-02T17:00:00",
+        "topic_id": 15,
+        "user_id": 34,
+        "activity_id": 67
+      },
+      {
+        "id": 36,
+        "content": "Je viens juste de commencer à jouer au Shogi, et ces discussions m'aident beaucoup.",
+        "created_at": "2024-09-02T17:30:00",
+        "topic_id": 16,
+        "user_id": 2,
+        "activity_id": 65
+      },
+      {
+        "id": 37,
+        "content": "J'aimerais savoir comment bien protéger mon roi en fin de partie.",
+        "created_at": "2024-09-02T18:00:00",
+        "topic_id": 17,
+        "user_id": 35,
+        "activity_id": 68
+      },
+      {
+        "id": 38,
+        "content": "Ce forum est exactement ce qu'il me fallait pour améliorer mon jeu !",
+        "created_at": "2024-09-02T18:30:00",
+        "topic_id": 18,
+        "user_id": 10,
+        "activity_id": 69
+      },
+      {
+        "id": 39,
+        "content": "Les discussions ici sont super enrichissantes. J'apprends beaucoup.",
+        "created_at": "2024-09-02T19:00:00",
+        "topic_id": 19,
+        "user_id": 8,
+        "activity_id": 66
+      },
+      {
+        "id": 40,
+        "content": "J'ai encore des difficultés à comprendre certaines stratégies complexes.",
+        "created_at": "2024-09-02T19:30:00",
+        "topic_id": 20,
+        "user_id": 36,
+        "activity_id": 70
+      },
+      {
+        "id": 41,
+        "content": "Je progresse bien grâce à vos conseils. Merci à tous.",
+        "created_at": "2024-09-02T20:00:00",
+        "topic_id": 1,
+        "user_id": 17,
+        "activity_id": 52
+      },
+      {
+        "id": 42,
+        "content": "Le Shogi demande vraiment de la patience et de la concentration. C'est ce qui rend ce jeu si intéressant.",
+        "created_at": "2024-09-02T20:30:00",
+        "topic_id": 2,
+        "user_id": 12,
+        "activity_id": 56
+      },
+      {
+        "id": 43,
+        "content": "J'apprécie la variété des conseils ici, on en apprend toujours plus.",
+        "created_at": "2024-09-02T21:00:00",
+        "topic_id": 3,
+        "user_id": 19,
+        "activity_id": 55
+      },
+      {
+        "id": 44,
+        "content": "Les discussions ici m'ont aidé à comprendre des points que je n'avais pas saisis auparavant.",
+        "created_at": "2024-09-02T21:30:00",
+        "topic_id": 4,
+        "user_id": 23,
+        "activity_id": 40
+      },
+      {
+        "id": 45,
+        "content": "Je me demande si on pourrait faire une partie amicale entre les membres de ce forum.",
+        "created_at": "2024-09-02T22:00:00",
+        "topic_id": 5,
+        "user_id": 6,
+        "activity_id": 42
+      },
+      {
+        "id": 46,
+        "content": "J'ai beaucoup appris sur les mouvements de pièces grâce à vous tous.",
+        "created_at": "2024-09-02T22:30:00",
+        "topic_id": 6,
+        "user_id": 15,
+        "activity_id": 46
+      },
+      {
+        "id": 47,
+        "content": "Ce forum est une ressource précieuse pour tous les joueurs de Shogi, peu importe leur niveau.",
+        "created_at": "2024-09-02T23:00:00",
+        "topic_id": 7,
+        "user_id": 39,
+        "activity_id": 59
+      },
+      {
+        "id": 48,
+        "content": "Je suis content de voir autant de membres partager leurs connaissances.",
+        "created_at": "2024-09-02T23:30:00",
+        "topic_id": 8,
+        "user_id": 25,
+        "activity_id": 53
+      },
+      {
+        "id": 49,
+        "content": "Les ouvertures de jeu sont fascinantes, j'aimerais les approfondir davantage.",
+        "created_at": "2024-09-03T00:00:00",
+        "topic_id": 9,
+        "user_id": 40,
+        "activity_id": 57
+      },
+      {
+        "id": 50,
+        "content": "Merci à tous pour vos conseils. J'ai l'impression de progresser à chaque discussion.",
+        "created_at": "2024-09-03T00:30:00",
+        "topic_id": 10,
+        "user_id": 11,
+        "activity_id": 63
+      }
+    ]

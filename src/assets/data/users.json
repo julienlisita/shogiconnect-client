@@ -1,0 +1,453 @@
+[
+    {
+      "id": 1,
+      "username": "ShadowNinja",
+      "country": "France",
+      "isOnline": true,
+      "biography": "Je suis un maître de la furtivité, et j'ai toujours un coup d'avance sur mes adversaires. Le Shogi est pour moi une manière de développer mon esprit tactique et de rester en éveil. Depuis des années, j'étudie les stratégies et les mouvements des grands maîtres du Shogi. J'aime aussi analyser chaque partie que je joue, en cherchant constamment à m'améliorer. Pour moi, le Shogi n'est pas seulement un jeu, c'est un art qui reflète l'harmonie entre la patience, la précision et la détermination. Mon objectif est de devenir un joueur reconnu sur la scène internationale.",
+      "user_role_id": 1,
+      "created_at": "2024-09-01 09:00:00"
+    },
+    {
+      "id": 2,
+      "username": "SakuraBlossom",
+      "country": "France",
+      "isOnline": false,
+      "biography": "Passionnée par les arts traditionnels japonais, je trouve dans le Shogi un parfait mélange entre réflexion et beauté. Je suis toujours à la recherche de nouvelles stratégies pour surprendre mes adversaires et perfectionner mon style de jeu.",
+      "user_role_id": 2,
+      "created_at": "2024-09-01 10:30:00"
+    },
+    {
+      "id": 3,
+      "username": "DragonSlayer",
+      "country": "USA",
+      "isOnline": true,
+      "biography": "Ayant grandi avec une passion pour les jeux de stratégie, j'ai découvert le Shogi il y a quelques années et je ne me lasse plus d'y jouer. J'aime l'aspect imprévisible du jeu et la manière dont chaque partie peut se renverser en un instant.",
+      "user_role_id": 1,
+      "created_at": "2024-09-02 08:45:00"
+    },
+    {
+      "id": 4,
+      "username": "SamuraiJack",
+      "country": "France",
+      "isOnline": true,
+      "biography": "Le Shogi est pour moi une manière d'honorer les samouraïs du passé, avec des combats stratégiques sur le plateau. Chaque partie est une bataille d'honneur, et j'essaie de toujours respecter mes adversaires, peu importe l'issue.",
+      "user_role_id": 2,
+      "created_at": "2024-09-02 12:00:00"
+    },
+    {
+      "id": 5,
+      "username": "RoninWarrior",
+      "country": "France",
+      "isOnline": false,
+      "biography": "En tant que ronin moderne, je vois le Shogi comme un art de guerre miniature. Je cherche à maîtriser les techniques ancestrales du jeu et à forger mon propre chemin dans le monde compétitif du Shogi.",
+      "user_role_id": 1,
+      "created_at": "2024-09-03 09:15:00"
+    },
+    {
+      "id": 6,
+      "username": "SilentKiller",
+      "country": "Germany",
+      "isOnline": true,
+      "biography": "Je suis un joueur de Shogi discret mais redoutable. Je préfère laisser mes mouvements parler pour moi plutôt que d'annoncer mes stratégies. Le silence et la patience sont mes meilleurs alliés dans chaque partie.",
+      "user_role_id": 2,
+      "created_at": "2024-09-03 10:45:00"
+    },
+    {
+      "id": 7,
+      "username": "ShogunMaster",
+      "country": "France",
+      "isOnline": true,
+      "biography": "Maître des stratégies complexes, je cherche toujours à anticiper plusieurs coups à l'avance. Le Shogi est un art dans lequel chaque pièce a un rôle crucial à jouer, et je m'efforce de maîtriser chaque aspect du jeu.",
+      "user_role_id": 1,
+      "created_at": "2024-09-04 11:00:00"
+    },
+    {
+      "id": 8,
+      "username": "pyxia",
+      "country": "France",
+      "isOnline": false,
+      "biography": "J'aime l'idée que le Shogi soit une réflexion de la vie, avec des décisions critiques à prendre à chaque instant. Je cherche toujours à améliorer mes tactiques et à apprendre des meilleurs joueurs.",
+      "user_role_id": 1,
+      "created_at": "2024-09-04 14:30:00"
+    },
+    {
+      "id": 9,
+      "username": "jlisita",
+      "country": "France",
+      "isOnline": true,
+      "biography": "Le Shogi est pour moi un jeu d'équilibre, entre patience et audace. J'aime tester de nouvelles stratégies et m'adapter rapidement à la situation sur le plateau.",
+      "user_role_id": 2,
+      "created_at": "2024-09-05 08:30:00"
+    },
+    {
+      "id": 10,
+      "username": "evacapri",
+      "country": "France",
+      "isOnline": false,
+      "biography": "La concentration et la discipline sont les clés du succès dans le Shogi. Je travaille constamment à perfectionner mon jeu, en cherchant des moyens innovants de surpasser mes adversaires.",
+      "user_role_id": 1,
+      "created_at": "2024-09-05 10:00:00"
+    },
+    {
+      "id": 11,
+      "username": "BushidoSpirit",
+      "country": "France",
+      "isOnline": true,
+      "biography": "Je m'inspire des principes du Bushido dans ma manière de jouer au Shogi. Le respect, l'honneur et la persévérance sont essentiels pour exceller dans ce jeu.",
+      "user_role_id": 2,
+      "created_at": "2024-09-06 09:15:00"
+    },
+    {
+      "id": 12,
+      "username": "ShinobiSoul",
+      "country": "Germany",
+      "isOnline": true,
+      "biography": "Avec une approche subtile et calculée, je préfère des mouvements discrets et inattendus dans mes parties. Le Shogi est une extension de ma personnalité, où l'ombre et la lumière se rencontrent pour former des stratégies uniques.",
+      "user_role_id": 1,
+      "created_at": "2024-09-06 14:45:00"
+    },
+    {
+      "id": 13,
+      "username": "FurySamurai",
+      "country": "France",
+      "isOnline": false,
+      "biography": "Pour moi, chaque partie de Shogi est une bataille épique. J'aime prendre des risques calculés et défier mes adversaires avec des tactiques imprévisibles.",
+      "user_role_id": 2,
+      "created_at": "2024-09-07 09:00:00"
+    },
+    {
+      "id": 14,
+      "username": "KuroHoshi",
+      "country": "France",
+      "isOnline": true,
+      "biography": "Mon style de jeu est empreint de mystère. Je préfère que mes adversaires ne sachent jamais ce que je prépare, gardant mes intentions cachées jusqu'au dernier moment.",
+      "user_role_id": 1,
+      "created_at": "2024-09-07 11:30:00"
+    },
+    {
+      "id": 15,
+      "username": "WhiteTiger",
+      "country": "USA",
+      "isOnline": false,
+      "biography": "Avec une passion pour la stratégie et l'adaptation rapide, le Shogi est le terrain parfait pour tester mes limites et apprendre des autres joueurs.",
+      "user_role_id": 2,
+      "created_at": "2024-09-08 10:00:00"
+    },
+    {
+      "id": 16,
+      "username": "CrimsonBlade",
+      "country": "France",
+      "isOnline": true,
+      "biography": "Chaque mouvement dans le Shogi est une danse, et j'essaie de rendre mes parties aussi fluides que possible, avec des stratégies élégantes et efficaces.",
+      "user_role_id": 1,
+      "created_at": "2024-09-08 14:45:00"
+    },
+    {
+      "id": 17,
+      "username": "YagyuWarrior",
+      "country": "France",
+      "isOnline": true,
+      "biography": "Suivant les traces des grands guerriers Yagyu, je vois chaque partie de Shogi comme une opportunité de prouver ma valeur et d'améliorer mes compétences en stratégie.",
+      "user_role_id": 2,
+      "created_at": "2024-09-09 09:15:00"
+    },
+    {
+        "id": 18,
+        "username": "ThunderStrike",
+        "country": "USA",
+        "isOnline": false,
+        "biography": "Rapide et décisif, j'aime les parties de Shogi où chaque coup peut être un tournant majeur. Je cherche à maîtriser l'art de la rapidité dans mes stratégies.",
+        "user_role_id": 1,
+        "created_at": "2024-09-09 10:00:00"
+    },
+    {
+        "id": 19,
+        "username": "BlazingPhoenix",
+        "country": "France",
+        "isOnline": true,
+        "biography": "Je m'efforce de renaître de mes cendres après chaque défaite, apprenant de mes erreurs et revenant plus fort dans chaque partie.",
+        "user_role_id": 2,
+        "created_at": "2024-09-09 13:00:00"
+    },
+    {
+        "id": 20,
+        "username": "SilentStorm",
+        "country": "Germany",
+        "isOnline": false,
+        "biography": "La tempête se prépare toujours dans le silence. J'aime jouer des parties lentes et méthodiques, créant une stratégie qui déstabilise mes adversaires.",
+        "user_role_id": 1,
+        "created_at": "2024-09-10 08:00:00"
+    },
+    {
+        "id": 21,
+        "username": "GoldenDragon",
+        "country": "France",
+        "isOnline": true,
+        "biography": "Les dragons sont puissants et majestueux, tout comme ma stratégie dans le Shogi. J'attaque rarement, mais quand je le fais, c'est décisif.",
+        "user_role_id": 2,
+        "created_at": "2024-09-10 09:15:00"
+    },
+    {
+        "id": 22,
+        "username": "MistyMountain",
+        "country": "France",
+        "isOnline": true,
+        "biography": "La patience d'une montagne et la sagesse des anciens. Je joue le long jeu dans mes parties, forçant mes adversaires à faire des erreurs.",
+        "user_role_id": 1,
+        "created_at": "2024-09-10 11:30:00"
+    },
+    {
+        "id": 23,
+        "username": "SteelSamurai",
+        "country": "USA",
+        "isOnline": false,
+        "biography": "Le samouraï d'acier ne recule jamais devant un défi. Mes stratégies sont solides et implacables, comme une armure de fer.",
+        "user_role_id": 2,
+        "created_at": "2024-09-11 10:45:00"
+    },
+    {
+        "id": 24,
+        "username": "CrimsonMoon",
+        "country": "France",
+        "isOnline": true,
+        "biography": "Comme une lune rouge dans la nuit, j'illumine mes parties de Shogi avec des mouvements inattendus et des tactiques audacieuses.",
+        "user_role_id": 1,
+        "created_at": "2024-09-11 12:00:00"
+    },
+    {
+        "id": 25,
+        "username": "Firehawk",
+        "country": "France",
+        "isOnline": false,
+        "biography": "Je suis comme un faucon de feu, rapide et imprévisible. J'aime prendre des décisions rapides et forcer mon adversaire à jouer sous pression.",
+        "user_role_id": 2,
+        "created_at": "2024-09-12 08:30:00"
+    },
+    {
+        "id": 26,
+        "username": "DarkShadow",
+        "country": "Germany",
+        "isOnline": true,
+        "biography": "Les ombres cachent des mouvements que personne ne voit venir. Je préfère jouer des parties discrètes mais décisives.",
+        "user_role_id": 1,
+        "created_at": "2024-09-12 09:45:00"
+    },
+    {
+        "id": 27,
+        "username": "Stormbringer",
+        "country": "France",
+        "isOnline": true,
+        "biography": "J'amène la tempête dans chaque partie de Shogi. Mon style de jeu est dynamique et imprévisible, toujours en mouvement.",
+        "user_role_id": 2,
+        "created_at": "2024-09-12 10:30:00"
+    },
+    {
+        "id": 28,
+        "username": "BlueLotus",
+        "country": "France",
+        "isOnline": true,
+        "biography": "Le lotus bleu symbolise la sérénité et la tranquillité. Je joue avec calme, même dans les moments les plus tendus d'une partie.",
+        "user_role_id": 1,
+        "created_at": "2024-09-13 11:00:00"
+    },
+    {
+        "id": 29,
+        "username": "IronFist",
+        "country": "France",
+        "isOnline": false,
+        "biography": "Mes coups sont fermes et puissants, comme un poing d'acier. Je privilégie la force dans mes stratégies pour écraser la défense de mes adversaires.",
+        "user_role_id": 2,
+        "created_at": "2024-09-13 12:15:00"
+    },
+    {
+        "id": 30,
+        "username": "GoldenPhoenix",
+        "country": "France",
+        "isOnline": true,
+        "biography": "Je me lève toujours de mes cendres pour affronter mes adversaires avec sagesse et résilience.",
+        "user_role_id": 1,
+        "created_at": "2024-09-13 13:30:00"
+    },
+    {
+        "id": 31,
+        "username": "SilentRiver",
+        "country": "France",
+        "isOnline": false,
+        "biography": "Comme une rivière silencieuse, je laisse mes mouvements couler naturellement sur le plateau.",
+        "user_role_id": 2,
+        "created_at": "2024-09-14 09:00:00"
+    },
+    {
+        "id": 32,
+        "username": "WhiteTiger",
+        "country": "USA",
+        "isOnline": true,
+        "biography": "La stratégie et la rapidité me permettent de dépasser mes adversaires.",
+        "user_role_id": 1,
+        "created_at": "2024-09-14 10:30:00"
+    },
+    {
+        "id": 33,
+        "username": "CrimsonSword",
+        "country": "France",
+        "isOnline": true,
+        "biography": "Chaque coup est une lame aiguisée que je manie avec précision.",
+        "user_role_id": 2,
+        "created_at": "2024-09-14 14:00:00"
+    },
+    {
+        "id": 34,
+        "username": "SilverWolf",
+        "country": "Germany",
+        "isOnline": false,
+        "biography": "Comme un loup solitaire, j'attaque avec discrétion et force.",
+        "user_role_id": 1,
+        "created_at": "2024-09-15 09:30:00"
+    },
+    {
+        "id": 35,
+        "username": "FuryLion",
+        "country": "France",
+        "isOnline": true,
+        "biography": "Je rugis dans chaque partie avec des stratégies audacieuses.",
+        "user_role_id": 2,
+        "created_at": "2024-09-15 11:00:00"
+    },
+    {
+        "id": 36,
+        "username": "ShogunGhost",
+        "country": "France",
+        "isOnline": true,
+        "biography": "Comme un fantôme sur le plateau, mes coups sont invisibles mais puissants.",
+        "user_role_id": 1,
+        "created_at": "2024-09-15 12:15:00"
+    },
+    {
+        "id": 37,
+        "username": "ThunderEagle",
+        "country": "France",
+        "isOnline": false,
+        "biography": "Rapide comme l'éclair, je domine mes adversaires avec des coups fulgurants.",
+        "user_role_id": 2,
+        "created_at": "2024-09-16 09:00:00"
+    },
+    {
+        "id": 38,
+        "username": "BlackSerpent",
+        "country": "France",
+        "isOnline": true,
+        "biography": "Le serpent se faufile sur le plateau, imprévisible et mortel.",
+        "user_role_id": 1,
+        "created_at": "2024-09-16 10:45:00"
+    },
+    {
+        "id": 39,
+        "username": "BlazingSun",
+        "country": "USA",
+        "isOnline": true,
+        "biography": "Je rayonne de confiance et d'audace dans chaque partie.",
+        "user_role_id": 1,
+        "created_at": "2024-09-16 11:30:00"
+    },
+    {
+        "id": 40,
+        "username": "EmeraldDragon",
+        "country": "France",
+        "isOnline": false,
+        "biography": "Je suis un dragon d'émeraude, patient et stratégique, attendant toujours le bon moment pour attaquer.",
+        "user_role_id": 2,
+        "created_at": "2024-09-17 09:00:00"
+    },
+    {
+        "id": 41,
+        "username": "CrimsonKnight",
+        "country": "France",
+        "isOnline": true,
+        "biography": "Comme un chevalier, je protège mon roi avec détermination et force.",
+        "user_role_id": 1,
+        "created_at": "2024-09-17 10:30:00"
+    },
+    {
+        "id": 42,
+        "username": "SapphireBlade",
+        "country": "Germany",
+        "isOnline": true,
+        "biography": "Ma lame de saphir est rapide et précise, tranchant dans chaque partie avec une stratégie affûtée.",
+        "user_role_id": 2,
+        "created_at": "2024-09-17 11:00:00"
+    },
+    {
+        "id": 43,
+        "username": "GoldenSamurai",
+        "country": "France",
+        "isOnline": false,
+        "biography": "Le Shogi est un art sacré pour moi, et je l'aborde avec honneur et respect.",
+        "user_role_id": 1,
+        "created_at": "2024-09-18 08:30:00"
+    },
+    {
+        "id": 44,
+        "username": "IronShield",
+        "country": "France",
+        "isOnline": true,
+        "biography": "Ma défense est impénétrable, comme un bouclier de fer.",
+        "user_role_id": 2,
+        "created_at": "2024-09-18 10:15:00"
+    },
+    {
+        "id": 45,
+        "username": "LoneWolf",
+        "country": "France",
+        "isOnline": true,
+        "biography": "Je joue en solitaire, mais avec la force et la ruse d'un loup.",
+        "user_role_id": 1,
+        "created_at": "2024-09-18 12:00:00"
+    },
+    {
+        "id": 46,
+        "username": "StormRider",
+        "country": "USA",
+        "isOnline": false,
+        "biography": "Je chevauche la tempête, utilisant des mouvements rapides et imprévisibles pour surprendre mes adversaires.",
+        "user_role_id": 2,
+        "created_at": "2024-09-19 09:00:00"
+    },
+    {
+        "id": 47,
+        "username": "BlackLotus",
+        "country": "France",
+        "isOnline": true,
+        "biography": "Je suis une force tranquille, comme le lotus noir qui fleurit dans l'obscurité.",
+        "user_role_id": 1,
+        "created_at": "2024-09-19 10:30:00"
+    },
+    {
+        "id": 48,
+        "username": "WhiteWolf",
+        "country": "France",
+        "isOnline": false,
+        "biography": "Un loup blanc dans la neige, silencieux et mortel. J'aime surprendre mes adversaires avec des mouvements calculés.",
+        "user_role_id": 2,
+        "created_at": "2024-09-19 12:00:00"
+    },
+    {
+        "id": 49,
+        "username": "PhoenixFlame",
+        "country": "France",
+        "isOnline": true,
+        "biography": "Comme le phénix, je renais de mes cendres après chaque défaite, plus fort et plus sage.",
+        "user_role_id": 1,
+        "created_at": "2024-09-20 09:00:00"
+    },
+    {
+        "id": 50,
+        "username": "SteelDragon",
+        "country": "France",
+        "isOnline": false,
+        "biography": "Je joue avec la force et la persévérance d'un dragon d'acier, indomptable et puissant.",
+        "user_role_id": 2,
+        "created_at": "2024-09-20 10:30:00"
+    }
+
+]
