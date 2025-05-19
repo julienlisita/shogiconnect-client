@@ -67,7 +67,7 @@ const Home = () => {
                                 <p>Découvrez notre section Communauté, un espace central pour tous les passionnés de Shogi. Ici, vous pourrez non seulement obtenir des informations sur les clubs de Shogi en France et les événements qu’ils organisent, mais aussi participer activement à notre forum. Engagez des discussions enrichissantes, partagez vos expériences, et restez informé des dernières nouvelles et activités. Que vous cherchiez à rejoindre un club, à participer à des tournois ou à échanger avec d’autres joueurs, cette section vous offre toutes les ressources nécessaires pour vous connecter et évoluer dans la communauté Shogi.</p>
                             </div>
                             <div className="introCommunity-content-description-button button">
-                                <p><Link className="button-link" to="/forum">Accéder au forum</Link></p>
+                                <p><Link className="button-link" to="/forum/categories">Accéder au forum</Link></p>
                             </div>
                         </div>
                         <div className="introCommunity-content-imageContainer">
@@ -111,7 +111,7 @@ const Home = () => {
                                 <p>Plongez au cœur de l’action avec notre section Jeu en Ligne, où vous pouvez défier des joueurs du monde entier dans des parties de Shogi captivantes. Rejoignez la communauté, affrontez des adversaires de tous niveaux et améliorez vos compétences en temps réel. C’est l’endroit idéal pour tester vos stratégies et grimper dans les classements.</p>
                             </div>
                             <div className="introGame-content-description-button button">
-                                <p><Link className="button-link" to="/members">Voir les joueurs</Link></p>
+                                <p><Link className="button-link" to="/users">Voir les joueurs</Link></p>
                             </div>
                         </div>
                     </div>

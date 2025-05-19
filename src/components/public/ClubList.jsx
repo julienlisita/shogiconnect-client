@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./ClubList.css"
 
 const ClubList = () => {
@@ -30,7 +31,7 @@ const ClubList = () => {
                             </p>
                         </div>        
                         <div className="club-card-button button">
-                            <p>En savoir +</p>
+                           <p><Link className="button-link " to="https://ajfj.eu">En savoir +</Link></p>
                         </div>
                     </div>
                     <div className="clubCard">
@@ -54,7 +55,7 @@ const ClubList = () => {
                             </p>
                         </div>        
                         <div className="club-card-button button">
-                            <p>En savoir +</p>
+                            <p><Link className="button-link" to="https://shogialsace.wordpress.com/">En savoir +</Link></p>
                         </div>
                     </div>
                     <div className="clubCard">
@@ -80,7 +81,7 @@ const ClubList = () => {
                             </p>
                         </div>        
                         <div className="club-card-button button">
-                            <p>En savoir +</p>
+                            <p><Link className="button-link" to="http://shogiparis.blog.free.fr/">En savoir +</Link></p>
                         </div>
                     </div>
                     <div className="clubCard">
@@ -102,7 +103,7 @@ const ClubList = () => {
                             </p>
                         </div>        
                         <div className="club-card-button button">
-                            <p>En savoir +</p>
+                            <p><Link className="button-link" to="https://www.facebook.com/clubdechecsetdeshogidesaintmenoux">En savoir +</Link></p>
                         </div>
                     </div>
                     <div className="clubCard">
@@ -126,7 +127,7 @@ const ClubList = () => {
                             </p>
                         </div>        
                         <div className="club-card-button button">
-                            <p>En savoir +</p>
+                            <p><Link className="button-link" to="https://sites.google.com/site/clubdeshogibisontin">En savoir +</Link></p>
                         </div>
                     </div>
                     <div className="clubCard">
@@ -148,7 +149,7 @@ const ClubList = () => {
                             </p>
                         </div>        
                         <div className="club-card-button button">
-                            <p>En savoir +</p>
+                            <p><Link className="button-link" to="https://www.instagram.com/shogi.grenoble/">En savoir +</Link></p>
                         </div>
                     </div>
                     <div className="clubCard">
@@ -173,7 +174,7 @@ const ClubList = () => {
                             </p>
                         </div>        
                         <div className="club-card-button button">
-                            <p>En savoir +</p>
+                            <p><Link className="button-link" to="https://www.epitanime.com/section-jeux-traditionnels-japonais/">En savoir +</Link></p>
                         </div>
                     </div>            
                     <div className="clubCard">
@@ -197,7 +198,7 @@ const ClubList = () => {
                             </p>
                         </div>        
                         <div className="club-card-button button">
-                            <p>En savoir +</p>
+                            <p><Link className="button-link" to="http://ras.angers.shogi.free.fr">En savoir +</Link></p>
                         </div>
                     </div>
                     <div className="clubCard">
@@ -222,7 +223,7 @@ const ClubList = () => {
                             </p>
                         </div>        
                         <div className="club-card-button button">
-                            <p>En savoir +</p>
+                            <p><Link className="button-link" to="https://sites.google.com/lyon-olympique-echecs.com/shogi-dojo-lyon/présentation">En savoir +</Link></p>
                         </div>
                     </div>
                 </div>
