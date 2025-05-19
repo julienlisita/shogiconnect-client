@@ -1,14 +1,13 @@
-import Header from "../../components/public/Header";
-import Footer from "../../components/public/Footer";
+// src/pages/public/ShogiHistoryPage.jsx
+
+import PublicLayout from "../../layouts/PublicLayout";
 import ShogiHistory from "../../components/public/ShogiHistory";
 
 const ShogiHistoryPage = () => {
     return (
-      <div>
-        <Header/>
+      <PublicLayout>
         <ShogiHistory/>
-        <Footer/>
-      </div>
+      </PublicLayout>
     );
   };
   

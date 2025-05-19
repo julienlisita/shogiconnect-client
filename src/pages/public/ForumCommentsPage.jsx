@@ -1,14 +1,13 @@
-import Header from "../../components/public/Header";
-import Footer from "../../components/public/Footer";
+// src/pages/public/ForumCommentsPage.jsx
+
+import PublicLayout from "../../layouts/PublicLayout";
 import ForumComments from "../../components/public/ForumComments";
 
 const ForumCommentsPage = () => {
     return (
-      <div>
-        <Header/>
-           <ForumComments/>
-        <Footer/>
-      </div>
+      <PublicLayout>
+          <ForumComments/>
+      </PublicLayout>
     );
   };
   

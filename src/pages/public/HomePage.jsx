@@ -1,14 +1,13 @@
-import Footer from "../../components/public/Footer";
-import Header from "../../components/public/Header";
+// src/pages/public/HomePage.jsx
+
+import PublicLayout from "../../layouts/PublicLayout";
 import Home from "../../components/public/Home";
 
 const HomePage = () => {
     return (
-      <div>
-        <Header/>
+      <PublicLayout>
         <Home/>
-        <Footer/>
-      </div>
+      </PublicLayout>
     );
   };
   

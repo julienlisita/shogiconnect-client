@@ -1,14 +1,13 @@
-import Header from "../../components/public/Header";
-import Footer from "../../components/public/Footer";
+// src/pages/public/ForumTopicsPage.jsx
+
+import PublicLayout from "../../layouts/PublicLayout";
 import ForumTopics from "../../components/public/ForumTopics";
 
 const ForumTopicsPage = () => {
     return (
-      <div>
-        <Header/>
-           <ForumTopics/>
-        <Footer/>
-      </div>
+      <PublicLayout>
+          <ForumTopics/>
+      </PublicLayout>
     );
   };
   

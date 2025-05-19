@@ -1,15 +1,14 @@
-import Footer from "../../components/public/Footer";
-import Header from "../../components/public/Header";
+// src/pages/public/UserProfilePage.jsx
+
+import PublicLayout from "../../layouts/PublicLayout";
 import UserProfile from "../../components/public/UserProfile";
 
 const UserProfilePage = () => {
 
   return (
-    <div>
-      <Header/>
+    <PublicLayout>
       <UserProfile/>
-      <Footer/>
-    </div>
+    </PublicLayout>
   );
 };
 
