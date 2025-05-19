@@ -14,12 +14,7 @@ const Dashboard = () => {
     if (profileError) return <p>Error loading profile: {profileError}</p>;
     if (adminError) return <p>Error loading users: {adminError}</p>;
 
-    const {
-        nbrUsersDeleted = 0,
-        nbrTopicsDeleted = 0,
-        nbrCommentsDeleted = 0,
-        nbrScheduledGamesDeleted = 0
-    } = adminStats?.find(stat => stat.AdminId === user.id) || {};
+    const stat = adminStats?.find(stat => stat.AdminId === user.id) || {};
 
     const formatActivityMessage = (activity) => {
         switch (activity.activity_type) {
@@ -47,21 +42,21 @@ const Dashboard = () => {
                         <div className="dashboard-content-leftBlock">
                             <div className="dashboard-content-leftBlock-stats1">
                                 <h2>Statistiques du site</h2>
-                                <p>{`Membres créés: ${siteStats ? siteStats.totalUsers : 0}`}</p>
-                                <p>{`Membres actifs:${siteStats ? siteStats.activeUsers : 0}`}</p>
-                                <p>{`Topics créés: ${siteStats ? siteStats.totalTopics : 0}`}</p>
-                                <p>{`Topics actifs: ${siteStats ? siteStats.activeTopics : 0}`}</p>
-                                <p>{`Commentaires postés: ${siteStats ? siteStats.totalComments : 0}`}</p>
-                                <p>{`Commentaires actif: ${siteStats ? siteStats.activeComments : 0}`}</p>
-                                <p>{`Rendez-vous de partie créés: ${siteStats ? siteStats.totalScheduledGames : 0}`}</p>
-                                <p>{`Rendez-vous de partie actifs: ${siteStats ? siteStats.activeScheduledGames : 0}`}</p>
+                                <p>{`Membres créés: ${siteStats?.totalUsers || 0}`}</p>
+                                <p>{`Membres actifs:${siteStats?.activeUsers || 0}`}</p>
+                                <p>{`Topics créés: ${siteStats?.totalTopics || 0}`}</p>
+                                <p>{`Topics actifs: ${siteStats?.activeTopics || 0}`}</p>
+                                <p>{`Commentaires postés: ${siteStats?.totalComments || 0}`}</p>
+                                <p>{`Commentaires actif: ${siteStats?.activeComments || 0}`}</p>
+                                <p>{`Rendez-vous de partie créés: ${siteStats?.totalScheduledGames || 0}`}</p>
+                                <p>{`Rendez-vous de partie actifs: ${siteStats?.activeScheduledGames || 0}`}</p>
                             </div>
                             <div className="dashboard-content-leftBlock-stats2">
                                 <h2>Statistiques de gestion</h2>
-                                <p>{`Comptes supprimés: ${nbrUsersDeleted}`}</p>
-                                <p>{`Topics supprimés: ${nbrTopicsDeleted}`}</p>
-                                <p>{`Commentaires supprimés: ${nbrCommentsDeleted}`}</p>
-                                <p>{`Rendez-vous de partie supprimés: ${nbrScheduledGamesDeleted}`}</p> 
+                                <p>{`Comptes supprimés: ${stat?.usersDeleted || 0}`}</p>
+                                <p>{`Topics supprimés: ${stat?.topicsDeleted || 0}`}</p>
+                                <p>{`Commentaires supprimés: ${stat?.commentsDeleted || 0}`}</p>
+                                <p>{`Rendez-vous de partie supprimés: ${stat?.scheduledGamesDeleted || 0}`}</p> 
                             </div>
                         </div>
                         <div className="dashboard-content-rightBlock">
