@@ -53,9 +53,6 @@ const ShogiRules = () => {
                             <div className="cardWithoutPromotion-imgContainer">
                                 <img src={imgKing} alt="" />
                             </div>
-                            <div className="cardWithoutPromotion-button button">
-                                <p>En savoir +</p>
-                            </div>
                         </div>
                         <div className="cardWithoutPromotion">
                             <p className="cardWithoutPromotion-title">Général d’or - 金将 (Kinshō)</p>
@@ -65,9 +62,6 @@ const ShogiRules = () => {
                             </p>
                             <div className="cardWithoutPromotion-imgContainer">
                                 <img src={imgGoldGen} alt="" />
-                            </div>
-                            <div className="cardWithoutPromotion-button button">
-                                <p>En savoir +</p>
                             </div>
                         </div>
                     </div>
@@ -86,9 +80,6 @@ const ShogiRules = () => {
                             <div className="cardWithPromotion-imgContainer">
                                 <img src={imgSilverGenP} alt="" />
                             </div>
-                            <div className="cardWithPromotion-button button">
-                                <p>En savoir +</p>
-                            </div>
                         </div>
                         <div className="cardWithPromotion">
                             <p className="cardWithPromotion-title">Cavalier - 桂馬 (Keima)</p>
@@ -103,9 +94,6 @@ const ShogiRules = () => {
                             <p>Version promue</p>
                             <div className="cardWithPromotion-imgContainer">
                                 <img src={imgKnightP} alt="" />
-                            </div>
-                            <div className="cardWithPromotion-button button">
-                                <p>En savoir +</p>
                             </div>
                         </div>
                         <div className="cardWithPromotion">
@@ -122,9 +110,6 @@ const ShogiRules = () => {
                             <div className="cardWithPromotion-imgContainer">
                                 <img src={imgLanceP} alt="" />
                             </div>
-                            <div className="cardWithPromotion-button button">
-                                <p>En savoir +</p>
-                            </div>
                         </div>
                         <div className="cardWithPromotion">
                             <p className="cardWithPromotion-title">Tour - 飛車 (Hisha)</p>
@@ -139,9 +124,6 @@ const ShogiRules = () => {
                             <p>Version promue</p>
                             <div className="cardWithPromotion-imgContainer">
                                 <img src={imgRookP} alt="" />
-                            </div>
-                            <div className="cardWithPromotion-button button">
-                                <p>En savoir +</p>
                             </div>
                         </div>
                         <div className="cardWithPromotion">
@@ -158,9 +140,6 @@ const ShogiRules = () => {
                             <div className="cardWithPromotion-imgContainer">
                                 <img src={imgBishopP} alt="" />
                             </div>
-                            <div className="cardWithPromotion-button button">
-                                <p>En savoir +</p>
-                            </div>
                         </div>
                         <div className="cardWithPromotion">
                             <p className="cardWithPromotion-title">Pion - 歩兵 (Fuhyō) </p>
@@ -175,9 +154,6 @@ const ShogiRules = () => {
                             <p>Version promue</p>
                             <div className="cardWithPromotion-imgContainer">
                                 <img src={imgPawnP} alt="" />
-                            </div>
-                            <div className="cardWithPromotion-button button">
-                                <p>En savoir +</p>
                             </div>
                         </div>
                     </div>
