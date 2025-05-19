@@ -1,12 +1,13 @@
+// src/pages/user/ProfileManagementPage.jsx
+
+import UserLayout from "../../layouts/UserLayout";
 import ProfileManagement from "../../components/user/ProfileManagement";
-import UserSidebar from "../../components/user/UserSidebar";
 
 const ProfileManagementPage = () => {
     return (
-      <div className="pageWithSidebar">
-        <UserSidebar/>
+      <UserLayout>
         <ProfileManagement/>
-      </div>
+      </UserLayout>
     );
   };
   

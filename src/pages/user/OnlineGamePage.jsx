@@ -1,13 +1,16 @@
+// src/pages/user/OnlineGamePage.jsx
+
+import PublicLayout from "../../layouts/PublicLayout";
 import { useParams } from 'react-router-dom';
+import OnlineGame from "../../components/user/OnlineGame";
 
 const OnlineGamePage = () => {
   const { gameId } = useParams();
 
   return (
-    <div>
-      <h1>Jeu en ligne {gameId}</h1>
-      {/* Contenu du jeu en ligne */}
-    </div>
+    <PublicLayout>
+        <OnlineGame/>
+    </PublicLayout>
   );
 };
 

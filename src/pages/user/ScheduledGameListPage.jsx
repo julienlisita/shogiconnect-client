@@ -1,12 +1,13 @@
+// src/pages/user/ScheduledGameListPage.jsx
+
+import UserLayout from "../../layouts/UserLayout";
 import ScheduledGameList from "../../components/user/ScheduledGameList";
-import UserSidebar from "../../components/user/UserSidebar"
 
 const ScheduledGameListPage = () => {
     return (
-      <div className="pageWithSidebar">
-        <UserSidebar/>
+      <UserLayout>
         <ScheduledGameList/>
-      </div>
+      </UserLayout>
     );
   };
   

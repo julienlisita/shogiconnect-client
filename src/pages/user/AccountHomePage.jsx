@@ -1,13 +1,14 @@
-import AccountHome from "../../components/user/AccountHome";
-import UserSidebar from "../../components/user/UserSidebar";
+// src/pages/user/AccountHomePage.jsx
+
+import UserLayout from "../../layouts/UserLayout";
+import AccountHome from  "../../components/user/AccountHome";
 
 const AccountHomePage = () => {
 
     return (
-      <div className="pageWithSidebar">
-        <UserSidebar/>
+      <UserLayout>
         <AccountHome/>
-      </div>
+      </UserLayout>
     );
   };
   

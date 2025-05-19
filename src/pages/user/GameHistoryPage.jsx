@@ -1,7 +1,13 @@
+// src/pages/user/GameHistoryPage.jsx
+
+import UserLayout from "../../layouts/UserLayout";
+import GameHistory from "../../components/user/GameHistory";
+
 const GameHistoryPage = () => {
     return (
-      <div>
-      </div>
+      <UserLayout>
+        <GameHistory/>
+      </UserLayout>
     );
   };
   
