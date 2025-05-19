@@ -1,12 +1,13 @@
-import AdminSidebar from "../../components/admin/AdminSidebar";
+// src/pages/admin/DashboardPage.jsx
+
+import AdminLayout from "../../layouts/AdminLayout";
 import Dashboard from "../../components/admin/Dashboard";
 
 const DashboardPage = () => {
     return (
-      <div className="pageWithSidebar">
-        <AdminSidebar/>
+      <AdminLayout>
         <Dashboard/>
-      </div>
+      </AdminLayout>
     );
   };
   

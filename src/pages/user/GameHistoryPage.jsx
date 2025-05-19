@@ -1,12 +1,12 @@
 // src/pages/user/GameHistoryPage.jsx
 
 import UserLayout from "../../layouts/UserLayout";
-import GameHistory from "../../components/user/GameHistory";
 
 const GameHistoryPage = () => {
     return (
       <UserLayout>
-        <GameHistory/>
+        <h1>Page en construction</h1>
+        <p>contenu dedié a l'historique des parties</p>
       </UserLayout>
     );
   };

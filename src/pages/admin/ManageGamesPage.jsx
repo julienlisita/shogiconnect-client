@@ -1,12 +1,13 @@
-import AdminSidebar from "../../components/admin/AdminSidebar";
+// src/pages/admin/ManageGamesPage.jsx
+
+import AdminLayout from "../../layouts/AdminLayout";
 import ManageGames from "../../components/admin/ManageGames";
 
 const ManageGamesPage = () => {
     return (
-      <div className="pageWithSidebar">
-        <AdminSidebar/>
+      <AdminLayout>
         <ManageGames/>
-      </div>
+      </AdminLayout>
     );
   };
   

@@ -1,12 +1,13 @@
-import AdminSidebar from "../../components/admin/AdminSidebar";
+// src/pages/admin/ManageCommentsPage.jsx
+
+import AdminLayout from "../../layouts/AdminLayout";
 import ManageComments from "../../components/admin/ManageComments";
 
 const ManageCommentsPage = () => {
     return (
-      <div className="pageWithSidebar">
-        <AdminSidebar/>
+      <AdminLayout>
         <ManageComments/>
-      </div>
+      </AdminLayout>
     );
   };
   

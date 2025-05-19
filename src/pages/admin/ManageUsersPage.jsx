@@ -1,12 +1,13 @@
-import AdminSidebar from "../../components/admin/AdminSidebar";
+// src/pages/admin/ManageUsersPage.jsx
+
+import AdminLayout from "../../layouts/AdminLayout";
 import ManageUsers from "../../components/admin/ManageUsers";
 
 const ManageUsersPage = () => {
     return (
-      <div className="pageWithSidebar">
-        <AdminSidebar/>
+      <AdminLayout>
         <ManageUsers/>
-      </div>
+      </AdminLayout>
     );
   };
   
