@@ -1,10 +1,11 @@
-import axios from "axios";
+// src/services/userActivityService.js
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+import axios from "../config/axiosConfig";
+
 
 // Récupère les activités d'un utilisateur
 const getUserActivities = async (userId) => {
-    const response = await axios.get(`${API_BASE_URL}/userActivities/user/${userId}`);
+    const response = await axios.get(`/userActivities/user/${userId}`);
     return response.data.data;
 };
 

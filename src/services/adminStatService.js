@@ -1,11 +1,9 @@
 // src/services/adminStatsService.js
 
-import axios from 'axios';
+import axios from "../config/axiosConfig";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
-const getAdminStats = async (adminId) => {
-    const response = await axios.get(`${API_BASE_URL}/adminStats/user/${adminId}`);
+const getAdminStats = async () => {
+    const response = await axios.get(`/adminStats`);
     return response.data.data;
 };
 

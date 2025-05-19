@@ -1,25 +1,23 @@
 // src/services/userService.js
 
-import axios from 'axios';
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+import axios from "../config/axiosConfig";
 
 // Récupérer tous les utilisateurs
 const getUsers = async () => {
-    const response = await axios.get(`${API_BASE_URL}/users`);
+    const response = await axios.get(`/users`);
     return response.data.data;
 };
 
 // Supprimer un utilisateur par ID (admin uniquement)
 const deleteUser = async (userId) => {
-    const response = await axios.delete(`${API_BASE_URL}/users/${userId}`, {
+    const response = await axios.delete(`/users/${userId}`, {
     });
     return response.data.data;
 };
 
 // Mettre à jour le rôle d'un utilisateur (admin uniquement)
 const updateUserRole = async (userId, newRole) => {
-    const response = await axios.patch(`${API_BASE_URL}/users/${userId}/role`, { RoleId: newRole });
+    const response = await axios.patch(`/users/${userId}/role`, { RoleId: newRole });
     return response.data.data;
 };
 
