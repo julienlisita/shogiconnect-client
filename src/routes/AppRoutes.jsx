@@ -26,6 +26,7 @@ import ManageUsersPage from '../pages/admin/ManageUsersPage';
 import ManageTopicsPage from '../pages/admin/ManageTopicsPage';
 import ManageCommentsPage from '../pages/admin/ManageCommentsPage';
 import ManageGamesPage from '../pages/admin/ManageGamesPage';
+import NotFoundPage from '../pages/public/NotFoundPage';
 
 const ROLE_USER = 1
 const ROLE_ADMIN = 2
@@ -81,6 +82,9 @@ const AppRoutes = () => {
             <Route path="/admin/manage-comments/:topic_id" element={<ProtectedRoute allowedRoles={[ROLE_ADMIN]}><ManageCommentsPage /></ProtectedRoute>} />
             {/* Page de gestion des parties (admin) */}
             <Route path="/admin/manage-games" element={<ProtectedRoute allowedRoles={[ROLE_ADMIN]}><ManageGamesPage /></ProtectedRoute>} />
+
+            {/* Page d'avertissement de page non trouvée */}
+            <Route path="/*" element={<NotFoundPage/>} />
 
         </Routes>
      );

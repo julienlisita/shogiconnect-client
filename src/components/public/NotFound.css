@@ -1,0 +1,21 @@
+.notfound-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  text-align: center;
+  padding: 20px;
+  padding-top: 100px;
+}
+
+
+.notfound-container h2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.notfound-container p {
+ margin-bottom: 20px;
+}
+
