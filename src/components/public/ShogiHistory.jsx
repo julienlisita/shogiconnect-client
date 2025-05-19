@@ -2,8 +2,8 @@ import "./ShogiHistory.css"
 import img1 from "../../assets/images/player2.jpg";
 import img2 from "../../assets/images/map.png";
 import img3 from "../../assets/images/paint.jpg";
-import img4 from "../../assets/images/banner10.jpg";
-import img5 from "../../assets/images/banner4.jpg";
+import img4 from "../../assets/images/banner10.avif";
+import img5 from "../../assets/images/banner4.avif";
 import img6 from "../../assets/images/manga.jpg";
 
 const ShogiHistory = () => {

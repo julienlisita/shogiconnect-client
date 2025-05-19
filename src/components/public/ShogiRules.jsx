@@ -1,4 +1,4 @@
-import img1 from "../../assets/images/banner8.jpg"
+import img1 from "../../assets/images/banner8.avif"
 import img2 from "../../assets/images/Shogiban.png"
 import img3 from "../../assets/images/Shogi-promotion-zone.png"
 import img4 from "../../assets/images/player.jpg"

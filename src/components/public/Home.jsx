@@ -5,8 +5,8 @@ import { useUserContext } from "../../contexts/UserContext.jsx";
 import { useForumContext } from "../../contexts/ForumContext.jsx";
 
 import logo from '../../assets/images/logo-shogi-titre.png';
-import img1 from "../../assets/images/banner9.png";
-import img2 from "../../assets/images/banner7.jpg";
+import img1 from "../../assets/images/banner9.avif";
+import img2 from "../../assets/images/banner7.avif";
 import img3 from "../../assets/images/shogi-ex3.jpg";
 import { Link } from "react-router-dom";
 
