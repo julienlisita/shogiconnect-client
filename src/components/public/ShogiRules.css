@@ -67,8 +67,8 @@
 {
     width: 400px;
     height: 600px;
-    border-top:1px black solid;
-    border-bottom:1px black solid;
+    border-radius: 10px;
+    background-color: #e9e9e9;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -80,8 +80,8 @@
 {
     width: 400px;
     height: 1000px;
-    border-top:1px black solid;
-    border-bottom:1px black solid;
+    border-radius: 10px;
+    background-color: #e9e9e9;
     display: flex;
     flex-direction: column;
     align-items: center;
