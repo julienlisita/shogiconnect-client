@@ -33,7 +33,7 @@ const LoginModal = ({ isOpen, onClose }) => {
       className="modal"
       overlayClassName="modal-overlay"
     >
-      <h1>Connexion</h1>
+      <h2>Connexion</h2>
       <form className="login-form modal-content" onSubmit={handleSubmit}>
         <input
           type="text"

@@ -6,6 +6,7 @@ import { useAuthContext } from "../../contexts/AuthContext";
 import { useUserContext } from "../../contexts/UserContext.jsx";
 import { useForumContext } from "../../contexts/ForumContext.jsx";
 import NewCommentForm from "../user/NewCommentForm.jsx";
+import PageTitle from "../common/PageTitle.jsx";
 
 const ForumComments = () => {
 
@@ -42,7 +43,7 @@ const ForumComments = () => {
         <div>
             <section className="bannerComments banner"></section>
             <section className="comments main-content">
-                <h1 className="main-content-title">Topic: {getTopicById(topic_id)?.title}</h1>
+                <PageTitle>Topic: {getTopicById(topic_id)?.title}</PageTitle>
                 <h2>Liste des commentaires</h2>
                 <div className="comments-list">
                     <table className="comments-list-table">

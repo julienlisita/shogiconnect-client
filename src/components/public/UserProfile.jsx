@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import image from "../../assets/images/user.png"
 import activities from './../../assets/data/activities.json'
 import { useUserContext } from "../../contexts/UserContext.jsx";
+import PageTitle from "../common/PageTitle.jsx";
 
 const UserProfile = () => {
 
@@ -36,7 +37,7 @@ const UserProfile = () => {
              <section className="bannerProfile banner">
              </section>
              <section className = "main-content">
-                <h1 className = "main-content-title">Profil joueur</h1>
+                <PageTitle>Profil joueur</PageTitle>
                 <div className="profile">
                     <div className = "profile-leftBlock"> 
                         <h2>Infos</h2>

@@ -4,6 +4,7 @@ import "./ForumCategories.css"
 import { Link } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext.jsx";
 import { useForumContext } from "../../contexts/ForumContext.jsx";
+import PageTitle from "../common/PageTitle.jsx";
 
 const ForumCategories = () => {
 
@@ -38,7 +39,7 @@ const ForumCategories = () => {
             <section className="bannerCategories banner">
             </section>
             <section className="categories main-content">
-                <h1 className="main-content-title">Forum ShogiConnect</h1>
+                <PageTitle>Forum ShogiConnect</PageTitle>
                 <h2>Liste des catégories</h2>
                 <div className="categories-list">
                     <table className="categories-list-table">

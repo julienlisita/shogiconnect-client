@@ -5,6 +5,7 @@ import { useUserContext } from "../../contexts/UserContext.jsx";
 import { useAuthContext } from "../../contexts/AuthContext.jsx";
 import { useScheduledGameContext } from "../../contexts/ScheduledGameContext.jsx";
 import ConfirmationModal from "../common/ModalConfirmation.jsx";
+import PageTitle from "../common/PageTitle.jsx";
 
 const ScheduledGameList = () => {
     const { scheduledGames, scheduledGamesLoading, scheduledGamesError,deleteScheduledGame, unsubscribeFromScheduledGame } = useScheduledGameContext();
@@ -60,7 +61,7 @@ const ScheduledGameList = () => {
     return (
         <div className="scheduledGames-container">
             <div className="scheduledGames">
-                <h1>Parties programmées</h1>
+                <PageTitle>Parties programmées</PageTitle>
 
                 <ConfirmationModal
                     isOpen={confirmatioDeletionModalIsOpen}

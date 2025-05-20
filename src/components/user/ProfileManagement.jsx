@@ -7,6 +7,7 @@ import ConfirmationModal from "../common/ModalConfirmation.jsx";
 import EditProfileForm from "./EditPorfilForm.jsx";
 import ChangePasswordForm from "./ChangePasswordForm.jsx";
 import ChangeAvatarForm from "./ChangeAvatarForm.jsx";
+import PageTitle from "../common/PageTitle.jsx";
 
 const ProfilManagement = () => {
 
@@ -39,7 +40,7 @@ const cancelDeletion = () => {
     return (
             <div className="editProfil-container">
                 <div className="editProfil">
-                    <h1>Modification de compte</h1>
+                    <PageTitle>Modification de compte</PageTitle>
                     <div className="editProfil-content">
                         <EditProfileForm/>
                         <div className="editProfil-content-rightBlock">

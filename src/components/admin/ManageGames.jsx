@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
 import { useScheduledGameContext } from "../../contexts/ScheduledGameContext.jsx";
 import ConfirmationModal from "../common/ModalConfirmation.jsx";
+import PageTitle from "../common/PageTitle.jsx";
 
 const ManageGames = () => {
 
@@ -79,7 +80,7 @@ const ManageGames = () => {
     return (
         <div className="manageGames-container">
             <div className="manageGames">
-                <h1>Gestion des rendez-vous de partie</h1>
+                <PageTitle>Gestion des rendez-vous de partie</PageTitle>
                 {/* Modal pour la confirmation de suppression d'une partie' */}
                  <ConfirmationModal
                 isOpen={isDeleteModalOpen}

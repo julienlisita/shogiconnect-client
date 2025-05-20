@@ -2,6 +2,7 @@ import "./Dashboard.css";
 import { useAuthContext } from "../../contexts/AuthContext.jsx";
 import { useProfileContext } from "../../contexts/ProfileContext.jsx";
 import { useUserContext } from "../../contexts/UserContext.jsx";
+import PageTitle from "../common/PageTitle.jsx";
 
 const Dashboard = () => {
 
@@ -37,7 +38,7 @@ const Dashboard = () => {
     return (
             <div className="dashboard-container">
                 <div className="dashboard">
-                    <h1>Dashboard Administrateur</h1>
+                    <PageTitle>Dashboard Administrateur</PageTitle>
                     <div className="dashboard-content">
                         <div className="dashboard-content-leftBlock">
                             <div className="dashboard-content-leftBlock-stats1">

@@ -9,6 +9,7 @@ import img1 from "../../assets/images/banner9.avif";
 import img2 from "../../assets/images/banner7.avif";
 import img3 from "../../assets/images/shogi-ex3.avif";
 import { Link } from "react-router-dom";
+import PageTitle from "../common/PageTitle.jsx";
 
 const Home = () => {
 
@@ -42,7 +43,7 @@ const Home = () => {
                 </div>
             </section>
             <div className="home main-content">
-                <h1 className="main-content-title">Plongez dans l'Univers du Shogi</h1> 
+                <PageTitle>Plongez dans l'Univers du Shogi</PageTitle>
                 <section className="introShogi">
                     <h2>Découvrir les bases du Shogi</h2>
                     <div className="introShogi-content">

@@ -2,6 +2,7 @@ import "./AccountHome.css";
 import { useAuthContext } from "../../contexts/AuthContext.jsx";
 import { useProfileContext } from "../../contexts/ProfileContext.jsx";
 import { useUserContext } from "../../contexts/UserContext.jsx";
+import PageTitle from "../common/PageTitle.jsx";
 
 const AccountHome = () => {
   const { user, userError } = useAuthContext();
@@ -38,7 +39,7 @@ const AccountHome = () => {
   return (
     <div className="accountHome-container">
       <div className="accountHome">
-        <h1>Dashboard membre</h1>
+        <PageTitle>Dashboard membre</PageTitle>
         <div className="accountHome-content">
           <div className="accountHome-content-leftBlock">
             <div className="accountHome-content-leftBlock-infos">

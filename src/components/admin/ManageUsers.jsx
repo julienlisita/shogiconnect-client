@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
 import RoleModal from "./RoleModal";
 import ConfirmationModal from "../common/ModalConfirmation.jsx";
+import PageTitle from "../common/PageTitle.jsx";
 
 const ManageUsers = () => {
 
@@ -78,7 +79,7 @@ const ManageUsers = () => {
     return (
         <div className="manageUsers-container">
             <div className="manageUsers">
-                <h1>Gestion des utilisateurs</h1>
+                <PageTitle>Gestion des utilisateurs</PageTitle>
                 {/* Modal pour la confirmation de suppression d'un utilisateur' */}
                 <ConfirmationModal
                 isOpen={isDeleteModalOpen}

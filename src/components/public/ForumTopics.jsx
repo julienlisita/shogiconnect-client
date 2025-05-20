@@ -7,6 +7,7 @@ import { useAuthContext } from "../../contexts/AuthContext";
 import { useUserContext } from "../../contexts/UserContext.jsx";
 import { useForumContext } from "../../contexts/ForumContext.jsx";
 import NewTopicForm from '../user/NewTopicForm';
+import PageTitle from "../common/PageTitle.jsx";
 
 const ForumTopics = () => {
 
@@ -54,7 +55,7 @@ const ForumTopics = () => {
             <section className="bannerTopics banner">
             </section>
             <section className="topics main-content">
-                <h1 className="main-content-title">Catégorie: {getCategoryById(category_id) ? getCategoryById(category_id).title : "Inconnue"}</h1>
+                <PageTitle>Catégorie: {getCategoryById(category_id) ? getCategoryById(category_id).title : "Inconnue"}</PageTitle>
                 <h2>Liste des topics</h2>
                 <div className="topics-list">
                     <table className="topics-list-table">

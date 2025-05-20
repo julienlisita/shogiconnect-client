@@ -6,6 +6,7 @@ import ModalMessage from "../common/ModalMessage.jsx";
 import { useUserContext } from "../../contexts/UserContext.jsx";
 import { useAuthContext } from "../../contexts/AuthContext.jsx";
 import { useScheduledGameContext } from "../../contexts/ScheduledGameContext.jsx";
+import PageTitle from "../common/PageTitle.jsx";
 
 const AvailableGameList = () => {
 
@@ -88,7 +89,7 @@ const AvailableGameList = () => {
             <section className="bannerGameList banner">
             </section>
             <div className="availableGames main-content">
-                <h1 className="main-content-title">Parties en ligne</h1>
+                <PageTitle>Parties en ligne</PageTitle>
                 <h2>Liste des parties disponibles</h2>
                 <form className="availableGames-displaySelection">
                     <label htmlFor="sortBy"></label>

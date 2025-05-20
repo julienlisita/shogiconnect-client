@@ -19,6 +19,7 @@ import imgPawnP from "../../assets/images/pawnP.avif"
 
 
 import "./ShogiRules.css"
+import PageTitle from "../common/PageTitle"
 
 const ShogiRules = () => {
 
@@ -27,7 +28,7 @@ const ShogiRules = () => {
             <section className="bannerRules banner">
             </section>
             <div className="rules main-content">
-                <h1 className="main-content-title">Les règles du Shogi</h1> 
+                <PageTitle>Les règles du Shogi</PageTitle>
                 <section className="rulesIntro">
                     <h2>Introduction</h2>
                     <div className="rulesIntro-content">

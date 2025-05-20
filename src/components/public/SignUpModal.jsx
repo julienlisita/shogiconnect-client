@@ -34,7 +34,7 @@ const SignupModal = ({ isOpen, onClose }) => {
       className="modal"
       overlayClassName="modal-overlay"
     >
-      <h1>Inscription</h1>
+      <h2>Inscription</h2>
       <form className="modal-content" onSubmit={handleSubmit}>
         <input
           type="text"

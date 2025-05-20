@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import "./NotFound.css";
+import PageTitle from "../common/PageTitle";
 
 const NotFound = () => {
   return (
     <div className="notfound-container">
-      <h1 className="main-content-title">404</h1>
+      <PageTitle>404</PageTitle>
       <h2>Page non trouvée</h2>
       <p>Oups. La page que vous cherchez n'existe pas</p>
       <div className="button">

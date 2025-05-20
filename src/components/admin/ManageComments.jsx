@@ -4,6 +4,7 @@ import { useParams,Link } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
 import { useForumContext } from "../../contexts/ForumContext.jsx";
 import ConfirmationModal from "../common/ModalConfirmation.jsx";
+import PageTitle from "../common/PageTitle.jsx";
 
 const ManageComments = () => {
 
@@ -59,7 +60,7 @@ const ManageComments = () => {
     return (
         <div className="manageComments-container">
             <div className="manageComments">
-                <h1>Gestion des Commentaires</h1>
+                <PageTitle>Gestion des Commentaires</PageTitle>
                 {/* Modal pour la confirmation de suppression d'un commentaire' */}
                 <ConfirmationModal
                 isOpen={isDeleteModalOpen}

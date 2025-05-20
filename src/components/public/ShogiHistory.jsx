@@ -5,6 +5,7 @@ import img3 from "../../assets/images/paint.avif";
 import img4 from "../../assets/images/banner10.avif";
 import img5 from "../../assets/images/banner4.avif";
 import img6 from "../../assets/images/manga.avif";
+import PageTitle from "../common/PageTitle";
 
 const ShogiHistory = () => {
 
@@ -13,7 +14,7 @@ const ShogiHistory = () => {
             <section className="bannerHistory banner">
             </section>
             <div className="history main-content">
-                <h1 className="main-content-title">Origine et histoire du Shogi</h1>
+                <PageTitle>Origine et histoire du Shogi</PageTitle>
                 <section className="history-intro">
                     <h2>Introduction</h2>
                     <div className="history-intro-content">

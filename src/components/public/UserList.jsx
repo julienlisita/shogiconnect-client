@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext.jsx";
 import image from "../../assets/images/user.png"
 import Pagination from "./../common/Pagination";
+import PageTitle from "../common/PageTitle.jsx";
 
 const UserList = () => {
 
@@ -57,7 +58,7 @@ const UserList = () => {
             <section className="bannerUserList banner">
             </section>
             <section className="users main-content">
-                <h1 className="main-content-title">Membres de ShogiConnect</h1>
+                <PageTitle>Membres de ShogiConnect</PageTitle>
                 <h2>Liste des membres</h2>
                 <form className="users-displaySelection">
                     <label htmlFor="sortBy"></label>

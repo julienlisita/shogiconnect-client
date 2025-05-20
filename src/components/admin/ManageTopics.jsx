@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
 import { useForumContext } from "../../contexts/ForumContext.jsx";
 import ConfirmationModal from "../common/ModalConfirmation";
+import PageTitle from "../common/PageTitle.jsx";
 
 const ManageTopics = () => {
 
@@ -60,7 +61,7 @@ const ManageTopics = () => {
     return (
         <div className="manageTopics-container">
             <div className="manageTopics">
-                <h1>Gestion des Topics</h1>
+                <PageTitle>Gestion des Topics</PageTitle>
                 {/* Modal pour la confirmation de suppression d'un topic' */}
                 <ConfirmationModal
                 isOpen={isDeleteModalOpen}

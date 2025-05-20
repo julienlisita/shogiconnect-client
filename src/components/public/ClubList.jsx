@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./ClubList.css"
 import { clubs } from "../../assets/data/clubsData";
+import PageTitle from "../common/PageTitle";
 
 const ClubList = () => {
 
@@ -9,7 +10,7 @@ const ClubList = () => {
             <section className="bannerClubsList banner">
             </section>
             <div className="main-content">
-                <h1 className="main-content-title">Les clubs en France</h1> 
+                <PageTitle>Les clubs en France</PageTitle>
                 <div className="clubsList">
                     {clubs.map(club => {
                         return (
