@@ -5,6 +5,7 @@ import { useUserContext } from "../../contexts/UserContext";
 import { useForumContext } from "../../contexts/ForumContext.jsx";
 import ConfirmationModal from "../common/ModalConfirmation";
 import PageTitle from "../common/PageTitle.jsx";
+import Button from "../common/Button.jsx";
 
 const ManageTopics = () => {
 
@@ -111,7 +112,7 @@ const ManageTopics = () => {
                                             </td>
                                             <td>{`Le ${new Date(topic.createdAt).toLocaleDateString('fr-FR')} ${new Date(topic.createdAt).toLocaleTimeString()}`}</td>
                                             <td>
-                                                <button onClick={() => handleDeleteTopic(topic.id)}>Supprimer</button>
+                                                <Button onClick={() => handleDeleteTopic(topic.id)}>Supprimer</Button>
                                             </td>
                                         </tr>
                                     );

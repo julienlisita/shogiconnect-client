@@ -5,6 +5,7 @@ import { useUserContext } from "../../contexts/UserContext";
 import { useScheduledGameContext } from "../../contexts/ScheduledGameContext.jsx";
 import ConfirmationModal from "../common/ModalConfirmation.jsx";
 import PageTitle from "../common/PageTitle.jsx";
+import Button from "../common/Button.jsx";
 
 const ManageGames = () => {
 
@@ -137,10 +138,10 @@ const ManageGames = () => {
                                                 )}
                                             </td>
                                             <td>
-                                                <button onClick={() => handleUnsubscribeGame(game.id)}>Désinscrire</button>
+                                                <Button onClick={() => handleUnsubscribeGame(game.id)}>Désinscrire</Button>
                                             </td>
                                             <td>
-                                                <button onClick={() => handleDeleteGame(game.id)}>Supprimer</button>
+                                                <Button onClick={() => handleDeleteGame(game.id)}>Supprimer</Button>
                                             </td>
                                         </tr>
                                     );

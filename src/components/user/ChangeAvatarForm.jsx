@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useProfileContext } from "../../contexts/ProfileContext.jsx";
+import Button from "../common/Button.jsx";
 
 
 const ChangeAvatarForm = () => {
@@ -38,9 +39,9 @@ const ChangeAvatarForm = () => {
         <input type="file" accept="image/*" onChange={handleImageChange} />
         {uploadMessage && <p className="upload-message">{uploadMessage}</p>}
         <div className="validationButton-container">
-            <button className = "validationButton" disabled={isUploading}>
+            <Button type="submit" disabled={isUploading}>
                 {isUploading ? "Téléchargement..." : "Valider"}
-            </button>
+            </Button>
         </div>
     </form>
     );

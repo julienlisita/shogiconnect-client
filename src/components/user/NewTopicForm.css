@@ -28,11 +28,6 @@
     width:100%;
 }
 
-.topics-NewTopicForm button
-{
-    width:150px;
-}
-
 @media  (max-width: 900px) {
 
     .topics-NewTopicForm

@@ -61,11 +61,6 @@
     gap:10px;
 }
 
-.scheduledGames-CreateButton
-{
-    margin-top: 2.78vw;
-}
-
 @media  (max-width: 900px) 
 {
     .scheduledGames-displaySelection

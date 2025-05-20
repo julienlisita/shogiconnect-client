@@ -4,6 +4,7 @@ import { useState } from "react";
 import Modal from "react-modal";
 import { useAuthContext } from "../../contexts/AuthContext";
 import "../common/Modal.css";
+import Button from "../common/Button";
 
 Modal.setAppElement("#root"); 
 
@@ -49,8 +50,8 @@ const LoginModal = ({ isOpen, onClose }) => {
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" className="btn-submit">Se connecter</button>
-        <button type="button" className="btn-cancel" onClick={onClose}>Annuler</button>
+        <Button type="submit">Se connecter</Button>
+        <Button type="button" onClick={onClose}>Annuler</Button>
         {error && <p className="error-message">{error}</p>} 
       </form>
     </Modal>

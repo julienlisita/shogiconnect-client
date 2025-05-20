@@ -1,5 +1,6 @@
 import Modal from 'react-modal';
 import "../common/Modal.css"
+import Button from './Button';
 
 Modal.setAppElement('#root'); // À adapter selon ton root principal
 
@@ -16,8 +17,8 @@ const ConfirmationModal = ({ isOpen, onClose, onConfirm, message }) => {
                 <h2>Confirmation</h2>
                 <p>{message}</p>
                 <div className="modal-buttons">
-                    <button className="button confirm" style={{ backgroundColor: 'red'}} onClick={onConfirm}>Oui, supprimer</button>
-                    <button className="button cancel" onClick={onClose}>Annuler</button>
+                    <Button className="button confirm" style={{ backgroundColor: 'red'}} onClick={onConfirm}>Oui, supprimer</Button>
+                    <Button className="button cancel" onClick={onClose}>Annuler</Button>
                 </div>
             </div>
         </Modal>

@@ -3,6 +3,7 @@ import Select from 'react-select';
 import countryList from "react-select-country-list";
 import { useProfileContext } from "../../contexts/ProfileContext.jsx";
 import ModalMessage from "../common/ModalMessage.jsx";
+import Button from "../common/Button.jsx";
 
 
 const EditProfileForm = () => {
@@ -88,7 +89,7 @@ const EditProfileForm = () => {
                 <input name = "email" id = "email" type="email" value={email} onChange={(e)=>setEmail(e.target.value)} />
             </div>
             <div className="validationButton-container">
-                <button className="validationButton">Valider</button>
+                <Button type="submit">Valider</Button>
             </div>
             <ModalMessage 
             isOpen={showMessageModal} 

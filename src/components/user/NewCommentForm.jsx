@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import "./NewCommentForm.css"
+import Button from "../common/Button";
 
 const NewCommentForm = ({ onSubmit }) => {
     const [content, setContent] = useState("");
@@ -25,7 +26,7 @@ const NewCommentForm = ({ onSubmit }) => {
                 placeholder="Saisir votre commentaire"
                 required
             />
-            <button type="submit" className="comments-form-button">Répondre</button>
+            <Button type="submit">Répondre</Button>
         </form>
     );
 };

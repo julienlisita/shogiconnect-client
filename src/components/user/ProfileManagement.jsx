@@ -8,6 +8,7 @@ import EditProfileForm from "./EditPorfilForm.jsx";
 import ChangePasswordForm from "./ChangePasswordForm.jsx";
 import ChangeAvatarForm from "./ChangeAvatarForm.jsx";
 import PageTitle from "../common/PageTitle.jsx";
+import Button from "../common/Button.jsx";
 
 const ProfilManagement = () => {
 
@@ -49,7 +50,7 @@ const cancelDeletion = () => {
                         </div>
                     </div>
                     <div className = "deteteButton-container">
-                        <button  onClick={handleDeleteClick} style={{ backgroundColor: 'red', color: 'white' }}>Supprimer le compte</button>
+                        <Button onClick={handleDeleteClick} style={{ backgroundColor: 'red', color: 'white' }}>Supprimer le compte</Button>
                     </div>
                     <ConfirmationModal
                     isOpen={showConfirmationModal}

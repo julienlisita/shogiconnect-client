@@ -7,6 +7,7 @@ import { useUserContext } from "../../contexts/UserContext.jsx";
 import { useAuthContext } from "../../contexts/AuthContext.jsx";
 import { useScheduledGameContext } from "../../contexts/ScheduledGameContext.jsx";
 import PageTitle from "../common/PageTitle.jsx";
+import Button from "../common/Button.jsx";
 
 const AvailableGameList = () => {
 
@@ -127,7 +128,7 @@ const AvailableGameList = () => {
                                             <td>{game.level}</td>
                                             <td>{`Le ${new Date(game.rendezVousAt).toLocaleDateString('fr-FR')} ${new Date(game.rendezVousAt).toLocaleTimeString()}`}</td>
                                             <td>
-                                                <button onClick={() => handleJoinGame(game.id, game.OrganizerId)}>Rejoindre</button>
+                                                <Button onClick={() => handleJoinGame(game.id, game.OrganizerId)}>Rejoindre</Button>
                                             </td>
                                         </tr>
                                     );
@@ -136,7 +137,7 @@ const AvailableGameList = () => {
                         </tbody>
                     </table>
                 </div>
-                <button className="availableGames-newGameButton button" onClick={openCreateGameModal}>Créer une partie</button>
+                <Button onClick={openCreateGameModal}>Créer une partie</Button>
                 <CreateGameModal onSubmit={handleNewScheduledGame} isOpen={isCreateGameOpen} onClose={closeCreateGameModal} />    
                 <ModalMessage isOpen={modalIsOpen} message={modalMessage} onClose={closeModal} />            
             </div>

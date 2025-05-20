@@ -5,6 +5,7 @@ import { useUserContext } from "../../contexts/UserContext";
 import { useForumContext } from "../../contexts/ForumContext.jsx";
 import ConfirmationModal from "../common/ModalConfirmation.jsx";
 import PageTitle from "../common/PageTitle.jsx";
+import Button from "../common/Button.jsx";
 
 const ManageComments = () => {
 
@@ -110,7 +111,7 @@ const ManageComments = () => {
                                                 )}
                                             </td>
                                             <td>
-                                                <button onClick={() => handleDeleteComment(comment.id)}>Supprimer</button>
+                                                <Button onClick={() => handleDeleteComment(comment.id)}>Supprimer</Button>
                                             </td>
                                         </tr>
                                     );

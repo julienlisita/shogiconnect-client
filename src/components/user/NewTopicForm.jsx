@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import "./NewTopicForm.css"
+import Button from "../common/Button";
 
 const NewTopicForm = ({ onSubmit }) => {
     const [title, setTitle] = useState('');
@@ -39,9 +40,7 @@ const NewTopicForm = ({ onSubmit }) => {
                     placeholder="Description"
                 />
             </div>
-            <div>
-                <button type="submit" className="topics-NewTopicForm-button">Publier</button>
-            </div>
+            <Button type="submit">Publier</Button>
         </form>
     );
 };

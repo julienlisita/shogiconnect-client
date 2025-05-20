@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuthContext } from "../../contexts/AuthContext.jsx";
 import ModalMessage from "../common/ModalMessage.jsx";
+import Button from "../common/Button.jsx";
 
 const ChangePasswordForm = () => {
 
@@ -53,7 +54,7 @@ const ChangePasswordForm = () => {
                 <input name="passwordconfirmed" id="passwordconfirmed" type="password" value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)}/>
             </div>
             <div className="validationButton-container">
-                <button className="validationButton">Valider</button>
+                <Button type="submit">Valider</Button>
             </div>
             <ModalMessage 
             isOpen={showMessageModal} 

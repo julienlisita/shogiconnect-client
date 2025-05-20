@@ -5,6 +5,7 @@ import { useUserContext } from "../../contexts/UserContext";
 import RoleModal from "./RoleModal";
 import ConfirmationModal from "../common/ModalConfirmation.jsx";
 import PageTitle from "../common/PageTitle.jsx";
+import Button from "../common/Button.jsx";
 
 const ManageUsers = () => {
 
@@ -113,12 +114,12 @@ const ManageUsers = () => {
                                 <td>{getRoleLabel(user.RoleId)}</td>
                                 <td>    
                                     <div className="manageUsers-list-table-buttonContainer">
-                                        <button className="manageUsers-table-modifyButton button" onClick={() => openRoleModal(user)}>Modifier rôle</button>
+                                        <Button onClick={() => openRoleModal(user)}>Modifier rôle</Button>
                                     </div>            
                                 </td>
                                 <td>
                                     <div className="manageUsers-list-table-buttonContainer">
-                                        <button className="manageUsers-table-deleteButton button" onClick={() => handleDeleteUser(user.id)}>Supprimer</button>
+                                        <Button onClick={() => handleDeleteUser(user.id)}>Supprimer</Button>
                                     </div>            
                                 </td>
                             </tr>

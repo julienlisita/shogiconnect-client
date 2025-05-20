@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import { useAuthContext } from "../../contexts/AuthContext";
 import "../common/Modal.css";
+import Button from "../common/Button.jsx";
 
 Modal.setAppElement("#root"); 
 
@@ -60,8 +61,8 @@ const SignupModal = ({ isOpen, onClose }) => {
           placeholder="Mot de passe"
           required
         />
-        <button type="submit">S'inscrire</button>
-        <button type="button" onClick={onClose}>Annuler</button>
+        <Button type="submit">S'inscrire</Button>
+        <Button type="button" onClick={onClose}>Annuler</Button>
         {error && <p className="error-message">{error}</p>} 
       </form>
     </Modal>

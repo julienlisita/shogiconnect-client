@@ -20,6 +20,7 @@
     height: 400px;
     overflow-y: auto;
     margin-top: 2.78vw;
+    margin-bottom: 40px;
 }
 
 .availableGames-list-table
@@ -37,12 +38,6 @@
 {
     color:black;
     font-weight: bold;
-}
-
-.availableGames-newGameButton
-{
-    margin-top:40px;
-    margin-bottom: 60px;
 }
 
 @media  (max-width: 900px) 

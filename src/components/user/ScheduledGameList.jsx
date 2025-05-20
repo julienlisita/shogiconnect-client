@@ -6,6 +6,7 @@ import { useAuthContext } from "../../contexts/AuthContext.jsx";
 import { useScheduledGameContext } from "../../contexts/ScheduledGameContext.jsx";
 import ConfirmationModal from "../common/ModalConfirmation.jsx";
 import PageTitle from "../common/PageTitle.jsx";
+import Button from "../common/Button.jsx";
 
 const ScheduledGameList = () => {
     const { scheduledGames, scheduledGamesLoading, scheduledGamesError,deleteScheduledGame, unsubscribeFromScheduledGame } = useScheduledGameContext();
@@ -102,9 +103,9 @@ const ScheduledGameList = () => {
                                         <td>{new Date(game.rendezVousAt).toLocaleDateString("fr-FR")}</td>
                                         <td>
                                             <div className="scheduledGames-list-table-buttonContainer">
-                                                <button className="scheduledGames-table-deleteButton button" onClick={()=>handleDeleteGame(game.id)}>
+                                                <Button onClick={()=>handleDeleteGame(game.id)}>
                                                     Annuler
-                                                </button>
+                                                </Button>
                                             </div>
                                         </td>
                                     </tr>
@@ -144,9 +145,9 @@ const ScheduledGameList = () => {
                                         <td>{new Date(game.rendezVousAt).toLocaleDateString("fr-FR")}</td>
                                         <td>
                                             <div className="scheduledGames-list-table-buttonContainer">
-                                                <button className="scheduledGames-table-deleteButton button" onClick={()=>handleUnsubscribe(game.id)}>
+                                                <Button onClick={()=>handleUnsubscribe(game.id)}>
                                                     Annuler
-                                                </button>
+                                                </Button>
                                             </div>
                                         </td>
                                     </tr>

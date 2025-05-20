@@ -87,12 +87,6 @@
     top: 0px;
 }
 
-.button-link
-{
-    color: white;
-}
-
-
 @media (min-width: 600px) and (max-width: 1024px) {
 
     .introShogi-content-imageContainer, .introGame-content-imageContainer, .introCommunity-content-imageContainer

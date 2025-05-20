@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./ClubList.css"
 import { clubs } from "../../assets/data/clubsData";
 import PageTitle from "../common/PageTitle";
+import Button from "../common/Button";
 
 const ClubList = () => {
 
@@ -37,16 +38,7 @@ const ClubList = () => {
                                         ))}
                                     </p>
                                 </div>        
-                                <div className="club-card-button button button-container">
-                                    <a
-                                    className="button-link"
-                                    href={club.website}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    >
-                                    Voir site
-                                    </a>
-                                </div>
+                                <Button href={club.website} className="button-container">Voir site</Button>
                             </div>
                         )
                     })}

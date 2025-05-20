@@ -1,0 +1,43 @@
+.button
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #A0785A;
+    border-radius: 50px;
+    padding:10px 20px;
+}
+
+.button :first-child
+{
+    color:white;
+    font-family: "source sans 3", sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.button:hover
+{
+    background-color: #c98f62;
+}
+
+button
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 150px;
+    background-color: #A0785A;
+    border:none;
+    border-radius: 50px;
+    padding:10px 20px;
+    color:white;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "source sans 3", sans-serif;
+}
+
+button:hover
+{
+    background-color: #c98f62;
+}

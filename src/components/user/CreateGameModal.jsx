@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import "../common/Modal.css"
 import "./AvailableGameList.css"
+import Button from "../common/Button";
 
 // Nécessaire pour l'accessibilité (évite les warnings)
 Modal.setAppElement("#root");
@@ -63,10 +64,10 @@ const CreateGameModal = ({ onSubmit, isOpen, onClose }) => {
           <option value="intermédiaire">Intermédiaire</option>
           <option value="avancé">Avancé</option>
         </select>
-        <button type="submit" className="availableGames-newGameForm-button">Valider</button>
-        <button type="button" onClick={onClose} className="availableGames-newGameForm-button">
+        <Button type="submit" >Valider</Button>
+        <Button type="button" onClick={onClose}>
           Annuler
-        </button>
+        </Button>
       </form>
     </Modal>
   );

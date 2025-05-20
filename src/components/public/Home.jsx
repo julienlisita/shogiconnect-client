@@ -8,8 +8,8 @@ import logo from '../../assets/images/logo-shogi-titre.png';
 import img1 from "../../assets/images/banner9.avif";
 import img2 from "../../assets/images/banner7.avif";
 import img3 from "../../assets/images/shogi-ex3.avif";
-import { Link } from "react-router-dom";
 import PageTitle from "../common/PageTitle.jsx";
+import Button from "../common/Button.jsx";
 
 const Home = () => {
 
@@ -54,9 +54,7 @@ const Home = () => {
                             <div className="introShogi-content-description-text">
                                 <p>Découvrez la richesse du Shogi dans notre section Apprentissage, conçue pour vous guider pas à pas dans la maîtrise de ce jeu de stratégie japonais. Que vous soyez novice ou passionné, explorez les règles essentielles, les mouvements des pièces et les stratégies incontournables pour progresser rapidement. Plongez dans cet univers fascinant et commencez votre parcours vers l’excellence.</p>
                             </div>
-                            <div className="introShogi-content-description-button button">
-                                <p><Link className="button-link" to="/rules">Accéder aux règles du jeu</Link></p>
-                            </div>
+                            <Button to="/rules" >Accéder aux règles du jeu</Button>
                         </div>
                     </div>
                 </section>           
@@ -67,9 +65,7 @@ const Home = () => {
                             <div className="introCommunity-content-description-text">
                                 <p>Découvrez notre section Communauté, un espace central pour tous les passionnés de Shogi. Ici, vous pourrez non seulement obtenir des informations sur les clubs de Shogi en France et les événements qu’ils organisent, mais aussi participer activement à notre forum. Engagez des discussions enrichissantes, partagez vos expériences, et restez informé des dernières nouvelles et activités. Que vous cherchiez à rejoindre un club, à participer à des tournois ou à échanger avec d’autres joueurs, cette section vous offre toutes les ressources nécessaires pour vous connecter et évoluer dans la communauté Shogi.</p>
                             </div>
-                            <div className="introCommunity-content-description-button button">
-                                <p><Link className="button-link" to="/forum/categories">Accéder au forum</Link></p>
-                            </div>
+                            <Button to="/forum/categories" >Accéder au forum</Button>
                         </div>
                         <div className="introCommunity-content-imageContainer">
                             <img className="illustration" src={img3} alt="" />
@@ -111,9 +107,7 @@ const Home = () => {
                             <div className="introGame-content-description-text">
                                 <p>Plongez au cœur de l’action avec notre section Jeu en Ligne, où vous pouvez défier des joueurs du monde entier dans des parties de Shogi captivantes. Rejoignez la communauté, affrontez des adversaires de tous niveaux et améliorez vos compétences en temps réel. C’est l’endroit idéal pour tester vos stratégies et grimper dans les classements.</p>
                             </div>
-                            <div className="introGame-content-description-button button">
-                                <p><Link className="button-link" to="/users">Voir les joueurs</Link></p>
-                            </div>
+                            <Button to="/users" >Voir les joueurs</Button>
                         </div>
                     </div>
                     <h2>Classement des joueurs</h2>
