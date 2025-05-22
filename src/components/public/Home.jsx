@@ -24,15 +24,15 @@ const Home = () => {
 
     const getStatsByUserId = (user_id) => userStats ? userStats.find(stat => stat.UserId == user_id) : null;
 
-    const getUserById = (user_id) => users.find(user => user.id == user_id);
+    const getUserById = (user_id) => (users || []).find(user => user.id == user_id);
 
-    const getTopicById = (topic_id) => topics.find(topic => topic.id == topic_id);
+    const getTopicById = (topic_id) => (topics || []).find(topic => topic.id == topic_id);
 
-    const usersSortedByScore = users
+    const usersSortedByScore = (users || [])
     .filter(user => getStatsByUserId(user.id)) 
     .sort((a, b) => getStatsByUserId(b.id).score - getStatsByUserId(a.id).score);
    
-    const commentsSortedByDate = comments.sort((a,b) => b.date - a.date);
+    const commentsSortedByDate = (comments || []).sort((a,b) => b.date - a.date);
     
 
     return (

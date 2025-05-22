@@ -19,7 +19,12 @@ const Sidebar = ({ menuItems }) => {
     const toggleSidebar = () => setIsOpen(!isOpen);
 
     const username = user.username;
-    const avatar = profile && profile.avatar ? `http://localhost:3000/uploads/${profile.avatar}` : image;
+    
+    const avatar = profile && profile.avatar
+    ? profile.avatar.startsWith("http") 
+        ? profile.avatar 
+        : `http://localhost:3000/uploads/${profile.avatar}`
+    : image;
 
     return (
         <div className="principal">

@@ -24,9 +24,9 @@ const ForumComments = () => {
 
     // Fonctions utilitaires
 
-    const getTopicById = (topic_id) => topics.find(topic => topic.id === parseInt(topic_id));
-    const getUserById = (user_id) => users.find(user => user.id === user_id);
-    const commentsByTopic = (topic_id) => comments.filter(comment => comment.TopicId === parseInt(topic_id));
+    const getTopicById = (topic_id) => (topics || []).find(topic => topic.id === parseInt(topic_id));
+    const getUserById = (user_id) => (users || []).find(user => user.id === user_id);
+    const commentsByTopic = (topic_id) => (comments || []).filter(comment => comment.TopicId === parseInt(topic_id));
     const sortCommentsByTopic = (topic_id) => commentsByTopic(topic_id).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
     // Fonction pour gérer la soumission du formulaire

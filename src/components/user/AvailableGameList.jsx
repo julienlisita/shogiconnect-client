@@ -44,9 +44,9 @@ const AvailableGameList = () => {
         setModalIsOpen(false);
     };
 
-    const getUserById = (user_id) => users.find(user => user.id == user_id);
+    const getUserById = (user_id) => (users || []).find(user => user.id == user_id);
 
-    const availableGames = scheduledGames.filter(game => game.status === "disponible");
+    const availableGames = (scheduledGames || []).filter(game => game.status === "disponible");
     
     const sortedGames = availableGames.length > 0 ? availableGames.sort((a, b) => {
         if (sortGameOption === 'date') {

@@ -25,20 +25,20 @@ const ForumTopics = () => {
 
     // Fonctions utilitaires
 
-    const getCategoryById = (category_id) => categories.find(category => category.id == category_id);  
+    const getCategoryById = (category_id) => (categories || []).find(category => category.id == category_id);  
 
-    const topicsByCategory = (category_id) => topics.filter((topic) => topic.CategoryId == category_id);
+    const topicsByCategory = (category_id) => (topics || []).filter((topic) => topic.CategoryId == category_id);
 
     const sortedTopicsByCategory = (category_id) => topicsByCategory(category_id).sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt)); 
 
-    const commentsByTopic = (topic_id) => comments.filter(comment => comment.TopicId == topic_id);
+    const commentsByTopic = (topic_id) => (comments || []).filter(comment => comment.TopicId == topic_id);
     
     const lastCommentByTopic = (topic_id) => {
         const commentsSorted = commentsByTopic(topic_id).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         return commentsSorted.length > 0 ? commentsSorted[0] : null; // 🔹 Retourne `null` si pas de commentaire
     };
     
-    const getUserById = (user_id) => users.find(user => user.id == user_id);
+    const getUserById = (user_id) => (users || []).find(user => user.id == user_id);
 
     // Fonction pour gérer la soumission du formulaire
     const handleNewTopic = async(newTopicData) => {

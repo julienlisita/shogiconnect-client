@@ -21,8 +21,15 @@ const UserList = () => {
 
     const getStatByUserId = (user_id) => userStats ? userStats.find(stat => stat.UserId == user_id) : null;
 
-    const getAvatar = (user) => user && user.avatar ? `http://localhost:3000/uploads/${user.avatar}` : image;
-    
+    const getAvatar = (user) => {
+        if (!user || !user.avatar) return image;
+
+        // Si avatar contient déjà une URL (Cloudinary), on la retourne telle quelle
+        if (user.avatar.startsWith('http')) return user.avatar;
+
+        // Sinon, on suppose que c'est un fichier local
+        return `http://localhost:3000/uploads/${user.avatar}`;
+    };
 
     const sortedUsers = users.sort((a, b) => {
         if (sortOption === 'score') {

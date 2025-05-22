@@ -17,9 +17,9 @@ const UserProfile = () => {
 
     // Fonctions utilitaires
 
-    const user = users?.find(user => user.id == user_id);
+    const user = (users || []).find(user => user.id == user_id);
 
-    const stat = userStats?.find(stat => stat.UserId == user_id);
+    const stat = (userStats || []).find(stat => stat.UserId == user_id);
     
     if (!user || !stat) return <p>Utilisateur ou statistiques non trouvés.</p>;
 
@@ -27,10 +27,13 @@ const UserProfile = () => {
     
     const nbrGames = stat ? (stat.wins + stat.losses + stat.draws) : 0;
 
-    const userActivities = activities.filter(activity => activity.userId == user.id);
+    const userActivities = activities?.filter(activity => activity.userId == user.id);
 
-    const avatar = user && user.avatar ? `http://localhost:3000/uploads/${user.avatar}` : image;
-    
+    const avatar = user.avatar
+    ? user.avatar.startsWith("http") 
+        ? user.avatar 
+        : `http://localhost:3000/uploads/${user.avatar}`
+    : image;
     
     return (
         <div>
