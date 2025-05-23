@@ -21,24 +21,20 @@
 
 .scheduledGames-displaySelection
 {
-    display: flex;
-    justify-content: center;
+    overflow-x: auto;
     margin-top: 2.78vw;
 }
 
 .scheduledGames-list 
 {
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    flex-wrap:wrap;
-    width: 100%;
+    overflow-x: auto;
     max-height: 600px;
     overflow-y: auto;
     margin-top: 2.78vw;
 }
 .scheduledGames-list-table
 {
+    overflow-x: auto;
     width:100%;
 }
 
