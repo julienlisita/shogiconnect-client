@@ -66,7 +66,7 @@ const EditProfileForm = () => {
                 styles={{
                     control: (provided) => ({
                         ...provided,
-                        backgroundColor: "#D9D9D9", 
+                        backgroundColor: "#f7f7f7", 
                         borderRadius: "8px",
                         borderColor: "#black",
                         padding: "5px",
@@ -74,7 +74,7 @@ const EditProfileForm = () => {
                     }),
                     menu: (provided) => ({
                         ...provided,
-                        backgroundColor: "#D9D9D9", 
+                        backgroundColor: "#f7f7f7", 
                     }),
                     option: (provided, { isFocused, isSelected }) => ({
                         ...provided,

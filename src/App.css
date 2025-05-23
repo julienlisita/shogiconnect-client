@@ -47,7 +47,7 @@ table
 }
 thead
 {
-    background-color: #D9D9D9;
+    background-color: #f0f0f0;
     color: black;
     text-align: left;
 }
@@ -63,7 +63,7 @@ th, td
 }
 td
 {
-    border-bottom: 1px solid #36444A;
+    border-bottom: 1px solid #ddd;
 }
 
 .banner

@@ -2,7 +2,12 @@
 {
     background-image: url("../../assets/images/banner4.avif");
 }
-
+.availableGames
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .availableGames-displaySelection
 {
     display: flex;
@@ -15,6 +20,7 @@
     overflow-x: auto;
     width: 100%;
     margin-top: 2.78vw;
+    margin-bottom: 2.78vw;
 }
 
 .availableGames-list-table

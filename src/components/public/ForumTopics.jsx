@@ -22,6 +22,7 @@ const ForumTopics = () => {
 
     // Vérification que l'utilisateur est un membre
     const isMember = user && user.roleId === 1;
+    const isAdmin = user && user.roleId === 2;
 
     // Fonctions utilitaires
 
@@ -99,12 +100,12 @@ const ForumTopics = () => {
                     </table>
                 </div>
                 <h2>Créer un nouveau topic</h2>
-                {isAuthenticated && isMember ? ( 
+                {isAuthenticated && (isMember || isAdmin) ? ( 
                     <>
                         <NewTopicForm onSubmit={handleNewTopic} />
                     </>
                 ) : (
-                    <p>Vous devez être connecté en tant que membre pour créer un topic</p>
+                    <p><br/>Vous devez être connecté en tant que membre pour créer un topic</p>
                 )}
             </section>
         </div>

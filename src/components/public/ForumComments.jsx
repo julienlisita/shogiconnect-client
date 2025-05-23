@@ -21,6 +21,7 @@ const ForumComments = () => {
 
     // Vérification que l'utilisateur est un membre
     const isMember = user && user.roleId === 1;
+    const isAdmin  = user && user.roleId === 2;
 
     // Fonctions utilitaires
 
@@ -78,11 +79,11 @@ const ForumComments = () => {
                     </table>
                 </div>
                 <h2>Ajouter un commentaire</h2>
-                { isAuthenticated && isMember ?  
+                { isAuthenticated && (isMember || isAdmin)  ?  
                     <div>
                         <NewCommentForm onSubmit={handleNewComment} />
                     </div>
-                 :  <p>Vous devez être connecté en tant que membre pour écrire un commentaire</p>
+                 :  <p><br/>Vous devez être connecté en tant que membre pour écrire un commentaire</p>
                 }
             </section>
         </div>

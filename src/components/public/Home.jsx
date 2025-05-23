@@ -88,7 +88,7 @@ const Home = () => {
                                     const topic = getTopicById(comment.TopicId);
                                     return <tr key = {comment.id}> 
                                     <td><strong>{topic ? topic.title : "Sujet inconnu"}</strong></td>
-                                    <td>{comment.content}</td>
+                                    <td>{`${comment.content.slice(0,27)}...`}</td>
                                     <td>{`le ${new Date(comment.createdAt).toLocaleDateString('fr-FR')} à ${new Date(comment.createdAt).toLocaleTimeString()} \npar ${user ? user.username : "Utilisateur inconnu"}`}</td>
                                 </tr>
                                     })}

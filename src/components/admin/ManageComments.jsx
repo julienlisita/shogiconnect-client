@@ -105,7 +105,7 @@ const ManageComments = () => {
                                                 {`Le ${new Date(comment.createdAt).toLocaleDateString('fr-FR')} ${new Date(comment.createdAt).toLocaleTimeString()}`}
                                             </td>
                                             <td>{content ? (
-                                                    content
+                                                    `${content.slice(0,25)}...`
                                                 ) : (
                                                     "vide"
                                                 )}
