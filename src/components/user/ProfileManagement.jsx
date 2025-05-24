@@ -50,7 +50,7 @@ const cancelDeletion = () => {
                         </div>
                     </div>
                     <div className = "deteteButton-container">
-                        <Button onClick={handleDeleteClick} style={{ backgroundColor: 'red', color: 'white' }}>Supprimer le compte</Button>
+                        <Button onClick={handleDeleteClick} style={{ backgroundColor: 'red', color: 'white' }}>Supprimer compte</Button>
                     </div>
                     <ConfirmationModal
                     isOpen={showConfirmationModal}

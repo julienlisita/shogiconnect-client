@@ -4,6 +4,7 @@ import countryList from "react-select-country-list";
 import { useProfileContext } from "../../contexts/ProfileContext.jsx";
 import ModalMessage from "../common/ModalMessage.jsx";
 import Button from "../common/Button.jsx";
+import "./ProfileManagement.css"
 
 
 const EditProfileForm = () => {
@@ -66,15 +67,15 @@ const EditProfileForm = () => {
                 styles={{
                     control: (provided) => ({
                         ...provided,
-                        backgroundColor: "#f7f7f7", 
+                        backgroundColor: "#fcfcfc", 
                         borderRadius: "8px",
-                        borderColor: "#black",
+                        borderColor: "#cccccc",
                         padding: "5px",
                         boxShadow: "none",
                     }),
                     menu: (provided) => ({
                         ...provided,
-                        backgroundColor: "#f7f7f7", 
+                        backgroundColor: "#fcfcfc", 
                     }),
                     option: (provided, { isFocused, isSelected }) => ({
                         ...provided,

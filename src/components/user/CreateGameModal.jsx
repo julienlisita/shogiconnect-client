@@ -35,35 +35,41 @@ const CreateGameModal = ({ onSubmit, isOpen, onClose }) => {
     >
       <h2>Création de partie</h2>
       <form className="availableGames-newGameForm modal-content" onSubmit={handleSubmit}>
-        <label htmlFor="date">Choisir le jour</label>
-        <input
-          type="date"
-          id="date"
-          name="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          required
-        />
-        <label htmlFor="time">Choisir l'heure</label>
-        <input
-          type="time"
-          id="time"
-          name="time"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
-          required
-        />
-        <label htmlFor="levelSelect">Choisir un niveau</label>
-        <select
-          id="levelSelect"
-          name="levelSelect"
-          value={level}
-          onChange={(e) => setLevel(e.target.value)}
-        >
-          <option value="débutant">Débutant</option>
-          <option value="intermédiaire">Intermédiaire</option>
-          <option value="avancé">Avancé</option>
-        </select>
+        <div>
+          <label htmlFor="date">Choisir le jour</label>
+          <input
+            type="date"
+            id="date"
+            name="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="time">Choisir l'heure</label>
+          <input
+            type="time"
+            id="time"
+            name="time"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="levelSelect">Choisir un niveau</label>
+          <select
+            id="levelSelect"
+            name="levelSelect"
+            value={level}
+            onChange={(e) => setLevel(e.target.value)}
+          >
+            <option value="débutant">Débutant</option>
+            <option value="intermédiaire">Intermédiaire</option>
+            <option value="avancé">Avancé</option>
+          </select>
+          </div>
         <Button type="submit" >Valider</Button>
         <Button type="button" onClick={onClose}>
           Annuler

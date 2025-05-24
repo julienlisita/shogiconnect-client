@@ -14,9 +14,10 @@
 
 .modal
 {
-    background-color: white; 
+    background-color: #f7f7f7; 
     width: 400px;
     padding: 20px; 
+    border: solid 1px #ccc;
     border-radius: 8px; 
     text-align: center; 
     display: flex;
@@ -45,19 +46,26 @@
     width:150px;
 }
 
-.modal-content label, .modal-content select, .modal-content input
+ .modal-content select, .modal-content input
 {
+    border: 1px solid #cccccc;
+    background-color: #fcfcfc;
+    width:100%;
     font-size: 20px;
+    padding: 8px 12px; 
    
 }
 .modal-content label
 {
+    background-color: #fcfcfc;
+    font-size: 20px;
+    padding: 8px 12px; 
     font-weight: bold;
 }
 .modal-content select
 {
     order: solid 1px #36444A;
-    background-color: white;
+    background-color: #fcfcfc;
     border: solid 1px #36444A;
     color:black;
 }

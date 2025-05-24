@@ -9,10 +9,16 @@ const ChangeAvatarForm = () => {
     const [selectedImage, setSelectedImage] = useState(null); 
     const [isUploading, setIsUploading] = useState(false); 
     const [uploadMessage, setUploadMessage] = useState("");
+    const [selectedFileName, setSelectedFileName] = useState("");
 
     const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        if (file) setSelectedImage(file);
+    const file = e.target.files[0];
+
+    if (file) 
+    {
+        setSelectedImage(file);
+        setSelectedFileName(file.name)
+    }
     };
 
     const handleUpload = async (e) => {
@@ -34,16 +40,27 @@ const ChangeAvatarForm = () => {
 
     return (
 
-    <form className = "editProfil-content-avatarForm" onSubmit={handleUpload}>
-        <h2>Avatar</h2>
-        <input type="file" accept="image/*" onChange={handleImageChange} />
-        {uploadMessage && <p className="upload-message">{uploadMessage}</p>}
-        <div className="validationButton-container">
-            <Button type="submit" disabled={isUploading}>
-                {isUploading ? "Téléchargement..." : "Valider"}
-            </Button>
-        </div>
-    </form>
+    <form className="editProfil-content-avatarForm" onSubmit={handleUpload}>
+  <h2>Avatar</h2>
+  <div className="file-upload">
+    <label className="file-upload-button">
+      Choisir une image
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleImageChange}
+      />
+    </label>
+    {selectedFileName && (
+      <p className="file-name">Fichier sélectionné : {selectedFileName}</p>
+    )}
+  </div>
+  <div className="validationButton-container">
+    <Button type="submit" disabled={isUploading}>
+      {isUploading ? "Téléchargement..." : "Valider"}
+    </Button>
+  </div>
+</form>
     );
 };
 
