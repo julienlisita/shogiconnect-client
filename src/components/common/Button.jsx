@@ -18,7 +18,8 @@ const Button = ({
     // Lien interne avec React Router
     return (
       <div className={classes}>
-        <Link className="button-link" to={to}>
+        <Link 
+          to={to}>
           {children}
         </Link>
       </div>
@@ -30,7 +31,6 @@ const Button = ({
     return (
       <div className={classes}>
         <a
-          className="button-link"
           href={href}
           target={target || "_blank"}
           rel={rel || "noopener noreferrer"}

@@ -42,3 +42,41 @@ button:hover
 {
     background-color: #c98f62;
 }
+
+@media (min-width: 600px) and (max-width: 1100px) 
+{
+    .button
+    {
+        padding:5px 10px;
+        min-width: 100px;
+        max-width: 200px;
+    }
+    .button :first-child
+    {
+        font-size: 16px;
+    }
+    button
+    {
+        padding:5px 10px;
+        font-size: 16px;
+    }
+}
+
+@media  (max-width: 600px) 
+{
+    .button
+    {
+        padding:5px 10px;
+        min-width: 80px;
+        max-width: 150px;
+    }
+    .button :first-child
+    {
+        font-size: 14px;
+    }
+    button
+    {
+        padding:5px 10px;
+        font-size: 14px;
+    }
+}
