@@ -6,6 +6,7 @@ import { useScheduledGameContext } from "../../contexts/ScheduledGameContext.jsx
 import ConfirmationModal from "../common/ModalConfirmation.jsx";
 import PageTitle from "../common/PageTitle.jsx";
 import Button from "../common/Button.jsx";
+import Select from "../common/Select.jsx";
 
 const ManageGames = () => {
 
@@ -22,9 +23,9 @@ const ManageGames = () => {
 
     // Fonctions utilitaires
       
-    const handleSortGameChange = (e) => 
+    const handleSortGameChange = (value) => 
     {
-        setSortGameOption(e.target.value);
+        setSortGameOption(value);
     };
 
     const handleDeleteGame = (gameId) =>
@@ -96,11 +97,17 @@ const ManageGames = () => {
                 message="Êtes-vous sûr de vouloir désinscrire le participant ?"
                 />
                 <form className="manageGames-displaySelection">
-                    <select className = "orderSelect" id="sortBy" value={sortGameOption} name="sortBy" onChange={handleSortGameChange}>
-                        <option value="rendezVous">Par date de rendez-vous</option>
-                        <option value="organizer">Par organisateur</option>
-                        <option value="participant">Par participant</option>
-                    </select>
+                    <Select
+                        name="sortBy"
+                        value={sortGameOption}
+                        onChange={handleSortGameChange}
+                        options={[
+                            { value: "", label: "Trier par", disabled: true },
+                            { value: "rendezVous", label: "Par date" },
+                            { value: "organizer", label: "Par organisateur" },
+                            { value: "participant", label: "Par participant" },
+                        ]}
+                    />
                 </form>
                 <div className="manageGames-list">
                     <table className="manageGames-list-table">

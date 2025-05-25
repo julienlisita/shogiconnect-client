@@ -79,36 +79,12 @@ td
     margin-top: 100px;
 }
 
-input
-{
-    border-radius: 4px;
-    padding: 8px 12px; 
-}
-
-select
-{
-  padding:5px;
-  color:white;
-  background-color: #A0785A;
-  border-radius: 4px;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-label 
-{
-  display: inline-block;
-  margin-bottom: 6px;
-  margin-top: 6px;
-  font-weight: 600;
-}
 
 .pageWithSidebar
 {
     display: flex;
     flex-direction: row;
 }
-
 
 @media (min-width: 600px) and (max-width: 1100px) {
     .main-content 
@@ -137,20 +113,6 @@ label
     {
         padding-left: 10px;
         padding-right: 10px;
-    }
-
-    .button
-    {
-        padding:5px 10px;
-    }
-    .button p
-    {
-        font-size: 16px;
-    }
-    button
-    {
-        padding:5px 10px;
-        font-size: 16px;
     }
 }
 
@@ -183,20 +145,6 @@ label
     {
         padding-left: 5px;
         padding-right: 5px;
-    }
-
-    .button
-    {
-        padding:5px 10px;
-    }
-    .button p
-    {
-        font-size: 14px;
-    }
-    button
-    {
-        padding:5px 10px;
-        font-size: 14px;
     }
 }
 

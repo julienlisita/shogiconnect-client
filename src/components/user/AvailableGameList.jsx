@@ -8,13 +8,14 @@ import { useAuthContext } from "../../contexts/AuthContext.jsx";
 import { useScheduledGameContext } from "../../contexts/ScheduledGameContext.jsx";
 import PageTitle from "../common/PageTitle.jsx";
 import Button from "../common/Button.jsx";
+import Select from "../common/Select.jsx";
 
 const AvailableGameList = () => {
 
     const { users, usersLoading, usersError } = useUserContext();
     const {user} = useAuthContext();
     const { scheduledGames, scheduledGamesLoading, scheduledGamesError, createScheduledGame, joinScheduledGame } = useScheduledGameContext();
-    const [sortGameOption, setSortGameOption] = useState('date');
+    const [sortGameOption, setSortGameOption] = useState('');
     const [isCreateGameOpen, setIsCreateGameOpen] = useState(false);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState("");
@@ -61,10 +62,9 @@ const AvailableGameList = () => {
         return 0;
     }) : [];
       
-    const handleSortGameChange = (e) => 
-    {
-        setSortGameOption(e.target.value);
-    };
+const handleSortGameChange = (value) => {
+    setSortGameOption(value);
+};
 
     // Fonction pour gérer la soumission du formulaire
     const handleNewScheduledGame = async(newScheduledGameData) => {
@@ -93,12 +93,17 @@ const AvailableGameList = () => {
                 <PageTitle>Parties en ligne</PageTitle>
                 <h2>Liste des parties disponibles</h2>
                 <form className="availableGames-displaySelection">
-                    <label htmlFor="sortBy"></label>
-                    <select className = "orderSelect" id="sortBy" value={sortGameOption} name="sortBy" onChange={handleSortGameChange}>
-                        <option value="date">Par date</option>
-                        <option value="username">Par pseudo</option>
-                        <option value="level">Par niveau</option>
-                    </select>
+                <Select
+                    name="sortBy"
+                    value={sortGameOption}
+                    onChange={handleSortGameChange}
+                    options={[
+                        { value: "", label: "Trier par", disabled: true },
+                        { value: "date", label: "Par date" },
+                        { value: "username", label: "Par pseudo" },
+                        { value: "level", label: "Par niveau" },
+                    ]}
+                />
                 </form>
                 <div className="availableGames-list">
                     <table className="availableGames-list-table">

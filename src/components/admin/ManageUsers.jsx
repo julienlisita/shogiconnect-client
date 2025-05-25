@@ -6,6 +6,7 @@ import RoleModal from "./RoleModal";
 import ConfirmationModal from "../common/ModalConfirmation.jsx";
 import PageTitle from "../common/PageTitle.jsx";
 import Button from "../common/Button.jsx";
+import Select from "../common/Select.jsx";
 
 const ManageUsers = () => {
 
@@ -36,8 +37,8 @@ const ManageUsers = () => {
         };    
 
     // Gérer le changement de tri des utilisateurs
-    const handleSortUserChange = (e) => {
-        setSortUserOption(e.target.value);
+    const handleSortUserChange = (value) => {
+        setSortUserOption(value);
     };
 
     const sortedUsers = [...users].sort((a, b) => {
@@ -89,11 +90,17 @@ const ManageUsers = () => {
                 message="Êtes-vous sûr de vouloir supprimer cet utilisateur ?"
                 />
                 <form className="manageUsers-displaySelection">
-                    <select className="orderSelect" id="sortBy" value={sortUserOption} name="sortBy" onChange={handleSortUserChange}>
-                        <option value="username">Par pseudo</option>
-                        <option value="date">Par date de création</option>
-                        <option value="role">Par rôle</option>
-                    </select>
+                    <Select
+                        name="sortBy"
+                        value={sortUserOption}
+                        onChange={handleSortUserChange}
+                        options={[
+                            { value: "", label: "Trier par", disabled: true },
+                            { value: "username", label: "Par pseudo" },
+                             { value: "date", label: "Par date" },
+                            { value: "role", label: "Par niveau" },
+                        ]}
+                    />
                 </form>
                 <div className="manageUsers-list">
                     <table className="manageUsers-list-table">

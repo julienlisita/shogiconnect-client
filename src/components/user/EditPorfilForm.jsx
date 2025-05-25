@@ -6,6 +6,7 @@ import ModalMessage from "../common/ModalMessage.jsx";
 import Button from "../common/Button.jsx";
 import "./ProfileManagement.css"
 import FormField from "../common/FormField.jsx";
+import SelectField from "../common/SearchableSelect.jsx";
 
 
 const EditProfileForm = () => {
@@ -64,31 +65,13 @@ const EditProfileForm = () => {
                 onChange={setBio}
             />
             <div>
-                <label htmlFor="country">Pays</label><br />
-                <Select 
-                options={options} 
-                value={selectedCountry} 
-                onChange={(selectedOption) => setSelectedCountry(selectedOption)} 
-                placeholder="Sélectionnez un pays"
-                styles={{
-                    control: (provided) => ({
-                        ...provided,
-                        backgroundColor: "#fcfcfc", 
-                        borderRadius: "8px",
-                        borderColor: "#cccccc",
-                        padding: "5px",
-                        boxShadow: "none",
-                    }),
-                    menu: (provided) => ({
-                        ...provided,
-                        backgroundColor: "#fcfcfc", 
-                    }),
-                    option: (provided, { isFocused, isSelected }) => ({
-                        ...provided,
-                        backgroundColor: isSelected ? "#A0785A" : isFocused ? "#D9D9D9" : "white",
-                        color: isSelected ? "white" : "black",
-                    }),
-                }}
+                <SelectField
+                    label="Pays"
+                    name="country"
+                    value={selectedCountry}
+                    onChange={setSelectedCountry}
+                    options={options}
+                    placeholder="Sélectionnez un pays"
                 />
             </div>
             <FormField

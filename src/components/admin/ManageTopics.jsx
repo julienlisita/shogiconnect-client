@@ -6,6 +6,7 @@ import { useForumContext } from "../../contexts/ForumContext.jsx";
 import ConfirmationModal from "../common/ModalConfirmation";
 import PageTitle from "../common/PageTitle.jsx";
 import Button from "../common/Button.jsx";
+import Select from "../common/Select.jsx";
 
 const ManageTopics = () => {
 
@@ -21,9 +22,9 @@ const ManageTopics = () => {
 
     // Fonctions utilitaires
       
-    const handleSortTopicChange = (e) => 
+    const handleSortTopicChange = (value) => 
     {
-        setSortTopicOption(e.target.value);
+        setSortTopicOption(value);
     };
 
     const handleDeleteTopic = (topicId) =>
@@ -71,11 +72,17 @@ const ManageTopics = () => {
                 message="Êtes-vous sûr de vouloir supprimer ce topic ?"
                 />
                 <form className="manageTopics-displaySelection">
-                    <select className = "orderSelect" id="sortBy" value={sortTopicOption} name="sortBy" onChange={handleSortTopicChange}>
-                        <option value="title">Par titre</option>
-                        <option value="author">Par auteur</option>
-                        <option value="adte">Par date</option>
-                    </select>
+                    <Select
+                        name="sortBy"
+                        value={sortTopicOption}
+                        onChange={handleSortTopicChange}
+                        options={[
+                            { value: "", label: "Trier par", disabled: true },
+                            { value: "title", label: "Par titre" },
+                            { value: "author", label: "Par auteur" },
+                            { value: "date", label: "Par date" },
+                        ]}
+                    />
                 </form>
                 <div className="manageTopics-list">
                     <table className="manageTopics-list-table">

@@ -6,6 +6,7 @@ import { useForumContext } from "../../contexts/ForumContext.jsx";
 import ConfirmationModal from "../common/ModalConfirmation.jsx";
 import PageTitle from "../common/PageTitle.jsx";
 import Button from "../common/Button.jsx";
+import Select from "../common/Select.jsx";
 
 const ManageComments = () => {
 
@@ -22,9 +23,9 @@ const ManageComments = () => {
 
     // Fonctions utilitaires
       
-    const handleSortCommentChange = (e) => 
+    const handleSortCommentChange = (value) => 
     {
-        setSortCommentOption(e.target.value);
+        setSortCommentOption(value);
     };
 
     const handleDeleteComment = (commentId) =>
@@ -70,10 +71,16 @@ const ManageComments = () => {
                 message="Êtes-vous sûr de vouloir supprimer ce commentaire ?"
                 />
                 <form className="manageComments-displaySelection">
-                    <select className = "orderSelect" id="sortBy" value={sortCommentOption} name="sortBy" onChange={handleSortCommentChange}>
-                        <option value="author">Par auteur</option>
-                        <option value="date">Par date</option>
-                    </select>
+                    <Select
+                            name="sortBy"
+                            value={sortCommentOption}
+                            onChange={handleSortCommentChange}
+                            options={[
+                                { value: "", label: "Trier par", disabled: true },
+                                { value: "date", label: "Par date" },
+                                { value: "author", label: "Par auteur" },
+                            ]}
+                        />
                 </form>
                 <div className="manageTopics-list">
                     <table className="manageTopics-list-table">

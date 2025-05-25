@@ -7,6 +7,7 @@ import { useUserContext } from "../../contexts/UserContext.jsx";
 import image from "../../assets/images/user.png"
 import Pagination from "./../common/Pagination";
 import PageTitle from "../common/PageTitle.jsx";
+import Select from "../common/Select.jsx";
 
 const UserList = () => {
 
@@ -56,8 +57,8 @@ const UserList = () => {
         return users.isOnline ? "userCard-info-status-online" : "userCard-info-status-offline";
     }
 
-    const handleSortChange = (e) => {
-        setSortOption(e.target.value);
+    const handleSortChange = (value) => {
+        setSortOption(value);
     };
 
     return (
@@ -68,13 +69,17 @@ const UserList = () => {
                 <PageTitle>Membres de ShogiConnect</PageTitle>
                 <h2>Liste des membres</h2>
                 <form className="users-displaySelection">
-                    <label htmlFor="sortBy"></label>
-                    <select className = "orderSelect" id="sortBy" value={sortOption} name="sortBy" onChange={handleSortChange}>
-                        <option value="username">Par pseudo</option>
-                        <option value="score">Par score</option>
-                        <option value="country">Par pays</option>
-                        <option value="onlineStatus">Par statut</option>
-                    </select>
+                    <Select
+                        name="sortBy"
+                        value={sortOption}
+                        onChange={handleSortChange}
+                        options={[
+                            { value: "", label: "Trier par", disabled: true },
+                            { value: "username", label: "Par pseudo" },
+                            { value: "country", label: "Par pays" },
+                            { value: "onlineStatus", label: "Par statut" },
+                        ]}
+                    />
                 </form>
                 <div className="users-list">
                     {currentUsers.length  === 0 ? 
