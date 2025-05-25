@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import "./NewTopicForm.css"
 import Button from "../common/Button";
+import FormField from "../common/FormField";
 
 const NewTopicForm = ({ onSubmit }) => {
     const [title, setTitle] = useState('');
@@ -22,20 +23,18 @@ const NewTopicForm = ({ onSubmit }) => {
     return (
         <form className="topics-NewTopicForm" onSubmit={handleSubmit}>
             <div className="topics-NewTopicForm-name">
-                <textarea
-                    name="name"
-                    id="name"
+                <FormField
+                    type="textarea"
                     value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    onChange={setTitle}
                     placeholder="Nom du topic"
                 />
             </div>
             <div className="topics-NewTopicForm-description">
-                <textarea
-                    name="description"
-                    id="description"
+                <FormField
+                    type="textarea"
                     value={content}
-                    onChange={(e) => setContent(e.target.value)}
+                    onChange={setContent}
                     rows="10"
                     placeholder="Description"
                 />

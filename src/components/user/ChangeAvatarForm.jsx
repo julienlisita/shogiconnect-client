@@ -41,25 +41,25 @@ const ChangeAvatarForm = () => {
     return (
 
     <form className="editProfil-content-avatarForm" onSubmit={handleUpload}>
-  <h2>Avatar</h2>
-  <div className="file-upload">
-    <label className="file-upload-button">
-      Choisir une image
-      <input
-        type="file"
-        accept="image/*"
-        onChange={handleImageChange}
-      />
-    </label>
-    {selectedFileName && (
-      <p className="file-name">Fichier sélectionné : {selectedFileName}</p>
-    )}
-  </div>
-  <div className="validationButton-container">
-    <Button type="submit" disabled={isUploading}>
-      {isUploading ? "Téléchargement..." : "Valider"}
-    </Button>
-  </div>
+    <h2>Avatar</h2>
+    <div className="file-upload">
+      <label className="file-upload-button">
+        Choisir une image
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+        />
+      </label>
+      {selectedFileName && (
+        <p className="file-name">Fichier sélectionné : {selectedFileName}</p>
+      )}
+    </div>
+    <div className="validationButton-container">
+      <Button type="submit" disabled={isUploading}>
+        {isUploading ? "Téléchargement..." : "Valider"}
+      </Button>
+    </div>
 </form>
     );
 };

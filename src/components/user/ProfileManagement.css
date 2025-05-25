@@ -69,20 +69,6 @@
     padding-bottom: 30px;
 }
 
-.editProfil input, .editProfil textarea, .selectCountry
-{
-    background-color: #fcfcfc;
-    width:100%;
-    border:none;
-    border: #cccccc solid 1px;
-    border-radius: 4px;
-    padding: 8px 12px; 
-}
-.editProfil input
-{
-    height: 30px;
-}
-
 .file-upload {
   position: relative;
   display: inline-block;

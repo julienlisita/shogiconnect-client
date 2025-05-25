@@ -5,6 +5,7 @@ import Modal from "react-modal";
 import { useAuthContext } from "../../contexts/AuthContext";
 import "../common/Modal.css";
 import Button from "../common/Button";
+import FormField from "../common/FormField";
 
 Modal.setAppElement("#root"); 
 
@@ -36,19 +37,19 @@ const LoginModal = ({ isOpen, onClose }) => {
     >
       <h2>Connexion</h2>
       <form className="login-form modal-content" onSubmit={handleSubmit}>
-        <input
+        <FormField
           type="text"
           placeholder="Pseudo"
           value={username}
           required
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={setUsername}
         />
-        <input
+        <FormField
           type="password"
           placeholder="Mot de passe"
           value={password}
           required
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={setPassword}
         />
         <Button type="submit">Se connecter</Button>
         <Button type="button" onClick={onClose}>Annuler</Button>

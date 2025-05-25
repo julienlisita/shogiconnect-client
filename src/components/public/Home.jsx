@@ -54,7 +54,7 @@ const Home = () => {
                             <div className="introShogi-content-description-text">
                                 <p>Découvrez la richesse du Shogi dans notre section Apprentissage, conçue pour vous guider pas à pas dans la maîtrise de ce jeu de stratégie japonais. Que vous soyez novice ou passionné, explorez les règles essentielles, les mouvements des pièces et les stratégies incontournables pour progresser rapidement. Plongez dans cet univers fascinant et commencez votre parcours vers l’excellence.</p>
                             </div>
-                            <Button to="/rules" >Accéder aux règles du jeu</Button>
+                            <Button to="/rules" >Accéder aux règles</Button>
                         </div>
                     </div>
                 </section>           

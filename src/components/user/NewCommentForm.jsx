@@ -3,6 +3,7 @@
 import { useState } from "react";
 import "./NewCommentForm.css"
 import Button from "../common/Button";
+import FormField from "../common/FormField";
 
 const NewCommentForm = ({ onSubmit }) => {
     const [content, setContent] = useState("");
@@ -18,9 +19,10 @@ const NewCommentForm = ({ onSubmit }) => {
 
     return (
         <form onSubmit={handleSubmit} className="comments-form">
-            <textarea
+            <FormField
+                type="textarea"
                 value={content}
-                onChange={(e) => setContent(e.target.value)}
+                onChange={setContent}
                 rows="10"
                 cols="80"
                 placeholder="Saisir votre commentaire"

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuthContext } from "../../contexts/AuthContext.jsx";
 import ModalMessage from "../common/ModalMessage.jsx";
 import Button from "../common/Button.jsx";
+import FormField from "../common/FormField.jsx";
 
 const ChangePasswordForm = () => {
 
@@ -41,18 +42,24 @@ const ChangePasswordForm = () => {
 
         <form className="editProfil-content-passwordForm" onSubmit={handleChangePassword}>
             <h2>Mot de passe</h2>
-            <div>
-                <label htmlFor="oldpassword">Ancien mot de passe</label><br />
-                <input name="oldpassword" id="oldpassword" type="password" value={oldPassword} onChange={(e)=>setOldPassword(e.target.value)}/>
-            </div>
-            <div>
-                <label htmlFor="newpassword">Nouveau mot de passe</label><br />
-                <input name="newpassword" id="newpassword" type="password" value={newPassword} onChange={(e)=>setNewPassword(e.target.value)}/>
-            </div>
-            <div>
-                <label htmlFor="passwordconfirmed">Confirmation du mot de passe</label><br />
-                <input name="passwordconfirmed" id="passwordconfirmed" type="password" value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)}/>
-            </div>
+            <FormField
+                type="password"
+                label="Ancien mot de passe"
+                value={oldPassword}
+                onChange={setOldPassword}
+            />
+            <FormField
+                type="password"
+                label="Nouveau mot de passe"
+                value={newPassword}
+                onChange={setNewPassword}
+            />
+             <FormField
+                type="password"
+                label="Confirmation du mot de passe"
+                value={confirmPassword}
+                onChange={setConfirmPassword}
+            />
             <div className="validationButton-container">
                 <Button type="submit">Valider</Button>
             </div>

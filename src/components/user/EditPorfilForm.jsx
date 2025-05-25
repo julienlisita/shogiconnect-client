@@ -5,6 +5,7 @@ import { useProfileContext } from "../../contexts/ProfileContext.jsx";
 import ModalMessage from "../common/ModalMessage.jsx";
 import Button from "../common/Button.jsx";
 import "./ProfileManagement.css"
+import FormField from "../common/FormField.jsx";
 
 
 const EditProfileForm = () => {
@@ -49,14 +50,19 @@ const EditProfileForm = () => {
     return (
         <form className="editProfil-content-profileForm" onSubmit={handleUpdateProfile} >
             <h2>Informations</h2>
-            <div>   
-                <label htmlFor="username">Nom d'utilisateur</label><br />
-                <input name = "username" id = "username" type="text" value={username} onChange={(e)=>setUsername(e.target.value)}/>
-            </div>
-            <div>
-                <label htmlFor="bio">Biographie</label> <br />
-                <textarea name="bio" id="bio" rows="10" value={bio} onChange={(e)=>setBio(e.target.value)} ></textarea>
-            </div>
+            <FormField
+                type="text"
+                label="Nom d'utilisateur"
+                value={username}
+                onChange={setUsername}
+            />
+            <FormField
+                type="textarea"
+                label="biographie"
+                rows={10}
+                value={bio}
+                onChange={setBio}
+            />
             <div>
                 <label htmlFor="country">Pays</label><br />
                 <Select 
@@ -85,17 +91,20 @@ const EditProfileForm = () => {
                 }}
                 />
             </div>
-            <div>
-                <label htmlFor="email">Mail</label><br />
-                <input name = "email" id = "email" type="email" value={email} onChange={(e)=>setEmail(e.target.value)} />
-            </div>
+            <FormField
+                type="email"
+                label="Adresse mail"
+                value={email}
+                onChange={setEmail}   
+            />
             <div className="validationButton-container">
                 <Button type="submit">Valider</Button>
             </div>
             <ModalMessage 
-            isOpen={showMessageModal} 
-            message={modalMessage} 
-            onClose={() => setShowMessageModal(false)} />  
+                isOpen={showMessageModal} 
+                message={modalMessage} 
+                onClose={() => setShowMessageModal(false)} 
+            />  
         </form>
     )
 };

@@ -5,6 +5,7 @@ import Modal from "react-modal";
 import "../common/Modal.css"
 import "./AvailableGameList.css"
 import Button from "../common/Button";
+import FormField from "../common/FormField";
 
 // Nécessaire pour l'accessibilité (évite les warnings)
 Modal.setAppElement("#root");
@@ -36,24 +37,23 @@ const CreateGameModal = ({ onSubmit, isOpen, onClose }) => {
       <h2>Création de partie</h2>
       <form className="availableGames-newGameForm modal-content" onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="date">Choisir le jour</label>
-          <input
+          <FormField
+            label="Choisir le jour"
             type="date"
-            id="date"
-            name="date"
+            // name="date"
             value={date}
-            onChange={(e) => setDate(e.target.value)}
+            onChange={setDate}
             required
           />
         </div>
         <div>
-          <label htmlFor="time">Choisir l'heure</label>
-          <input
+          <FormField
+            label="Choisir l'heure"
             type="time"
             id="time"
             name="time"
             value={time}
-            onChange={(e) => setTime(e.target.value)}
+            onChange={setTime}
             required
           />
         </div>
