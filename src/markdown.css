@@ -1,0 +1,68 @@
+/* markdown.css */
+
+.main-without-banner
+{
+    width:85%;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 160px;
+}
+
+.markdown h1 {
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.markdown h2 {
+    text-align: center;
+    margin-top: 2.78vw;
+    font-size: 32px;
+    font-family:'merryweather',sans-serif;
+    color: #36444A;
+}
+
+.markdown p {
+    margin-bottom: 1rem;
+    margin-top: 0.75vw;
+    text-align: left;
+    font-size: 20px;
+    font-family: "source sans 3", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color:black;
+}
+
+.markdown ul,
+.markdown ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+
+@media (min-width: 600px) and (max-width: 1100px) 
+{
+    .markdown h2 
+    {
+        font-size: 28px;
+        margin-top: 25px;
+    }
+     .markdown p
+    {
+        font-size: 18px;
+    }
+}
+
+@media  (max-width: 600px) 
+{
+     .markdown h2 
+    {
+        font-size: 22px;
+    }
+    .markdown p
+    {
+        font-size: 16px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
