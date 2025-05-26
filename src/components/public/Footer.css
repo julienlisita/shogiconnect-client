@@ -23,6 +23,10 @@
 {
   margin-left: 25px;
   margin-right: 25px;
+}
+
+.footer-nav a 
+{
   font-size: 18px;
   font-family: sans-serif;
   font-weight: bold;
@@ -32,7 +36,6 @@
 .footer-copyright
 {
   font-size: 18px;
-  font-weight: bold;
   color: white;
 }
 
@@ -42,10 +45,11 @@
   {
     margin-left: 20px;
     margin-right: 20px;
+  }
+
+  .footer-nav a 
+  {
     font-size: 16px;
-    font-family: sans-serif;
-    font-weight: bold;
-    color: white;
   }
   
   .footer-copyright
@@ -67,19 +71,15 @@
   {
     margin-left: 15px;
     margin-right: 15px;
+  }
+  
+  .footer-nav a 
+  {
     font-size: 14px;
   }
   
   .footer-copyright
   {
     font-size: 14px;
-  }
-  .footer-nav ul
-  {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap:15px;
   }
 }

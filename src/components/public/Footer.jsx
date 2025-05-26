@@ -1,24 +1,25 @@
-import "./Footer.css"
+import { Link } from "react-router-dom";
+import "./Footer.css";
 
 const Footer = () => {
-
     return (
         <div>
-            <footer className = "footer">
+            <footer className="footer">
                 <nav className="footer-nav">
                     <ul>
-                        <li>A propos</li>
-                        <li>Contact</li>
-                        <li>Mentions légales</li>
-                        <li>Politique de confidentialité</li>
-                        <li>Condition d’utilisation</li>
+                        <li><Link to="/about">À propos</Link></li>
+                        <li><Link to="/contact">Contact</Link></li>
+                        <li><Link to="/legal-notice">Mentions légales</Link></li>
+                        <li><Link to="/privacy-policy">Politique de confidentialité</Link></li>
+                        <li><Link to="/terms-of-use">Conditions d’utilisation</Link></li>
                     </ul>
                 </nav>
-                <p className = "footer-copyright">&copy; 2024 ShogiConnect. Tous droits réservés.</p>
+                <p className="footer-copyright">
+                    &copy; 2025 ShogiConnect. Tous droits réservés.
+                </p>
             </footer>
         </div>
     );
-
 };
 
 export default Footer;
