@@ -13,6 +13,11 @@ import UserProfilePage from '../pages/public/UserProfilePage';
 import ForumCategoriesPage from '../pages/public/ForumCategoriesPage';
 import ForumTopicsPage from '../pages/public/ForumTopicsPage';
 import ForumCommentsPage from '../pages/public/ForumCommentsPage';
+import AboutPage from '../pages/public/AboutPage';
+import ContactPage from '../pages/public/ContactPage';
+import TermsOfUsePage from '../pages/public/TermsOfUsePage';
+import PrivacyPolicyPage from '../pages/public/PrivacyPolicyPage';
+import LegalNoticePage from '../pages/public/LegalNoticePage';
 
 import AvailableGameListPage from '../pages/user/AvailableGameListPage';
 import OnlineGamePage from '../pages/user/OnlineGamePage';
@@ -26,6 +31,7 @@ import ManageUsersPage from '../pages/admin/ManageUsersPage';
 import ManageTopicsPage from '../pages/admin/ManageTopicsPage';
 import ManageCommentsPage from '../pages/admin/ManageCommentsPage';
 import ManageGamesPage from '../pages/admin/ManageGamesPage';
+
 import NotFoundPage from '../pages/public/NotFoundPage';
 
 const ROLE_USER = 1
@@ -54,6 +60,16 @@ const AppRoutes = () => {
             <Route path="/forum/category/:category_id" element={<ForumTopicsPage/>} />    
             {/* Commentaires d'un topic */}         
             <Route path="/forum/category/:category_id/topic/:topic_id" element={<ForumCommentsPage/>} />
+            {/* A propos */}
+            <Route path="/about" element={<AboutPage/>} />
+            {/* Condition d'utilisation */}
+            <Route path="/terms-of-use" element={<TermsOfUsePage/>} />
+            {/* Mentions Légales */}
+            <Route path="/legal-notice" element={<LegalNoticePage/>} />
+            {/* Politique de confidentialité */}
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage/>} />
+            {/* Contact */}
+            <Route path="/contact" element={<ContactPage/>} />
 
             {/* Routes spécifiques aux membres connectés */}
 
