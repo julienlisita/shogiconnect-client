@@ -1,13 +1,27 @@
-// src/pages/public/LegalMentions.jsx
+// src/pages/public/LegalNoticePage.jsx
 
+import "../../markdown.css";
 import PublicLayout from "../../layouts/PublicLayout";
+import React, { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import PageTitle from "../../components/common/PageTitle";
 
-const LegalMentions = () => {
-    return (
-      <PublicLayout>
-        <p>Certaines images utilisées sur ce site proviennent de iStock (https://www.istockphoto.com).</p>
-      </PublicLayout>
-    );
-  };
-  
-  export default LegalMentions;
+export default function LegalNoticePage() {
+  const [content, setContent] = useState("");
+
+  useEffect(() => {
+    fetch("/content/legal-notice.md")
+      .then((res) => res.text())
+      .then(setContent)
+      .catch(console.error);
+  }, []);
+
+  return (
+    <PublicLayout>
+          <main className="main-without-banner markdown">
+            <PageTitle>Mentions légales</PageTitle>
+            <ReactMarkdown>{content}</ReactMarkdown>
+          </main>
+    </PublicLayout>
+  );
+}
